@@ -1,0 +1,525 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm, headheight=15pt]{geometry}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% Code listing style
+\lstdefinestyle{cstyle}{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red},
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    stepnumber=1,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{gray!8},
+    captionpos=b,
+    tabsize=4
+}
+
+\lstdefinestyle{bashstyle}{
+    language=bash,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray}\itshape,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{gray!8},
+}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CSE344 -- Homework \#1}
+\lhead{Halit Batuhan ASLAN -- 220104004003}
+\rfoot{\thepage}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{18pt}{10pt}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing{\subsection}{0pt}{14pt}{6pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\begin{document}
+
+% ─── Title Page ───────────────────────────────────────────────────────────────
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+
+    {\LARGE \textbf{Gebze Technical University}} \\[0.5cm]
+    {\large Department of Computer Engineering} \\[2cm]
+
+    \rule{\linewidth}{0.5mm} \\[0.4cm]
+    {\huge \textbf{CSE344 -- System Programming}} \\[0.3cm]
+    {\Large \textbf{Homework \#1: Advanced File Search Program}} \\[0.1cm]
+    \rule{\linewidth}{0.5mm} \\[2cm]
+
+    {\large \textbf{Student:} Halit Batuhan ASLAN} \\[0.3cm]
+    {\large \textbf{Student Number:} 220104004003} \\[0.3cm]
+    {\large \textbf{Date:} March 2026} \\[3cm]
+
+    \vfill
+    {\small Submitted for CSE344 -- System Programming, Spring 2026}
+\end{titlepage}
+
+% ─── Table of Contents ────────────────────────────────────────────────────────
+\tableofcontents
+\newpage
+
+% ─── 1. Introduction ──────────────────────────────────────────────────────────
+\section{Introduction}
+
+The objective of this homework is to implement an advanced file search program for
+POSIX-compatible operating systems. The program, named \texttt{myFind}, recursively
+traverses a given directory tree and searches for files and directories that satisfy
+a set of criteria specified by the user via command-line arguments.
+
+The program supports the following search criteria:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{-f}: Filename pattern matching (case-insensitive, with \texttt{+} regex operator support)
+    \item \textbf{-b}: File size in bytes (exact match)
+    \item \textbf{-t}: File type (regular file, directory, symbolic link, socket, block device, character device, pipe)
+    \item \textbf{-p}: File permissions as a 9-character string (e.g. \texttt{rwxr-xr-x})
+    \item \textbf{-l}: Number of hard links (exact match)
+\end{itemize}
+
+The mandatory argument \textbf{-w} specifies the root directory for the recursive search.
+At least one search criterion must be provided. Results are printed in a tree-formatted
+output to stdout, while all error messages go to stderr. The program also handles
+CTRL-C (SIGINT) gracefully by printing an informational message and exiting cleanly.
+
+% ─── 2. Design Decisions ──────────────────────────────────────────────────────
+\section{Design Decisions}
+
+\subsection{Modular Structure}
+
+The program is divided into seven modules, each with a single, well-defined responsibility.
+This separation of concerns makes the code easier to understand, test, and maintain.
+Each module consists of a header file (\texttt{.h}) and an implementation file (\texttt{.c}):
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Module} & \textbf{Files} & \textbf{Responsibility} \\
+\midrule
+Argument Parser  & \texttt{parse\_argv.h/.c}      & Parse and validate command-line arguments \\
+File Checker     & \texttt{check\_files.h/.c}     & Check if a file matches all criteria \\
+Directory Search & \texttt{searching\_files.h/.c} & Recursive directory traversal \\
+Tree Printer     & \texttt{print\_tree.h/.c}      & Format and print the tree output \\
+Regex Engine     & \texttt{regex.h/.c}            & Pattern matching with \texttt{+} operator \\
+Signal Handler   & \texttt{stopping\_handler.h/.c}& Handle SIGINT (CTRL-C) gracefully \\
+Entry Point      & \texttt{main.c}                & Program orchestration \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Use of \texttt{lstat()} Instead of \texttt{stat()}}
+
+All file metadata retrieval uses \texttt{lstat()} rather than \texttt{stat()}. This is a deliberate
+design decision: \texttt{stat()} follows symbolic links and returns the metadata of the target
+file, whereas \texttt{lstat()} examines the symbolic link itself. This is required for the
+\texttt{-t l} criterion to correctly identify symbolic links rather than the files they point to.
+
+\subsection{Sentinel Values for Unused Criteria}
+
+The \texttt{Search\_criteria} struct uses sentinel values to distinguish between ``not provided''
+and a valid value of zero:
+
+\begin{itemize}[noitemsep]
+    \item Pointer fields (\texttt{file\_name}, \texttt{permissions}): \texttt{NULL}
+    \item \texttt{file\_size}: \texttt{-1} (since valid sizes are $\geq 0$)
+    \item \texttt{file\_type}: \texttt{'\textbackslash0'} (null character)
+    \item \texttt{link\_count}: \texttt{-1} (since valid link counts are $\geq 1$)
+\end{itemize}
+
+In \texttt{check\_matches()}, each criterion is checked only if its field is not set to its
+sentinel value. This means multiple criteria form an AND condition: all provided criteria
+must be satisfied simultaneously.
+
+\subsection{Custom \texttt{+} Regex Operator}
+
+The \texttt{+} operator is implemented from scratch without any external library.
+The algorithm uses two nested loops:
+
+\begin{itemize}[noitemsep]
+    \item The \textbf{outer loop} tries every position in the string as a potential starting point.
+    \item The \textbf{inner loop} matches the pattern character by character, advancing an independent
+          offset variable \texttt{k} to handle the \texttt{+} operator correctly.
+    \item When \texttt{pattern[j] == '+'}, the preceding character is greedily consumed: the
+          algorithm advances \texttt{k} as long as the current string character matches
+          \texttt{pattern[j-1]}. The bounds check \texttt{i + k < len\_of\_string} prevents
+          buffer overflows.
+\end{itemize}
+
+The matching is case-insensitive: both characters are converted to lowercase via
+\texttt{tolower()} before comparison.
+
+\subsection{SIGINT Handling with \texttt{volatile sig\_atomic\_t}}
+
+Rather than calling \texttt{exit()} directly from the signal handler, the program uses a
+shared flag \texttt{continue\_running} of type \texttt{volatile sig\_atomic\_t}:
+
+\begin{itemize}[noitemsep]
+    \item \texttt{volatile} prevents the compiler from caching the value in a register,
+          ensuring every read fetches the current value from memory.
+    \item \texttt{sig\_atomic\_t} guarantees that reads and writes to this variable are
+          atomic, which is a strict requirement for variables modified inside signal handlers.
+    \item The flag is checked at the beginning of every iteration in \texttt{search\_directory()}.
+          When set to \texttt{0}, the function closes the open directory and returns immediately,
+          unwinding all recursive calls cleanly.
+\end{itemize}
+
+\texttt{sigaction()} is used instead of the legacy \texttt{signal()} function because
+\texttt{sigaction()} has well-defined, consistent behavior across all POSIX systems.
+
+\subsection{Use of \texttt{static} for Internal Helper Functions}
+
+All helper functions that are not part of the public interface of a module are declared
+\texttt{static}. This restricts their visibility to the translation unit (the \texttt{.c} file)
+in which they are defined. The benefits are twofold: it prevents accidental use from other
+modules, and it allows the compiler to optimize more aggressively since it knows the function
+cannot be called from outside. Examples include \texttt{char\_equal()} in \texttt{regex.c},
+\texttt{check\_type()} and \texttt{check\_permissions()} in \texttt{check\_files.c}, and
+\texttt{is\_dot\_or\_dotdot()} and \texttt{build\_path()} in \texttt{searching\_files.c}.
+
+\subsection{AND Logic for Multiple Criteria}
+
+When the user provides more than one search criterion, the program requires all of them
+to be satisfied simultaneously (AND logic). This is the most intuitive and useful behavior:
+for example, \texttt{-f passwd -t f} means ``a regular file named passwd'', not ``anything
+named passwd OR any regular file''. The implementation naturally achieves this by returning
+\texttt{0} from \texttt{check\_matches()} as soon as any single criterion fails, without
+evaluating the remaining ones (short-circuit evaluation).
+
+\subsection{\texttt{MAX\_PATH\_LENGTH = 4096}}
+
+The buffer used to construct child paths in \texttt{search\_directory()} is sized at
+\texttt{4096} bytes. This value corresponds to \texttt{PATH\_MAX} as defined in
+\texttt{<linux/limits.h>} on Linux systems, which is the maximum length of a full
+absolute path. Using \texttt{snprintf()} with this limit ensures that path construction
+never overflows the buffer, even for deeply nested directory trees with long names.
+
+\subsection{Directory Traversal Strategy}
+
+For every entry in a directory, the program:
+\begin{enumerate}[noitemsep]
+    \item Skips \texttt{.} and \texttt{..} to prevent infinite recursion.
+    \item Builds the full child path using \texttt{snprintf()} with a buffer of \texttt{MAX\_PATH\_LENGTH = 4096} bytes.
+    \item Calls \texttt{lstat()} to retrieve file metadata.
+    \item If the entry is a directory: checks it against criteria, prints if matched, then recurses.
+    \item If the entry is any other type: checks it against criteria and prints if matched.
+\end{enumerate}
+
+This strategy ensures the entire subtree is always traversed regardless of whether
+a directory itself matches the search criteria.
+
+% ─── 3. Modules ───────────────────────────────────────────────────────────────
+\section{Modules and Their Explanations}
+
+\subsection{\texttt{parse\_argv} -- Argument Parser}
+
+This module uses \texttt{getopt()} to parse command-line arguments in the format
+\texttt{"w:f:b:t:p:l:"}. Each option is validated immediately:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{-w}: Stored as a pointer into \texttt{argv} (no copy needed).
+    \item \textbf{-f}: Stored as-is; pattern matching is delegated to the regex module.
+    \item \textbf{-b}: Converted with \texttt{atol()}; rejected if negative.
+    \item \textbf{-t}: Validated against the seven POSIX file type characters.
+    \item \textbf{-p}: Validated as a 9-character permission string (\texttt{[rwx-][rwx-][rwx-]}).
+    \item \textbf{-l}: Converted with \texttt{atoi()}.
+\end{itemize}
+
+If \texttt{-w} is missing, or if no search criterion is provided, the program prints a
+usage guide to stderr and exits with code 1.
+
+\subsection{\texttt{check\_files} -- File Criterion Checker}
+
+The \texttt{check\_matches()} function applies all criteria to a single file in sequence.
+It returns \texttt{0} (no match) as soon as any criterion fails, avoiding unnecessary
+checks. The function uses helper functions \texttt{check\_type()} and
+\texttt{check\_permissions()} which are declared \texttt{static} to limit their scope
+to this translation unit.
+
+\subsection{\texttt{searching\_files} -- Recursive Directory Traversal}
+
+The \texttt{search\_directory()} function uses \texttt{opendir()}/\texttt{readdir()}/\texttt{closedir()}
+for directory traversal. The \texttt{found\_any} pointer is shared across all recursive
+calls so that \texttt{main()} can determine whether to print \texttt{"No file found"}.
+
+\subsection{\texttt{print\_tree} -- Tree Formatter}
+
+Two functions handle output formatting:
+\begin{itemize}[noitemsep]
+    \item \texttt{print\_root()}: Prints the root directory path with no prefix.
+    \item \texttt{print\_leaf()}: Prints \texttt{|} followed by \texttt{level * HYPHEN\_PER\_LEVEL} hyphens and the entry name.
+\end{itemize}
+
+\subsection{\texttt{regex} -- Pattern Matching Engine}
+
+Implements case-insensitive substring search with the \texttt{+} operator. No external
+regex library is used. The \texttt{char\_equal()} helper uses \texttt{tolower()} with an
+\texttt{(unsigned char)} cast to avoid undefined behavior on signed character systems.
+
+\subsection{\texttt{stopping\_handler} -- Signal Handler}
+
+Registers \texttt{handle\_sigint()} as the SIGINT handler via \texttt{sigaction()}.
+The handler sets \texttt{continue\_running = 0} and prints an exit message to stderr.
+The \texttt{(void)signum} suppresses the unused parameter warning from \texttt{-Wall -Wextra}.
+
+% ─── 4. File Structure & Build ────────────────────────────────────────────────
+\section{File Structure and Build Instructions}
+
+\subsection{Project File Structure}
+
+The submission directory is organized as follows:
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{File} & \textbf{Purpose} \\
+\midrule
+\texttt{main.c}                & Entry point, program orchestration \\
+\texttt{parse\_argv.h/.c}      & Command-line argument parsing and validation \\
+\texttt{check\_files.h/.c}     & File criteria checking \\
+\texttt{searching\_files.h/.c} & Recursive directory traversal \\
+\texttt{print\_tree.h/.c}      & Tree-formatted output \\
+\texttt{regex.h/.c}            & Custom \texttt{+} regex pattern matching \\
+\texttt{stopping\_handler.h/.c}& SIGINT signal handling \\
+\texttt{Makefile}              & Build configuration \\
+\texttt{report.pdf}            & This report \\
+\texttt{report.tex}            & LaTeX source of this report \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Build Instructions}
+
+The program is compiled using the provided \texttt{Makefile}. The following commands
+are available:
+
+\begin{itemize}[noitemsep]
+    \item \texttt{make} — compiles all source files and produces the executable \texttt{HBA\_file\_search}
+    \item \texttt{make clean} — removes all generated object files and the executable
+\end{itemize}
+
+The compiler flags used are \texttt{-Wall -Wextra -g}, which enable all standard and
+extra warnings and include debug symbols. The program compiles with zero warnings.
+
+\subsection{Usage Examples}
+
+\begin{lstlisting}[style=bashstyle]
+# Search for files named "passwd" under /etc
+./HBA_file_search -w /etc -f "passwd"
+
+# Search for regular files of exactly 0 bytes
+./HBA_file_search -w /tmp -b 0 -t f
+
+# Search for directories with rwxr-xr-x permissions
+./HBA_file_search -w /usr -t d -p "rwxr-xr-x"
+
+# Search for symbolic links named "python"
+./HBA_file_search -w /usr -f "python" -t l
+
+# Search using the + regex operator
+./HBA_file_search -w /etc -f "pas+wd"
+\end{lstlisting}
+
+% ─── 5. Requirements Met ──────────────────────────────────────────────────────
+\section{Requirements Achieved}
+
+All requirements specified in the homework description have been implemented and tested:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Recursive traversal}: The entire subtree under \texttt{-w} is always traversed.
+    \item \textbf{-f criterion}: Case-insensitive filename search with \texttt{+} operator, implemented from scratch.
+    \item \textbf{-b criterion}: Exact file size match using \texttt{st\_size} from \texttt{lstat()}.
+    \item \textbf{-t criterion}: All seven POSIX file types supported using POSIX macros (\texttt{S\_ISREG}, \texttt{S\_ISDIR}, etc.).
+    \item \textbf{-p criterion}: 9-character permission string comparison using bitwise checks on \texttt{st\_mode}.
+    \item \textbf{-l criterion}: Hard link count match using \texttt{st\_nlink}.
+    \item \textbf{Multiple criteria}: Any combination of criteria is supported (AND logic).
+    \item \textbf{Tree output}: Formatted with \texttt{|} and hyphens per depth level.
+    \item \textbf{"No file found"}: Printed when no match is found across the entire tree.
+    \item \textbf{Error messages to stderr}: All system call failures and invalid arguments are reported to stderr.
+    \item \textbf{CTRL-C handling}: Graceful exit with informational message via \texttt{sigaction()} and \texttt{volatile sig\_atomic\_t}.
+    \item \textbf{No memory leaks}: Verified with Valgrind (\texttt{All heap blocks were freed -- no leaks are possible}).
+    \item \textbf{Usage information}: Printed when mandatory or at-least-one arguments are missing.
+    \item \textbf{Makefile}: Provided, compiles with \texttt{-Wall -Wextra -g}, does not run the program.
+\end{itemize}
+
+% ─── 6. Testing ───────────────────────────────────────────────────────────────
+\section{Testing}
+
+\subsection{Automated Test Suite}
+
+The program was tested using a shell script (\texttt{test.sh}) containing over 45
+test cases organized into groups, each targeting a specific feature:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Group} & \textbf{Feature Tested} & \textbf{Result} \\
+\midrule
+Group 1 & Mandatory \texttt{-w} argument, missing/invalid args & Pass \\
+Group 2 & Filename search with \texttt{-f} (exact, case, partial, \texttt{+}) & Pass \\
+Group 3 & File type search with \texttt{-t} (f, d, l, s, b, c, p) & Pass \\
+Group 4 & File size search with \texttt{-b} (zero, nonzero, nonexistent) & Pass \\
+Group 5 & Permission search with \texttt{-p} & Pass \\
+Group 6 & Hard link count search with \texttt{-l} & Pass \\
+Group 7 & Combined criteria (multiple flags together) & Pass \\
+Group 8 & Edge cases (empty directory, no matches) & Pass \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Memory Leak Check with Valgrind}
+
+The program was verified to have zero memory leaks using Valgrind:
+
+\begin{lstlisting}[style=bashstyle]
+valgrind --leak-check=full ./HBA_file_search -w /etc -f "passwd"
+\end{lstlisting}
+
+Valgrind output confirmed:
+
+\begin{lstlisting}[style=bashstyle]
+All heap blocks were freed -- no leaks are possible
+ERROR SUMMARY: 0 errors from 0 contexts
+\end{lstlisting}
+
+Since the program does not use \texttt{malloc()} or \texttt{free()} directly — all
+string pointers point into \texttt{argv} which is managed by the OS — there is no
+heap memory to leak. The Valgrind result confirms no indirect leaks either.
+
+\subsection{SIGINT (CTRL-C) Handling Test}
+
+The signal handler was tested by running the program on a large directory tree and
+pressing CTRL-C mid-traversal:
+
+\begin{lstlisting}[style=bashstyle]
+./HBA_file_search -w / -t f
+# Press CTRL-C during execution
+\end{lstlisting}
+
+Expected and observed output on stderr:
+
+\begin{lstlisting}[style=bashstyle]
+Received SIGINT, exitting program ...
+\end{lstlisting}
+
+The program stops traversal cleanly, closes all open directory handles, and exits
+without leaving any zombie processes or resource leaks.
+
+\subsection{Edge Cases Tested}
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Empty directory}: When the target directory contains no files, the program
+          prints only the root path and \texttt{No file found}.
+    \item \textbf{No matching files}: When criteria are provided but no file satisfies them,
+          \texttt{No file found} is printed.
+    \item \textbf{Permission denied}: Directories that cannot be opened (e.g. \texttt{/etc/ssl/private})
+          print an error to stderr and traversal continues with the next entry.
+    \item \textbf{Deep nesting}: The program correctly indents entries at all depth levels
+          using the \texttt{HYPHEN\_PER\_LEVEL} constant.
+    \item \textbf{Multiple \texttt{+} operators}: Patterns like \texttt{pa+s+wd} correctly
+          match strings with repeated characters at multiple positions.
+\end{itemize}
+
+% ─── 7. Challenges ────────────────────────────────────────────────────────────
+\section{Challenges and Solutions}
+
+\subsection{Implementing the \texttt{+} Regex Operator}
+
+The main challenge was correctly handling the \texttt{+} operator with an independent
+index variable (\texttt{k}) that tracks the current position in the string separately
+from the pattern index (\texttt{j}). An early version lacked bounds checking in the
+\texttt{while} loop consuming repeated characters, which caused out-of-bounds reads.
+The fix was adding the guard \texttt{i + k < len\_of\_string} before accessing
+\texttt{string[i + k]}.
+
+\subsection{Missing \texttt{if} Guard for File Type Check}
+
+During development, the \texttt{if(criteria->file\_type != '\textbackslash0')} guard was
+accidentally omitted in \texttt{check\_matches()}. This caused \texttt{check\_type()} to
+always run with \texttt{'\textbackslash0'} as the expected type, making every file fail the
+check — even when \texttt{-t} was not provided. This was discovered by isolating
+\texttt{check\_matches()} in a separate test program.
+
+\subsection{Choosing Between \texttt{exit()} and \texttt{volatile} Flag for SIGINT}
+
+Two approaches were considered for SIGINT handling: calling \texttt{exit()} directly from
+the signal handler, or setting a \texttt{volatile sig\_atomic\_t} flag and checking it in
+the traversal loop. The flag approach was chosen because it allows the program to close
+open directory handles cleanly before exiting, following POSIX best practices for
+async-signal-safe code.
+
+\subsection{Using \texttt{lstat()} vs \texttt{stat()}}
+
+An early version used \texttt{stat()}, which caused symbolic links to be misidentified
+as their target file type. Switching to \texttt{lstat()} resolved this and correctly
+identifies symbolic links when using the \texttt{-t l} criterion.
+
+% ─── 8. Conclusion ────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+This homework required the design and implementation of a fully functional, POSIX-compatible
+recursive file search program in C. The program was developed with a strong emphasis on
+modularity, correctness, and robustness under real system conditions.
+
+Each module was designed with a single, well-defined responsibility, making the codebase
+easy to follow and maintain. The custom \texttt{+} regex operator was implemented entirely
+from scratch without any external library, deepening the understanding of string matching
+algorithms. The SIGINT handler was implemented using \texttt{sigaction()} and a
+\texttt{volatile sig\_atomic\_t} flag rather than a simple \texttt{exit()} call, reflecting
+POSIX best practices for signal-safe code.
+
+Throughout the development process, several real bugs were encountered and resolved —
+including a missing sentinel guard for the file type criterion and a buffer overflow risk
+in the regex engine — which reinforced the importance of careful testing and isolation
+of individual components.
+
+The final program passes all test cases, produces zero Valgrind errors, handles CTRL-C
+gracefully, and compiles cleanly with \texttt{-Wall -Wextra} without any warnings.
+All requirements specified in the homework description have been satisfied.
+
+% ─── 9. References ────────────────────────────────────────────────────────────
+\section{References}
+
+\begin{enumerate}[noitemsep]
+
+    \item Michael Kerrisk. \textit{The Linux Programming Interface}. No Starch Press, 2010.
+
+    \item Gebze Technical University. \textit{CSE344 System Programming -- Homework \#1 Assignment Sheet}. Spring 2026.
+
+    \item Erkan Zergeroğlu. \textit{CSE344 System Programming -- Course Lecture Notes, Slides and Course Materials}. Gebze Technical University, Spring 2026.
+
+    \item Anthropic. \textit{Claude AI Assistant} (claude.ai) --- Used as a learning and reference aid during development.
+
+    \item Google. \textit{Gemini AI Assistant} (gemini.google.com) --- Used as a learning and reference aid during development.
+
+\end{enumerate}
+
+\end{document}
