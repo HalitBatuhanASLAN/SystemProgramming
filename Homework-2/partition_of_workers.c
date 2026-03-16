@@ -79,6 +79,12 @@ int partition_directories(const char *root_directory, int num_of_workers, Worker
         worker_partition->directories[worker_partition->num_of_subdirectories] = subdirectories[i];
         worker_partition->num_of_subdirectories++;
     }
+
+    for (int i = 0; i < num_of_workers; i++) {
+        fprintf(stderr, "Worker %d: %d klasör\n", i, partitions[i].num_of_subdirectories);
+        for (int j = 0; j < partitions[i].num_of_subdirectories; j++)
+            fprintf(stderr, "  -> %s\n", partitions[i].directories[j]);
+    }
     return num_of_workers;
 }
 

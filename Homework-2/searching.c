@@ -12,25 +12,26 @@
 void init_searching_result(Searching_Result *result)
 {
     result->match_count = 0;
-    result->scan_count = 0;
+    result->scan_count  = 0;
 }
 
 /* Kaynak: TLPI Listing 18-2 (PDF sayfa 400) — opendir/readdir kalıbı
  *         TLPI PDF sayfa 324-326 — lstat() ve S_ISDIR/S_ISREG kullanımı */
-
-void search_directory(const char *directory_path, const char *pattern, long min_size, Searching_Result *result)
+void search_directory(const char *directory_path, const char *pattern,
+                      long min_size, Searching_Result *result, int verbose)
 {
-    DIR *directory;
+    DIR           *directory;
     struct dirent *dp;
-    struct stat st;
-    char full_path[MAX_PATH_LENGTH];
+    struct stat    st;
+    char           full_path[MAX_PATH_LENGTH];
 
     directory = opendir(directory_path);
-    if(directory == NULL)
+    if (directory == NULL)
     {
         fprintf(stderr, "Error: cannot open directory '%s'\n", directory_path);
         return;
     }
+
     /* --- Listing 18-2'deki döngü kalıbı --- */
     for (;;) {
         errno = 0;              /* Hata ile sonu ayırt et (TLPI sayfa 398) */
@@ -49,7 +50,9 @@ void search_directory(const char *directory_path, const char *pattern, long min_
         }
 
         if (S_ISDIR(st.st_mode))
-            search_directory(full_path, pattern, min_size, result);
+            /* Recursive çağrıda verbose aynı şekilde iletiliyor */
+            search_directory(full_path, pattern, min_size, result, verbose);
+
         else if (S_ISREG(st.st_mode))
         {
             result->scan_count++;
@@ -61,26 +64,19 @@ void search_directory(const char *directory_path, const char *pattern, long min_
                 continue;
 
             result->match_count++;
-            printf("[Worker PID:%d] MATCH: %s (%lld bytes)\n",
-                   (int)getpid(),
-                   full_path,
-                   (long long)st.st_size);
+
+            /* verbose=1 → worker çağırıyor, MATCH yazdır
+             * verbose=0 → parent scan_count için çağırıyor, yazdırma */
+            if (verbose)
+                printf("[Worker PID:%d] MATCH: %s (%lld bytes)\n",
+                       (int)getpid(),
+                       full_path,
+                       (long long)st.st_size);
         }
     }
 
-    if(errno != 0)
+    if (errno != 0)
         fprintf(stderr, "Error: readdir failed for '%s'\n", directory_path);
 
     closedir(directory);
 }
-
-
-
-/*
-
-for(;;) + errno=0 + readdir döngüsüTLPI Listing 18-2, PDF sayfa 400
-. ve .. atlama kalıbıTLPI Listing 18-2, PDF sayfa 400
-lstat() + S_ISDIR/S_ISREGTLPI PDF sayfa 324–326
-closedir döngü dışındaTLPI Listing 18-2, PDF sayfa 400
-
-*/

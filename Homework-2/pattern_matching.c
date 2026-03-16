@@ -31,5 +31,5 @@ int is_match_pattern(const char *file_name, const char *pattern)
     }
     while(j < len_of_pattern && pattern[j] == '+')
         j++;
-    return (i == len_of_file_name && j == len_of_pattern);
+    return (j == len_of_pattern);
 }
