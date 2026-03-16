@@ -1,4 +1,4 @@
-#include"partiton_of_workers.h"
+#include"partition_of_workers.h"
 
 #include <stdio.h>    /* fprintf()                          */
 #include <stdlib.h>   /* malloc(), free(), exit()           */
@@ -6,7 +6,7 @@
 #include <dirent.h>   /* opendir(), readdir(), closedir()   */
 #include <sys/stat.h> /* lstat(), S_ISDIR()                 */
 
-int partiton_of_workers(const char *root_directory, int num_of_workers, Worker_Partition partitions[MAX_WORKERS])
+int partition_directories(const char *root_directory, int num_of_workers, Worker_Partition partitions[MAX_WORKERS])
 {
     for(int i = 0; i<num_of_workers;i++)
     {
@@ -51,7 +51,7 @@ int partiton_of_workers(const char *root_directory, int num_of_workers, Worker_P
         if(subdirectories[subdir_count] == NULL)
         {
             fprintf(stderr, "Error: strdup failed\n");
-            closedir(dirp);
+            closedir(directory);
             return 0;
         }
         subdir_count++;

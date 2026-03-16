@@ -1,4 +1,5 @@
 #include "print_result.h"
+#include "pattern_matching.h"
 
 #include <stdio.h>    /* printf(), fprintf()                */
 #include <string.h>   /* strcmp()                           */
@@ -6,13 +7,14 @@
 #include <dirent.h>   /* opendir(), readdir(), closedir()   */
 #include <sys/stat.h> /* lstat(), S_ISDIR(), S_ISREG()      */
 
+
 #define MAX_PATH_LENGTH 4096
 
 static void print_indents(int level)
 {
-    printf('|');
+    printf("|");
     for(int i = 0; i< level*6;i++)
-        printf('-');
+        printf("-");
 }
 
 /*
@@ -52,17 +54,17 @@ static int print_tree_recursive(const char  *dir_path,
 
         if (S_ISDIR(st.st_mode)) {
             /* Klasör adını yaz, sonra içine gir */
-            print_indent(depth);
+            print_indents(depth);
             printf(" %s\n", dp->d_name);
             found += print_tree_recursive(full_path, pattern,
                                           min_size, depth + 1);
 
         } else if (S_ISREG(st.st_mode)) {
             /* Pattern ve boyut kontrolü */
-            if (!matches_pattern(dp->d_name, pattern)) continue;
+            if (!is_match_pattern(dp->d_name, pattern)) continue;
             if (min_size > 0 && st.st_size < min_size) continue;
 
-            print_indent(depth);
+            print_indents(depth);
             printf(" %s (%lld bytes)\n",
                    dp->d_name,
                    (long long)st.st_size);
@@ -79,6 +81,9 @@ static int print_tree_recursive(const char  *dir_path,
 
 void print_tree(const char *root_directory, const char *pattern, long min_size, Worker_Result worker_results[MAX_WORKERS], int num_of_workers)
 {
+    (void)worker_results;   /* şimdilik kullanılmıyor */
+    (void)num_of_workers;   /* şimdilik kullanılmıyor */
+    
     printf("%s\n", root_directory);
     int total = print_tree_recursive(root_directory, pattern, min_size, 1);
 

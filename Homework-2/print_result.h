@@ -2,7 +2,7 @@
 #define PRINT_RESULT_H
 
 #include "partition_of_workers.h"  /* Worker_Partition */
-#include "search.h"                /* Search_Result */
+#include "searching.h"                /* Search_Result */
 
 typedef struct
 {

@@ -54,7 +54,7 @@ void search_directory(const char *directory_path, const char *pattern, long min_
         {
             result->scan_count++;
 
-            if (!matches_pattern(dp->d_name, pattern))
+            if (!is_match_pattern(dp->d_name, pattern))
                 continue;
 
             if (min_size > 0 && st.st_size < min_size)
