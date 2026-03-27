@@ -14,17 +14,18 @@ SRCS    = main.c \
 
 OBJS    = $(SRCS:.c=.o)
 
-# ── Derleme ──────────────────────────────────────────────────
+# ── Compile ──────────────────────────────────────────────────
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-# ── Her .c dosyası için .o üret ──────────────────────────────
+# ── crete .o for each .c ──────────────────────────────
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# ── Temizlik ─────────────────────────────────────────────────
+# ── clean verything ─────────────────────────────────────────────────
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-# ── Sahte hedefler ───────────────────────────────────────────
 .PHONY: clean
+
+#   rm -f /tmp/worker_*.txt -> to clean workeroutputs if stopped by -9(kill) signal

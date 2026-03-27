@@ -1,13 +1,16 @@
 #include"partition_of_workers.h"
 
-#include <stdio.h>    /* fprintf()                          */
-#include <stdlib.h>   /* malloc(), free(), exit()           */
-#include <string.h>   /* strdup(), snprintf()               */
-#include <dirent.h>   /* opendir(), readdir(), closedir()   */
-#include <sys/stat.h> /* lstat(), S_ISDIR()                 */
+#include <stdio.h>/* fprintf()*/
+#include <stdlib.h>/* malloc(), free(), exit()*/
+#include <string.h>/*strdup(), snprintf()*/
+#include <dirent.h>/*opendir(), readdir(), closedir()*/
+#include <sys/stat.h>/*lstat(), S_ISDIR()*/
 
 int partition_directories(const char *root_directory, int num_of_workers, Worker_Partition partitions[MAX_WORKERS])
 {
+    /*
+        initialize partitions array to null and 0 for avoiding dangling pointers
+    */
     for(int i = 0; i<num_of_workers;i++)
     {
         partitions[i].num_of_subdirectories = 0;
@@ -15,6 +18,7 @@ int partition_directories(const char *root_directory, int num_of_workers, Worker
             partitions[i].directories[j] = NULL;
     }
 
+    /*opens current directory and cghecks if null or not*/
     DIR *directory = opendir(root_directory);
     if(directory == NULL)
     {
@@ -25,19 +29,23 @@ int partition_directories(const char *root_directory, int num_of_workers, Worker
     char *subdirectories[MAX_SUBDIRECTORIES];
     int   subdir_count = 0;
 
+    /*to take directory entries*/
     struct dirent *dp;
     struct stat st;
     char full_path[MAX_PATH_LENGTH];
 
     while((dp = readdir(directory)) != NULL)
     {
+        /*skip . and .. links*/
         if(strcmp(dp->d_name, ".") == 0 || strcmp(dp->d_name, "..") == 0)
             continue;
 
         snprintf(full_path, MAX_PATH_LENGTH, "%s/%s", root_directory, dp->d_name);
         
+        /*by using lstat take stat info*/
         if(lstat(full_path, &st) == -1)
             continue;
+        /*check with that Macro if really a directory*/
         if(!S_ISDIR(st.st_mode))
             continue;
 
@@ -47,6 +55,7 @@ int partition_directories(const char *root_directory, int num_of_workers, Worker
                             "truncating at %d\n", MAX_SUBDIRECTORIES);
             break;
         }
+        /*by using strdup(string duplicate) put file path into heap */
         subdirectories[subdir_count] = strdup(full_path);
         if(subdirectories[subdir_count] == NULL)
         {
@@ -60,18 +69,18 @@ int partition_directories(const char *root_directory, int num_of_workers, Worker
 
     if(subdir_count == 0)
     {
-        fprintf(stderr, "Notice: no subdirectories found; parent will search root directly.\n");
+        printf("Notice: no subdirectories found; parent will search root directly.\n");
         return 0;
     }
 
     if(num_of_workers > subdir_count)
     {
-        fprintf(stderr, "Notice: only %d subdirectories found; using %d workers instead of %d.\n",
+        printf("Notice: only %d subdirectories found; using %d workers instead of %d.\n",
                 subdir_count, subdir_count, num_of_workers);
         num_of_workers = subdir_count;
     }
 
-    /* Round-robin assignment of subdirectories to workers */
+    /*Round-robin assign subdirectories into workers */
     for(int i = 0; i<subdir_count;i++)
     {
         int worker_id = i % num_of_workers;
@@ -80,22 +89,18 @@ int partition_directories(const char *root_directory, int num_of_workers, Worker
         worker_partition->num_of_subdirectories++;
     }
 
-    for (int i = 0; i < num_of_workers; i++) {
-        fprintf(stderr, "Worker %d: %d klasör\n", i, partitions[i].num_of_subdirectories);
-        for (int j = 0; j < partitions[i].num_of_subdirectories; j++)
-            fprintf(stderr, "  -> %s\n", partitions[i].directories[j]);
-    }
     return num_of_workers;
 }
 
 void free_partitions(Worker_Partition partitions[MAX_WORKERS], int num_of_workers)
 {
+    /* through all all workers, free heap mem allocated by strdup*/
     for(int i = 0; i<num_of_workers;i++)
     {
         for(int j = 0; j<partitions[i].num_of_subdirectories;j++)
         {
             free(partitions[i].directories[j]);
-            partitions[i].directories[j] = NULL;
+            partitions[i].directories[j] = NULL;/*just to prevent dangling pointer*/
         }
         partitions[i].num_of_subdirectories = 0;
     }

@@ -1,18 +1,21 @@
 #ifndef SIGNALS_HANDLER_H
 #define SIGNALS_HANDLER_H
 
-#include <signal.h>    /* sigaction(), sig_atomic_t */
-#include <sys/wait.h>  /* waitpid(), WNOHANG        */
+#include <signal.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 /*
- * Flag'ler — extern: hem signals.c hem main.c/worker.c görebilir
- *
- * volatile: compiler register'a almasın (TLPI sayfa 472)
- * sig_atomic_t: atomik okuma/yazma garantisi (TLPI sayfa 472)
- */
-extern volatile sig_atomic_t got_sigint;   /* SIGINT geldi mi?          */
-extern volatile sig_atomic_t got_sigterm;  /* SIGTERM geldi mi?         */
-extern volatile sig_atomic_t workers_done; /* Kaç worker SIGUSR1 gönderdi */
+    global flags for IPC(inter process coommunication)
+*/
+extern volatile sig_atomic_t got_sigint;
+extern volatile sig_atomic_t got_sigterm;
+extern volatile sig_atomic_t workers_done;
+
+#define MAX_EXPECTED_PIDS 8
+extern volatile pid_t expected_pids[MAX_EXPECTED_PIDS];
+extern volatile int expected_pid_statuses[MAX_EXPECTED_PIDS];
+extern volatile sig_atomic_t expected_pid_count;
 
 void setup_parent_signals(void);
 
