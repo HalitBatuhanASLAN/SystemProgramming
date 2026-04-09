@@ -24,6 +24,9 @@ static void request_delivery_elevator(SharedData *data, int from_floor, int to_f
 
     /* Asansore yeni istek geldigini bildir */
     sem_post(&elev->request_sem);
+    pthread_mutex_lock(&elev->elev_mutex);
+    pthread_cond_broadcast(&elev->elev_cond);
+    pthread_mutex_unlock(&elev->elev_mutex);
 }
 
 /* Reposition elevator'a istek gonder */
@@ -52,6 +55,9 @@ static void request_reposition_elevator(SharedData *data, int from_floor, int ca
     pthread_mutex_unlock(&elev->elev_mutex);
 
     sem_post(&elev->request_sem);
+    pthread_mutex_lock(&elev->elev_mutex);
+    pthread_cond_broadcast(&elev->elev_cond);
+    pthread_mutex_unlock(&elev->elev_mutex);
 }
 
 /* Hedef kata karakteri yerlestir (sorting area'ya) */
@@ -75,7 +81,16 @@ static void deliver_char_to_sorting_area(SharedData *data, int word_idx, char ch
             /* Istatistik guncelle */
             pthread_mutex_lock(&data->stats_mutex);
             data->total_chars_transported++;
+            data->letter_carrier_transports[carrier_id]++;
             pthread_mutex_unlock(&data->stats_mutex);
+
+            pthread_mutex_lock(&data->floors[word->sorting_floor].floor_mutex);
+            pthread_cond_broadcast(&data->floors[word->sorting_floor].floor_cond);
+            pthread_mutex_unlock(&data->floors[word->sorting_floor].floor_mutex);
+
+            pthread_mutex_lock(&data->state_mutex);
+            pthread_cond_broadcast(&data->state_cond);
+            pthread_mutex_unlock(&data->state_mutex);
             return;
         }
     }
@@ -83,11 +98,13 @@ static void deliver_char_to_sorting_area(SharedData *data, int word_idx, char ch
     pthread_mutex_unlock(&word->word_mutex);
 }
 
-/* Bulundugu katta is ara */
+/* Bulundugu katta rastgele kelime ve harf secimi ile is ara */
 static int find_task_on_floor(SharedData *data, int current_floor,
                                int *out_word_idx, int *out_char_idx) {
-    /* Kattaki admitted kelimeleri tara */
-    for (int i = 0; i < data->total_words; i++) {
+    /* Rastgele baslangic noktasiyla kattaki admitted kelimeleri tara */
+    int start_word = rand_range(data->total_words);
+    for (int attempt = 0; attempt < data->total_words; attempt++) {
+        int i = (start_word + attempt) % data->total_words;
         WordInfo *w = &data->words[i];
 
         /* Bu kelime bu katta mi ve admitted mi? */
@@ -96,8 +113,10 @@ static int find_task_on_floor(SharedData *data, int current_floor,
 
         pthread_mutex_lock(&w->word_mutex);
 
-        /* Sahiplenilmemis, teslim edilmemis harf ara */
-        for (int j = 0; j < w->num_char_tasks; j++) {
+        /* Rastgele baslangic noktasiyla sahiplenilmemis, teslim edilmemis harf ara */
+        int start_char = rand_range(w->num_char_tasks);
+        for (int jj = 0; jj < w->num_char_tasks; jj++) {
+            int j = (start_char + jj) % w->num_char_tasks;
             if (!w->char_tasks[j].claimed && !w->char_tasks[j].delivered) {
                 w->char_tasks[j].claimed = 1; /* Atomik claim */
                 *out_word_idx = i;
@@ -163,9 +182,10 @@ void letter_carrier_run(SharedData *data, int initial_floor, int carrier_id) {
                             break;
                         }
                     }
+                    if (!served && data->system_running) {
+                        pthread_cond_wait(&elev->elev_cond, &elev->elev_mutex);
+                    }
                     pthread_mutex_unlock(&elev->elev_mutex);
-
-                    if (!served) usleep(5000); /* 5ms bekle */
                 }
 
                 if (served) {
@@ -189,11 +209,6 @@ void letter_carrier_run(SharedData *data, int initial_floor, int carrier_id) {
                 log_msg("Letter-carrier-process_%d requested reposition elevator from floor %d",
                         carrier_id, current_floor);
 
-                /* Kattan ayriliyor: letter_carrier_count azalt */
-                pthread_mutex_lock(&data->floors[current_floor].floor_mutex);
-                data->floors[current_floor].letter_carrier_count--;
-                pthread_mutex_unlock(&data->floors[current_floor].floor_mutex);
-
                 request_reposition_elevator(data, current_floor, carrier_id);
 
                 /* Reposition tamamlanmasini bekle */
@@ -210,25 +225,50 @@ void letter_carrier_run(SharedData *data, int initial_floor, int carrier_id) {
                             break;
                         }
                     }
+                    if (!served && data->system_running) {
+                        pthread_cond_wait(&elev->elev_cond, &elev->elev_mutex);
+                    }
                     pthread_mutex_unlock(&elev->elev_mutex);
-
-                    if (!served) usleep(5000);
                 }
 
                 if (served) {
+                    int old_floor = current_floor;
                     current_floor = new_floor;
 
-                    /* Yeni kata varis: letter_carrier_count artir */
-                    pthread_mutex_lock(&data->floors[current_floor].floor_mutex);
-                    data->floors[current_floor].letter_carrier_count++;
-                    pthread_mutex_unlock(&data->floors[current_floor].floor_mutex);
+                    if (old_floor != current_floor) {
+                        pthread_mutex_lock(&data->floors[old_floor].floor_mutex);
+                        data->floors[old_floor].letter_carrier_count--;
+                        pthread_cond_broadcast(&data->floors[old_floor].floor_cond);
+                        pthread_mutex_unlock(&data->floors[old_floor].floor_mutex);
+
+                        pthread_mutex_lock(&data->floors[current_floor].floor_mutex);
+                        data->floors[current_floor].letter_carrier_count++;
+                        pthread_cond_broadcast(&data->floors[current_floor].floor_cond);
+                        pthread_mutex_unlock(&data->floors[current_floor].floor_mutex);
+                    }
+
+                    pthread_mutex_lock(&data->state_mutex);
+                    pthread_cond_broadcast(&data->state_cond);
+                    pthread_mutex_unlock(&data->state_mutex);
 
                     log_msg("Letter-carrier-process_%d resumed work on floor %d",
                             carrier_id, current_floor);
                 }
             } else {
-                /* Tek kat var, bekle */
-                usleep(10000);
+                /* Tek kat var, yeni is veya tamamlanma sinyali bekle */
+                pthread_mutex_lock(&data->floors[current_floor].floor_mutex);
+                if (data->system_running) {
+                    struct timespec ts;
+                    clock_gettime(CLOCK_REALTIME, &ts);
+                    ts.tv_nsec += 100000000; /* 100ms */
+                    if (ts.tv_nsec >= 1000000000) {
+                        ts.tv_sec++;
+                        ts.tv_nsec -= 1000000000;
+                    }
+                    pthread_cond_timedwait(&data->floors[current_floor].floor_cond,
+                                           &data->floors[current_floor].floor_mutex, &ts);
+                }
+                pthread_mutex_unlock(&data->floors[current_floor].floor_mutex);
             }
         }
     }

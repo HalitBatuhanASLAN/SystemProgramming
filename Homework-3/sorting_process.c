@@ -66,7 +66,18 @@ void sorting_process_run(SharedData *data, int floor_id, int sorter_id) {
                     }
                 }
 
-                if (target_pos == -1 || target_pos == j) continue;
+                if (target_pos == -1) continue;
+
+                /* target_pos == j: karakter zaten olmasi gereken yerde olabilir */
+                if (target_pos == j) {
+                    if (word->sorting_area[j] == word->word[j]) {
+                        word->fixed[j] = 1;
+                        did_work = 1;
+                        log_msg("Sorting-process_%d fixed char '%c' of word %d on floor %d",
+                                sorter_id, word->sorting_area[j], word->word_id, floor_id);
+                    }
+                    continue;
+                }
 
                 if (!word->occupied[target_pos]) {
                     /* Hedef bos -> tasi */
@@ -121,18 +132,36 @@ void sorting_process_run(SharedData *data, int floor_id, int sorter_id) {
 
             if (all_fixed) {
                 word->completed = 1;
-                log_msg("Word %d COMPLETED", word->word_id);
+                int saved_arrival = word->arrival_floor;
+                int saved_sorting = word->sorting_floor;
+                int saved_word_id = word->word_id;
+
+                /* Deadlock onleme: word_mutex'i birak, sonra diger lock'lari al */
+                pthread_mutex_unlock(&word->word_mutex);
+
+                log_msg("Word %d COMPLETED", saved_word_id);
+
+                pthread_mutex_lock(&data->stats_mutex);
+                data->sorting_process_completions[sorter_id]++;
+                pthread_mutex_unlock(&data->stats_mutex);
 
                 /* Kat kapasitelerini serbest birak */
-                pthread_mutex_lock(&data->floors[word->arrival_floor].floor_mutex);
-                data->floors[word->arrival_floor].active_word_count--;
-                pthread_mutex_unlock(&data->floors[word->arrival_floor].floor_mutex);
+                pthread_mutex_lock(&data->floors[saved_arrival].floor_mutex);
+                data->floors[saved_arrival].active_word_count--;
+                pthread_cond_broadcast(&data->floors[saved_arrival].floor_cond);
+                pthread_mutex_unlock(&data->floors[saved_arrival].floor_mutex);
 
-                if (word->arrival_floor != word->sorting_floor) {
-                    pthread_mutex_lock(&data->floors[word->sorting_floor].floor_mutex);
-                    data->floors[word->sorting_floor].active_word_count--;
-                    pthread_mutex_unlock(&data->floors[word->sorting_floor].floor_mutex);
+                if (saved_arrival != saved_sorting) {
+                    pthread_mutex_lock(&data->floors[saved_sorting].floor_mutex);
+                    data->floors[saved_sorting].active_word_count--;
+                    pthread_cond_broadcast(&data->floors[saved_sorting].floor_cond);
+                    pthread_mutex_unlock(&data->floors[saved_sorting].floor_mutex);
                 }
+
+                pthread_mutex_lock(&data->state_mutex);
+                pthread_cond_broadcast(&data->state_cond);
+                pthread_mutex_unlock(&data->state_mutex);
+                continue; /* word_mutex zaten birakildi, dongudeki unlock'u atla */
             }
 
             pthread_mutex_unlock(&word->word_mutex);
@@ -140,7 +169,19 @@ void sorting_process_run(SharedData *data, int floor_id, int sorter_id) {
 
         /* Is yapilmadiysa kisa bekle (busy-waiting onleme) */
         if (!did_work) {
-            usleep(10000); /* 10ms */
+            pthread_mutex_lock(&data->floors[floor_id].floor_mutex);
+            if (data->system_running) {
+                struct timespec ts;
+                clock_gettime(CLOCK_REALTIME, &ts);
+                ts.tv_nsec += 100000000; /* 100ms */
+                if (ts.tv_nsec >= 1000000000) {
+                    ts.tv_sec++;
+                    ts.tv_nsec -= 1000000000;
+                }
+                pthread_cond_timedwait(&data->floors[floor_id].floor_cond,
+                                       &data->floors[floor_id].floor_mutex, &ts);
+            }
+            pthread_mutex_unlock(&data->floors[floor_id].floor_mutex);
         }
     }
 }

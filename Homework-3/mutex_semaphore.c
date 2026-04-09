@@ -87,6 +87,16 @@ int sync_init(SharedData *data) {
         return -1;
     }
 
+    /* Sistem durum mutex/cond */
+    if (init_shared_mutex(&data->state_mutex) != 0) {
+        fprintf(stderr, "Error: Failed to init state mutex\n");
+        return -1;
+    }
+    if (init_shared_cond(&data->state_cond) != 0) {
+        fprintf(stderr, "Error: Failed to init state cond\n");
+        return -1;
+    }
+
     /* Children mutex */
     if (init_shared_mutex(&data->children_mutex) != 0) {
         fprintf(stderr, "Error: Failed to init children mutex\n");
@@ -120,5 +130,7 @@ void sync_destroy(SharedData *data) {
     /* Global mutex'leri yok et */
     pthread_mutex_destroy(&data->round_robin_mutex);
     pthread_mutex_destroy(&data->stats_mutex);
+    pthread_mutex_destroy(&data->state_mutex);
+    pthread_cond_destroy(&data->state_cond);
     pthread_mutex_destroy(&data->children_mutex);
 }

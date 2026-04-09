@@ -110,6 +110,7 @@ void delivery_elevator_run(SharedData *data) {
                 data->delivery_elevator_ops++;
                 pthread_mutex_unlock(&data->stats_mutex);
 
+                pthread_cond_broadcast(&elev->elev_cond);
                 pthread_mutex_lock(&elev->elev_mutex);
             }
         }
@@ -129,6 +130,7 @@ void delivery_elevator_run(SharedData *data) {
                         elev->current_load,
                         elev->queue[i].carrier_id, elev->queue[i].character,
                         elev->queue[i].word_id);
+                pthread_cond_broadcast(&elev->elev_cond);
                 pthread_mutex_lock(&elev->elev_mutex);
             }
         }
@@ -192,9 +194,6 @@ void delivery_elevator_run(SharedData *data) {
         }
 
         pthread_mutex_unlock(&elev->elev_mutex);
-
-        /* Kat arasi gecis suresi simulasyonu */
-        usleep(5000); /* 5ms */
     }
 }
 
@@ -253,6 +252,7 @@ void reposition_elevator_run(SharedData *data) {
                 data->reposition_elevator_ops++;
                 pthread_mutex_unlock(&data->stats_mutex);
 
+                pthread_cond_broadcast(&elev->elev_cond);
                 pthread_mutex_lock(&elev->elev_mutex);
             }
         }
@@ -271,6 +271,7 @@ void reposition_elevator_run(SharedData *data) {
                         "  Letter-carrier-process_%d",
                         elev->current_load,
                         elev->queue[i].carrier_id);
+                pthread_cond_broadcast(&elev->elev_cond);
                 pthread_mutex_lock(&elev->elev_mutex);
             }
         }
@@ -325,6 +326,5 @@ void reposition_elevator_run(SharedData *data) {
         }
 
         pthread_mutex_unlock(&elev->elev_mutex);
-        usleep(5000);
     }
 }

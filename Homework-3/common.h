@@ -114,8 +114,8 @@ typedef struct {
 /* --- Kat bilgisi --- */
 typedef struct {
     int floor_id;                               /* Kat numarasi */
-    int active_word_count;                       /* Aktif kelime sayisi (arrival + sorting) */
-    int letter_carrier_count;                    /* Kattaki letter-carrier sayisi */
+    int active_word_count;                      /* Aktif kelime sayisi (arrival + sorting) */
+    int letter_carrier_count;                   /* Kattaki letter-carrier sayisi */
 
     pthread_mutex_t floor_mutex;                /* Kat kilidi */
     pthread_cond_t floor_cond;                  /* Kat condition variable */
@@ -146,11 +146,16 @@ typedef struct {
     int total_chars_transported;                /* Tasinan toplam karakter */
     int delivery_elevator_ops;                  /* Delivery asansor islem sayisi */
     int reposition_elevator_ops;                /* Reposition asansor islem sayisi */
+    int word_carrier_admissions[MAX_PROCESSES]; /* Word-carrier bazli kabul sayisi */
+    int letter_carrier_transports[MAX_PROCESSES]; /* Letter-carrier bazli tasima sayisi */
+    int sorting_process_completions[MAX_PROCESSES]; /* Sorting-process bazli tamamlama sayisi */
     pthread_mutex_t stats_mutex;                /* Istatistik kilidi */
 
     /* Sistem durumu */
     volatile int system_running;                /* 0 olursa tum process'ler durur */
     volatile int all_words_admitted;            /* Tum kelimeler sisteme alindi mi */
+    pthread_mutex_t state_mutex;                /* Sistem durumu degisimi kilidi */
+    pthread_cond_t state_cond;                  /* Parent/child koordinasyonu icin cond */
 
     /* Parent PID (child'lar bilsin diye) */
     pid_t parent_pid;

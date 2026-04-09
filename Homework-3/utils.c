@@ -17,6 +17,7 @@ void log_msg(const char *fmt, ...) {
 }
 
 pid_t safe_fork(void) {
+    fflush(NULL); /* Fork oncesi buffered output'u temizle */
     pid_t pid = fork();
     if (pid == -1) {
         print_error("fork failed");

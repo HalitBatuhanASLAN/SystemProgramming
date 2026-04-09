@@ -38,8 +38,19 @@ void word_carrier_run(SharedData *data, int floor_id, int carrier_id) {
         pthread_mutex_unlock(&data->round_robin_mutex);
 
         if (!found) {
-            /* Uygun kelime yok, kisa bekle tekrar dene */
-            usleep(10000); /* 10ms */
+            /* Uygun kelime yoksa kapasite veya tamamlanma degisimi bekle */
+            pthread_mutex_lock(&data->state_mutex);
+            if (data->system_running && !data->all_words_admitted) {
+                struct timespec ts;
+                clock_gettime(CLOCK_REALTIME, &ts);
+                ts.tv_nsec += 100000000; /* 100ms */
+                if (ts.tv_nsec >= 1000000000) {
+                    ts.tv_sec++;
+                    ts.tv_nsec -= 1000000000;
+                }
+                pthread_cond_timedwait(&data->state_cond, &data->state_mutex, &ts);
+            }
+            pthread_mutex_unlock(&data->state_mutex);
             continue;
         }
 
@@ -90,6 +101,18 @@ void word_carrier_run(SharedData *data, int floor_id, int carrier_id) {
             }
             pthread_mutex_unlock(&word->word_mutex);
 
+            pthread_mutex_lock(&data->stats_mutex);
+            data->word_carrier_admissions[carrier_id]++;
+            pthread_mutex_unlock(&data->stats_mutex);
+
+            pthread_mutex_lock(&data->floors[arrival_floor].floor_mutex);
+            pthread_cond_broadcast(&data->floors[arrival_floor].floor_cond);
+            pthread_mutex_unlock(&data->floors[arrival_floor].floor_mutex);
+
+            pthread_mutex_lock(&data->state_mutex);
+            pthread_cond_broadcast(&data->state_cond);
+            pthread_mutex_unlock(&data->state_mutex);
+
             log_msg("Word-carrier-process_%d claimed word %d", carrier_id, word->word_id);
             log_msg("Word %d admitted to floor %d (sorting floor: %d)",
                     word->word_id, arrival_floor, sorting_floor);
@@ -110,7 +133,18 @@ void word_carrier_run(SharedData *data, int floor_id, int carrier_id) {
             data->total_retries++;
             pthread_mutex_unlock(&data->stats_mutex);
 
-            usleep(5000); /* 5ms bekle, baskasina sans ver */
+            pthread_mutex_lock(&data->state_mutex);
+            if (data->system_running) {
+                struct timespec ts;
+                clock_gettime(CLOCK_REALTIME, &ts);
+                ts.tv_nsec += 100000000; /* 100ms */
+                if (ts.tv_nsec >= 1000000000) {
+                    ts.tv_sec++;
+                    ts.tv_nsec -= 1000000000;
+                }
+                pthread_cond_timedwait(&data->state_cond, &data->state_mutex, &ts);
+            }
+            pthread_mutex_unlock(&data->state_mutex);
         }
     }
 }
