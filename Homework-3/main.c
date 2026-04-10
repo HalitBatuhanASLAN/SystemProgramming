@@ -73,25 +73,6 @@ static void print_summary(SharedData *data) {
     printf("  Characters transported: %d\n", data->total_chars_transported);
     printf("  Delivery elevator operations: %d\n", data->delivery_elevator_ops);
     printf("  Reposition elevator operations: %d\n", data->reposition_elevator_ops);
-    printf("  Per-process statistics:\n");
-    for (int i = 0; i < MAX_PROCESSES; i++) {
-        if (data->word_carrier_admissions[i] > 0) {
-            printf("    Word-carrier-process_%d admissions: %d\n",
-                   i, data->word_carrier_admissions[i]);
-        }
-    }
-    for (int i = 0; i < MAX_PROCESSES; i++) {
-        if (data->letter_carrier_transports[i] > 0) {
-            printf("    Letter-carrier-process_%d transports: %d\n",
-                   i, data->letter_carrier_transports[i]);
-        }
-    }
-    for (int i = 0; i < MAX_PROCESSES; i++) {
-        if (data->sorting_process_completions[i] > 0) {
-            printf("    Sorting-process_%d completions: %d\n",
-                   i, data->sorting_process_completions[i]);
-        }
-    }
     printf("\nProgram terminated successfully.\n");
 }
 
@@ -101,37 +82,6 @@ static int check_all_completed(SharedData *data) {
         if (!data->words[i].completed) return 0;
     }
     return 1;
-}
-
-/* Hic letter-carrier kalmayan kat varsa parent yenilerini olusturur */
-static void respawn_letter_carriers_if_needed(SharedData *data, int *global_carrier_id) {
-    for (int floor = 0; floor < data->config.num_floors; floor++) {
-        int should_spawn = 0;
-
-        pthread_mutex_lock(&data->floors[floor].floor_mutex);
-        if (data->system_running &&
-            data->floors[floor].letter_carrier_count == 0 &&
-            data->floors[floor].active_word_count > 0) {
-            data->floors[floor].letter_carrier_count += data->config.letter_carriers_per_floor;
-            should_spawn = 1;
-        }
-        pthread_mutex_unlock(&data->floors[floor].floor_mutex);
-
-        if (!should_spawn) continue;
-
-        for (int i = 0; i < data->config.letter_carriers_per_floor; i++) {
-            pid_t pid = safe_fork();
-            if (pid == 0) {
-                srand(time(NULL) ^ getpid());
-                letter_carrier_run(data, floor, *global_carrier_id);
-                _exit(EXIT_SUCCESS);
-            }
-            register_child(data, pid);
-            printf("[PID:%ld] Letter-carrier-process_%d re-initialized on floor %d\n",
-                   (long)pid, *global_carrier_id, floor);
-            (*global_carrier_id)++;
-        }
-    }
 }
 
 int main(int argc, char *argv[]) {
@@ -277,32 +227,13 @@ int main(int argc, char *argv[]) {
     printf("--------------------------------------------------\n");
 
     /* 7. Parent: tamamlanmayi bekle */
-    pthread_mutex_lock(&data->state_mutex);
     while (data->system_running) {
         if (check_all_completed(data)) {
             data->system_running = 0;
-            pthread_cond_broadcast(&data->state_cond);
             break;
         }
-
-        pthread_mutex_unlock(&data->state_mutex);
-        respawn_letter_carriers_if_needed(data, &global_carrier_id);
-        pthread_mutex_lock(&data->state_mutex);
-
-        if (!data->system_running || check_all_completed(data)) {
-            continue;
-        }
-
-        struct timespec ts;
-        clock_gettime(CLOCK_REALTIME, &ts);
-        ts.tv_nsec += 100000000; /* 100ms */
-        if (ts.tv_nsec >= 1000000000) {
-            ts.tv_sec++;
-            ts.tv_nsec -= 1000000000;
-        }
-        pthread_cond_timedwait(&data->state_cond, &data->state_mutex, &ts);
+        usleep(50000); /* 50ms araliklarla kontrol et */
     }
-    pthread_mutex_unlock(&data->state_mutex);
 
     /* 8. Tum child'lari durdur ve topla */
     cleanup_children(data);

@@ -87,13 +87,13 @@ int sync_init(SharedData *data) {
         return -1;
     }
 
-    /* Sistem durum mutex/cond */
+    /* Global state mutex/condition variable */
     if (init_shared_mutex(&data->state_mutex) != 0) {
         fprintf(stderr, "Error: Failed to init state mutex\n");
         return -1;
     }
     if (init_shared_cond(&data->state_cond) != 0) {
-        fprintf(stderr, "Error: Failed to init state cond\n");
+        fprintf(stderr, "Error: Failed to init state condition variable\n");
         return -1;
     }
 
