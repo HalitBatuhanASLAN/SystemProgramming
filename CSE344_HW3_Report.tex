@@ -1,0 +1,1011 @@
+% ============================================================
+% CSE 344 – System Programming  |  Homework #3
+% Multi-Process Word Transportation and Concurrent Sorting System
+% Design and Implementation Report
+%
+% Student : Halit Batuhan ASLAN
+% ID      : 220104004003
+% Course  : CSE 344 – System Programming
+% Instructor : Murat Cansever
+% Due Date   : 15 / 04 / 2026
+% University : Gebze Technical University
+%              Department of Computer Engineering
+% ============================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% ── Encoding & language ──────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% ── Fonts ────────────────────────────────────────────────────
+% lmodern not available on this system; using default CM fonts
+
+% ── Page layout ──────────────────────────────────────────────
+\usepackage[
+  a4paper,
+  top=2.5cm, bottom=2.5cm,
+  left=2.4cm, right=2.4cm,
+  headheight=15pt
+]{geometry}
+
+% ── Header / footer ──────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{headblue}{CSE 344 -- HW\#3 Report}}
+\fancyhead[R]{\small\textcolor{headblue}{Halit Batuhan ASLAN -- 220104004003}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ── Colours ──────────────────────────────────────────────────
+\usepackage{xcolor}
+\definecolor{darkblue}{HTML}{1a2e4a}
+\definecolor{midblue}{HTML}{2d5986}
+\definecolor{lightblue}{HTML}{d6e8f7}
+\definecolor{accent}{HTML}{e8a020}
+\definecolor{codebg}{HTML}{f4f4f4}
+\definecolor{headblue}{HTML}{2d5986}
+\definecolor{rowgray}{HTML}{f2f2f2}
+\definecolor{borderblue}{HTML}{aaccee}
+
+% ── Graphics ─────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
+
+% ── Tables ───────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+\renewcommand{\arraystretch}{1.35}
+
+% ── Code listings ────────────────────────────────────────────
+\usepackage{listings}
+\lstset{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{borderblue},
+  framesep=4pt,
+  xleftmargin=8pt, xrightmargin=8pt,
+  tabsize=4,
+  showstringspaces=false,
+  keywordstyle=\color{midblue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\color{accent},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=6pt,
+}
+\lstdefinelanguage{C_custom}{
+  language=C,
+  morekeywords={pthread_mutex_t,pthread_cond_t,sem_t,pid_t,
+                SharedData,WordInfo,CharTask,ElevatorState,
+                ElevatorRequest,Floor,SystemConfig},
+}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[
+  colorlinks=true,
+  linkcolor=midblue,
+  urlcolor=midblue,
+  citecolor=midblue,
+  pdftitle={CSE344 HW3 Report},
+  pdfauthor={Halit Batuhan ASLAN},
+]{hyperref}
+
+% ── Section styling ──────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}
+  {\Large\bfseries\color{darkblue}}
+  {\thesection.}{0.6em}{}
+  [\vspace{-4pt}\color{midblue}\rule{\linewidth}{1.5pt}\vspace{2pt}]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{midblue}}
+  {\thesubsection.}{0.5em}{}
+  [\vspace{-4pt}\color{borderblue}\rule{0.55\linewidth}{0.6pt}\vspace{2pt}]
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{darkblue}}
+  {\thesubsubsection.}{0.5em}{}
+
+% ── Enumeration ──────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.4em, itemsep=2pt, topsep=4pt}
+\setlist[enumerate]{leftmargin=1.6em, itemsep=2pt, topsep=4pt}
+
+% ── Caption ──────────────────────────────────────────────────
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, textfont=it, skip=4pt}
+
+% ── Misc ─────────────────────────────────────────────────────
+\usepackage{parskip}
+\setlength{\parskip}{5pt}
+\usepackage{lipsum}
+\usepackage{mdframed}
+
+% Info box style
+\newmdenv[
+  linecolor=midblue,
+  backgroundcolor=lightblue,
+  linewidth=1pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  skipabove=6pt,
+  skipbelow=6pt,
+]{infobox}
+
+% Warning/note box
+\newmdenv[
+  linecolor=accent,
+  backgroundcolor=yellow!8,
+  linewidth=1pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  skipabove=6pt,
+  skipbelow=6pt,
+]{notebox}
+
+% ── Utility macros ───────────────────────────────────────────
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\field}[1]{\textbf{\texttt{#1}}}
+\newcommand{\highlight}[1]{\colorbox{lightblue}{\texttt{#1}}}
+
+% =============================================================
+\begin{document}
+% =============================================================
+
+% ── COVER PAGE ───────────────────────────────────────────────
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  % Dark blue full-page background
+  \pagecolor{darkblue}
+  \color{white}
+
+  \vspace*{2.5cm}
+
+  % Top rule
+  {\color{accent}\rule{\textwidth}{2pt}}
+  \vspace{0.4cm}
+
+  {\centering
+    % University
+    {\large\bfseries GEBZE TECHNICAL UNIVERSITY}\\[0.2cm]
+    {\normalsize Department of Computer Engineering}\\[0.6cm]
+
+    {\color{accent}\rule{0.6\textwidth}{0.5pt}}\\[0.8cm]
+
+    % Course
+    {\Large CSE 344 -- System Programming}\\[0.5cm]
+    {\fontsize{30}{36}\selectfont\bfseries Homework \#3}\\[0.5cm]
+    {\large Multi-Process Word Transportation\\[0.2cm]
+     and Concurrent Sorting System}\\[0.8cm]
+
+    {\color{accent}\rule{0.6\textwidth}{0.5pt}}\\[0.5cm]
+
+    {\large\bfseries\color{accent} Design and Implementation Report}\\[2.5cm]
+  }
+
+  % Student info box
+  \begin{center}
+  \begin{tabular}{|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+    \hline
+    \rowcolor{midblue}
+    \textcolor{white}{\textbf{Student Name}} &
+    \textcolor{white}{\textbf{Student ID}} &
+    \textcolor{white}{\textbf{Instructor}} \\
+    \hline
+    \rule{0pt}{14pt}Halit Batuhan ASLAN & 220104004003 & Murat Cansever \\[4pt]
+    \hline
+  \end{tabular}
+  \end{center}
+
+  \vfill
+
+  % Bottom info
+  \begin{center}
+  \begin{tabular}{rl}
+    \textbf{Course Code:} & CSE 344 \\
+    \textbf{Assignment:}  & Homework \#3 \\
+    \textbf{Due Date:}    & 15 / 04 / 2026 \\
+    \textbf{Semester:}    & Spring 2025--2026 \\
+  \end{tabular}
+  \end{center}
+
+  \vspace{0.3cm}
+  {\color{accent}\rule{\textwidth}{2pt}}
+\end{titlepage}
+
+% Reset page color for the rest of the document
+\pagecolor{white}
+\color{black}
+\setcounter{page}{1}
+
+% ── TABLE OF CONTENTS ────────────────────────────────────────
+\tableofcontents
+\newpage
+
+% =============================================================
+\section{Introduction}
+% =============================================================
+
+This report describes the design, implementation, and testing of a multi-process
+word transportation and concurrent sorting system, developed for \textbf{CSE 344 --
+System Programming, Homework \#3} at Gebze Technical University.
+
+The system reads a list of words from a text file, distributes them across the
+floors of a virtual building, transports each word's characters independently
+between floors using dedicated carrier processes and two elevator subsystems, and
+finally reconstructs every word on its designated sorting floor using concurrent
+sorting processes.
+
+\begin{infobox}
+\textbf{Core objective:} The assignment's primary goal is not data movement per se
+but demonstrating correct concurrent programming -- multiple independent processes
+accessing shared data structures simultaneously without races, deadlocks,
+starvation, or busy-waiting.
+\end{infobox}
+
+The implementation is written entirely in \textbf{C} for a POSIX-compatible Linux
+environment (Debian 11, 64-bit) and uses \code{fork()},
+\code{mmap(MAP\_SHARED|MAP\_ANONYMOUS)}, POSIX mutexes, condition variables, and
+semaphores as its concurrency primitives.
+
+\subsection{Main Challenges}
+
+\begin{itemize}
+  \item \textbf{Concurrency:} Dozens of independent processes operate simultaneously
+        on the same shared-memory region. Every field that can be written by more
+        than one process must be protected by an appropriate lock.
+  \item \textbf{Synchronization:} Processes must wait for each other without
+        busy-waiting. Condition variables and semaphores are used throughout to
+        allow blocking waits that are woken by real events.
+  \item \textbf{Process coordination:} The parent must detect when all work is done
+        and then cleanly shut down every child process, reaping them to avoid zombie
+        processes, even when interrupted by Ctrl+C.
+  \item \textbf{Deadlock prevention:} Multiple locks must sometimes be held
+        simultaneously (floor capacity checks). A strict lock-ordering rule (lower
+        floor number first) is enforced to break any potential circular wait.
+\end{itemize}
+
+% =============================================================
+\section{System Architecture}
+% =============================================================
+
+The system is built around a single \textbf{parent (coordinator) process} that
+forks all child processes and monitors overall progress. Six distinct process types
+collaborate through a shared-memory region (\code{SharedData}) to form the
+processing pipeline.
+
+\subsection{Process Types}
+
+\begin{table}[h!]
+\centering
+\caption{Process types in the system. $F$ = \texttt{num\_floors},
+         $w$/$l$/$s$ = per-floor counts from command line.}
+\begin{tabularx}{\textwidth}{>{\bfseries}l c X}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{Process Type} &
+\textcolor{white}{Count} &
+\textcolor{white}{Role} \\
+\midrule
+Parent / Coordinator & 1 &
+  Initialises system, forks all children, monitors completion, writes output. \\
+\rowcolor{rowgray}
+Word-Carrier Process & $w \times F$ &
+  Scans input list round-robin; admits words to floors (all-or-nothing
+  capacity check). \\
+Letter-Carrier Process & $l \times F$ &
+  Picks up individual characters from arrival floors; delivers to sorting
+  floors via delivery elevator; repositions via reposition elevator when idle. \\
+\rowcolor{rowgray}
+Sorting Process & $s \times F$ &
+  Operates on the sorting area of words on its floor; fixes, moves, and
+  swaps characters until the word is fully reconstructed. \\
+Delivery Elevator & 1 &
+  Transports letter-carriers (each holding one character) between floors
+  using a direction-based SCAN policy. \\
+\rowcolor{rowgray}
+Reposition Elevator & 1 &
+  Relocates idle letter-carriers to random floors. Operates independently
+  of the delivery elevator. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Process Interaction}
+
+All inter-process communication happens exclusively through the \code{SharedData}
+region. The lifecycle of a single word illustrates how the process types
+collaborate:
+
+\begin{table}[h!]
+\centering
+\caption{Word processing pipeline (happy path).}
+\begin{tabularx}{\textwidth}{c >{\bfseries}l X}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{Step} &
+\textcolor{white}{Actor} &
+\textcolor{white}{Action} \\
+\midrule
+1 & Word-Carrier & Claims word; checks capacity on arrival \& sorting floor atomically. \\
+\rowcolor{rowgray}
+2 & Word-Carrier & Sets \code{admitted=1}, \code{arrival\_floor}; broadcasts on \code{floor\_cond}. \\
+3 & Letter-Carrier & Claims a \code{CharTask}; enqueues delivery elevator request. \\
+\rowcolor{rowgray}
+4 & Delivery Elevator & Picks up carrier at \code{from\_floor}; drops off at \code{to\_floor}; sets \code{served=1}. \\
+5 & Letter-Carrier & Places character in first free slot of \code{sorting\_area[]}. \\
+\rowcolor{rowgray}
+6 & Sorting Process & Detects new character; runs sorting pass; sets \code{fixed[i]=1}. \\
+7 & Sorting Process & When all \code{fixed[i]==1}: sets \code{completed=1}; decrements \code{active\_word\_count}. \\
+\rowcolor{rowgray}
+8 & Parent & Detects all \code{completed==1}; sets \code{system\_running=0}; writes output. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Architecture Diagram}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1.2cm and 2cm,
+  box/.style={rectangle, rounded corners=4pt, draw=midblue, fill=lightblue,
+              text width=3.2cm, minimum height=1cm, align=center, font=\small},
+  elevator/.style={rectangle, rounded corners=4pt, draw=accent, fill=yellow!15,
+                   text width=3.2cm, minimum height=1cm, align=center, font=\small},
+  parent/.style={rectangle, rounded corners=4pt, draw=darkblue, fill=darkblue!15,
+                 text width=4cm, minimum height=1cm, align=center,
+                 font=\small\bfseries},
+  shm/.style={rectangle, rounded corners=4pt, draw=midblue, fill=midblue!10,
+              text width=5cm, minimum height=1.2cm, align=center, font=\small},
+  arrow/.style={-{Stealth[length=5pt]}, draw=midblue, thick},
+]
+
+\node[parent] (parent) {Parent Process\\(Coordinator)};
+
+\node[box, below left=1.5cm and 2.2cm of parent]  (wc)  {Word-Carrier\\Processes};
+\node[box, below=1.5cm of parent]                  (lc)  {Letter-Carrier\\Processes};
+\node[box, below right=1.5cm and 2.2cm of parent]  (sp)  {Sorting\\Processes};
+
+\node[elevator, below left=1.5cm and 0.8cm of lc]  (de)  {Delivery\\Elevator};
+\node[elevator, below right=1.5cm and 0.8cm of lc] (re)  {Reposition\\Elevator};
+
+\node[shm, below=1.3cm of de, xshift=2.2cm]        (shm) {\textbf{SharedData}\\(mmap shared memory)};
+
+\draw[arrow] (parent) -- (wc);
+\draw[arrow] (parent) -- (lc);
+\draw[arrow] (parent) -- (sp);
+\draw[arrow] (lc)     -- (de);
+\draw[arrow] (lc)     -- (re);
+
+\draw[arrow, dashed] (wc)  -- (shm);
+\draw[arrow, dashed] (lc)  -- (shm);
+\draw[arrow, dashed] (sp)  -- (shm);
+\draw[arrow, dashed] (de)  -- (shm);
+\draw[arrow, dashed] (re)  -- (shm);
+\draw[arrow, dashed] (parent) |- (shm);
+
+\end{tikzpicture}
+\caption{High-level architecture. Solid arrows = process creation (fork).
+         Dashed arrows = shared-memory access.}
+\end{figure}
+
+\subsection{Why \texttt{mmap} Instead of \texttt{shmget} / \texttt{shm\_open}?}
+
+Using \code{mmap(MAP\_SHARED|MAP\_ANONYMOUS)} means the shared region is created
+in the parent and automatically inherited by every forked child with no extra
+attach step. It leaves no named object on the file system requiring cleanup, and
+it is released automatically when the last process unmaps or exits.
+
+% =============================================================
+\section{Data Structures and Shared Memory Design}
+% =============================================================
+
+All runtime state lives in a single \code{SharedData} struct that is
+zero-initialised and populated by the parent before any child is forked.
+
+\subsection{WordInfo -- Word State}
+
+\begin{table}[h!]
+\centering
+\caption{Key fields of the \texttt{WordInfo} struct.}
+\begin{tabularx}{\textwidth}{>{\ttfamily}l >{\ttfamily}l X}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{Field} &
+\textcolor{white}{Type} &
+\textcolor{white}{Purpose} \\
+\midrule
+word\_id        & int          & Unique identifier from the input file. \\
+\rowcolor{rowgray}
+word[]          & char[]       & Original word; used by sorting to determine correct positions. \\
+sorting\_floor  & int          & Floor where sorting must happen (from input). \\
+\rowcolor{rowgray}
+arrival\_floor  & int          & Floor where word was placed by a word-carrier ($-1$ until set). \\
+claimed         & int          & 1 if a word-carrier reserved this word (prevents double-claim). \\
+\rowcolor{rowgray}
+admitted        & int          & 1 if both floors had capacity and the word entered the system. \\
+completed       & int          & 1 when all \texttt{fixed[i]==1} (word fully reconstructed). \\
+\rowcolor{rowgray}
+sorting\_area[] & char[]       & Characters placed by letter-carriers (not yet in final order). \\
+occupied[]      & int[]        & \texttt{occupied[i]=1}: slot $i$ holds a character. \\
+\rowcolor{rowgray}
+fixed[]         & int[]        & \texttt{fixed[i]=1}: slot $i$ is permanently correct; immutable. \\
+char\_tasks[]   & CharTask[]   & One task per character; claimed and delivered exactly once. \\
+\rowcolor{rowgray}
+word\_mutex     & pthread\_mutex\_t & Per-word lock; ensures only one sorting process operates at a time. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{CharTask -- Character Transport Unit}
+
+Each character of a word becomes an independent \code{CharTask}. A letter-carrier
+atomically sets \code{claimed=1} (under \code{word\_mutex}), transports the character,
+and sets \code{delivered=1}. The \code{original\_index} field records the character's
+position in the original word so the sorting process knows where it ultimately belongs.
+
+\subsection{ElevatorRequest -- \texttt{served} State Machine}
+
+\begin{table}[h!]
+\centering
+\caption{\texttt{ElevatorRequest.served} state machine.}
+\begin{tabular}{cl}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{\textbf{Value}} & \textcolor{white}{\textbf{Meaning}} \\
+\midrule
+0 & Request enqueued; passenger waiting at \texttt{from\_floor}. \\
+\rowcolor{rowgray}
+2 & Passenger is inside the elevator (in transit). \\
+1 & Passenger dropped off; entry ready for cleanup. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Floor -- Per-Floor State}
+
+Each \code{Floor} entry tracks \code{active\_word\_count} (admission control) and
+\code{letter\_carrier\_count} (parent monitoring). Both are protected by
+\code{floor\_mutex}. \code{floor\_cond} is broadcast whenever either counter changes.
+
+\subsection{SharedData -- Root Structure}
+
+\code{SharedData} is the single root of the shared-memory region. It embeds all
+\code{WordInfo[]}, \code{Floor[]}, and \code{ElevatorState} structs directly (no
+pointers) so the entire state is contiguous in memory and accessible to every
+process via the same \code{mmap()} base address.
+
+% =============================================================
+\section{Synchronization Strategy}
+% =============================================================
+
+All synchronisation primitives are initialised with the
+\code{PTHREAD\_PROCESS\_SHARED} attribute so they work across \code{fork()}-ed
+processes. Semaphores use \code{sem\_init()} with \code{pshared=1}.
+
+\subsection{Lock Inventory}
+
+\begin{table}[h!]
+\centering
+\caption{Complete synchronisation primitive inventory.}
+\begin{tabularx}{\textwidth}{>{\ttfamily}l l X}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{Primitive} &
+\textcolor{white}{Protects} &
+\textcolor{white}{Users} \\
+\midrule
+word\_mutex (per word) &
+  sorting\_area, occupied, fixed, claimed, char\_tasks &
+  Letter-carriers, sorting processes, word-carriers \\
+\rowcolor{rowgray}
+floor\_mutex (per floor) &
+  active\_word\_count, letter\_carrier\_count &
+  Word-carriers, letter-carriers, sorting processes \\
+floor\_cond (per floor) &
+  Wakes on capacity/work changes &
+  All process types \\
+\rowcolor{rowgray}
+elev\_mutex (per elev.) &
+  queue[], direction, current\_floor, current\_load &
+  Elevator process, carrier processes \\
+elev\_cond (per elev.) &
+  Wakes carriers waiting for served==1 &
+  Carrier processes \\
+\rowcolor{rowgray}
+request\_sem (per elev.) &
+  Wakes elevator on new request &
+  Elevator (waits), carriers (post) \\
+round\_robin\_mutex &
+  round\_robin\_index, words[i].claimed &
+  Word-carrier processes \\
+\rowcolor{rowgray}
+stats\_mutex &
+  All statistics counters &
+  All process types \\
+state\_mutex / state\_cond &
+  General state-change notifications &
+  All process types, parent \\
+\rowcolor{rowgray}
+children\_mutex &
+  child\_pids[], num\_children &
+  Parent process \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Race Condition Prevention}
+
+\begin{itemize}
+  \item \textbf{Double word claim:} \code{round\_robin\_mutex} is held while both
+        finding an unclaimed word and setting \code{claimed=1}, making the
+        check-and-set atomic.
+  \item \textbf{Double character claim:} \code{word\_mutex} is held while checking
+        and setting \code{char\_tasks[j].claimed=1}.
+  \item \textbf{Concurrent word sorting:} \code{pthread\_mutex\_trylock()} is used
+        (non-blocking) so a sorting process that loses the race moves on to a
+        different word instead of blocking.
+  \item \textbf{Statistics corruption:} All counter increments are wrapped in
+        \code{stats\_mutex} to prevent lost updates from non-atomic
+        read-modify-write sequences.
+\end{itemize}
+
+\subsection{Deadlock Prevention}
+
+During word admission two \code{floor\_mutex}es may be needed simultaneously.
+To avoid circular waits, the lower floor number is always locked first:
+
+\begin{lstlisting}[language=C_custom, caption={Lock ordering for deadlock prevention.}]
+int lock_first  = (arrival <= sorting) ? arrival : sorting;
+int lock_second = (arrival <= sorting) ? sorting  : arrival;
+
+pthread_mutex_lock(&floors[lock_first].floor_mutex);
+if (lock_first != lock_second)
+    pthread_mutex_lock(&floors[lock_second].floor_mutex);
+\end{lstlisting}
+
+No other part of the code holds more than one lock at a time, so this single
+ordering rule is sufficient to guarantee deadlock freedom.
+
+\subsection{No Busy-Waiting}
+
+Every wait in the system uses either \code{pthread\_cond\_timedwait()} or
+\code{sem\_timedwait()} with a short timeout (50--100 ms). The timeout serves as
+a safety net against missed broadcasts, not as a polling mechanism. Under normal
+operation, processes are woken immediately by a broadcast when the condition
+they are waiting for becomes true.
+
+% =============================================================
+\section{Word Admission Logic}
+% =============================================================
+
+\subsection{Round-Robin Selection}
+
+All word-carrier processes share a single \code{round\_robin\_index} counter in
+shared memory. On each iteration a carrier:
+
+\begin{enumerate}
+  \item Locks \code{round\_robin\_mutex}.
+  \item Scans \code{words[]} from \code{round\_robin\_index} for the first
+        unclaimed, non-admitted word.
+  \item Sets \code{claimed=1} on that word and advances the index.
+  \item Releases the lock.
+\end{enumerate}
+
+The entire find-and-claim sequence is atomic with respect to other word-carriers.
+If all words are admitted the carrier sets \code{all\_words\_admitted=1} and exits.
+
+\subsection{All-or-Nothing Capacity Check}
+
+A word may enter the system only if \textbf{both} its arrival floor \textbf{and}
+its sorting floor have room (\code{active\_word\_count < max\_words\_per\_floor}).
+The check and reservation are performed while holding both floor mutexes:
+
+\begin{enumerate}
+  \item Lock \code{floor[min(arrival, sorting)].floor\_mutex}.
+  \item Lock \code{floor[max(arrival, sorting)].floor\_mutex} (if different).
+  \item Check both \code{active\_word\_count} values.
+  \item If both OK $\rightarrow$ increment both counts; unlock both; set \code{admitted=1}.
+  \item If either full $\rightarrow$ unlock both; reset \code{claimed=0};
+        increment \code{total\_retries}; sleep on \code{state\_cond}.
+\end{enumerate}
+
+\begin{infobox}
+\textbf{Key property:} Capacity on one floor is never reserved if the other floor
+is full. This prevents partial reservations that would leave the system in an
+inconsistent state and potentially cause starvation.
+\end{infobox}
+
+% =============================================================
+\section{Character Transportation and Elevators}
+% =============================================================
+
+\subsection{CharTask Generation and Assignment}
+
+When a word is admitted, \code{word\_carrier\_run()} immediately sets
+\code{src\_floor} in every \code{char\_tasks[]} entry. Letter-carriers scan
+admitted, incomplete words on their current floor for an unclaimed task. The scan
+starts at a \emph{random} word index and a random character index within that word
+to distribute load and reduce contention.
+
+\subsection{Delivery Elevator -- Movement Policy}
+
+The delivery elevator follows a direction-based SCAN policy:
+
+\begin{enumerate}
+  \item \textbf{Idle wait:} \code{sem\_timedwait(request\_sem, 50ms)} -- no CPU
+        burn while the queue is empty.
+  \item \textbf{Cleanup:} Remove \code{served==1} requests at the start of each cycle.
+  \item \textbf{Direction adoption:} If IDLE and requests exist, adopt direction
+        toward the first waiting \code{from\_floor}.
+  \item \textbf{Drop off:} For every request with \code{served==2} and
+        \code{to\_floor==current\_floor}, set \code{served=1} and decrement load.
+  \item \textbf{Pick up:} For every request with \code{served==0},
+        \code{from\_floor==current\_floor}, and \code{current\_load < capacity},
+        set \code{served=2} and increment load.
+  \item \textbf{Direction check:} If no relevant floor exists further in the
+        current direction and the elevator is empty, reconsider or go IDLE.
+  \item \textbf{Boundary reversal:} Mandatory UP$\to$DOWN at floor $N-1$,
+        DOWN$\to$UP at floor 0.
+  \item \textbf{Move:} Increment or decrement \code{current\_floor} by 1.
+\end{enumerate}
+
+\begin{notebox}
+\textbf{Capacity enforcement:} Pick-up is skipped when
+\code{current\_load >= capacity}. The request stays queued with \code{served==0}
+and is picked up on the next pass -- natural flow control with no extra
+synchronisation.
+\end{notebox}
+
+\subsection{Carrier Waiting for Elevator Completion}
+
+After enqueuing a delivery request a letter-carrier waits on \code{elev\_cond}
+(50 ms timeout). On each wake-up it checks:
+
+\begin{itemize}
+  \item Its request has \code{served==1}, \textbf{or}
+  \item Its request is no longer in the queue at all (already cleaned up).
+\end{itemize}
+
+Either condition confirms delivery. This ``\emph{served or gone}'' logic is robust
+regardless of the timing of \code{clean\_served\_requests()}.
+
+\subsection{Reposition Elevator}
+
+The reposition elevator follows exactly the same movement policy but operates on a
+\textbf{separate} \code{ElevatorState} (separate queue, mutex, cond, semaphore).
+When a letter-carrier finds no unclaimed \code{CharTask} on its floor, it chooses
+a random target floor, enqueues a reposition request, and waits identically to a
+delivery wait. After the ride it updates \code{letter\_carrier\_count} and resumes
+the work search.
+
+\subsection{Character Placement Rule}
+
+Characters are \textbf{not} placed at their final correct index.
+\code{deliver\_char\_to\_sorting\_area()} scans \code{sorting\_area[]} for the first
+slot where \code{occupied[i]==0} and \code{fixed[i]==0} and places the character
+there. Sorting processes are responsible for all rearrangement.
+
+% =============================================================
+\section{Sorting Algorithm}
+% =============================================================
+
+Sorting processes continuously scan words on their floor. For each word they
+attempt a \code{trylock()} on \code{word\_mutex}; if another sorter is already
+working on that word they skip it. This ensures mutual exclusion per word without
+blocking the entire floor.
+
+\subsection{Per-Slot Decision Logic}
+
+\begin{table}[h!]
+\centering
+\caption{Sorting decision cases for each slot $i$.}
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{\textbf{Case}} &
+\textcolor{white}{\textbf{Condition}} &
+\textcolor{white}{\textbf{Action}} \\
+\midrule
+1 -- Empty   & \texttt{occupied[i] == 0} & Skip; nothing to sort yet. \\
+\rowcolor{rowgray}
+2 -- Fixed   & \texttt{fixed[i] == 1}    & Skip; position is permanently locked. \\
+3 -- Correct & \texttt{sorting\_area[i] == word[i]} & Set \texttt{fixed[i]=1}. \\
+\rowcolor{rowgray}
+4a -- Move   & Wrong pos.; target empty  & Move char to target; fix target if now correct. \\
+4b -- Swap   & Wrong pos.; target occupied \& not fixed & Swap slots $i$ and target; fix each if correct. \\
+\rowcolor{rowgray}
+4c -- Skip   & Wrong pos.; target is fixed & Cannot displace a fixed char; skip. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Handling Repeated Characters}
+
+For words with duplicate characters (e.g., \texttt{balloon}: two `\texttt{l}'s,
+two `\texttt{o}'s) the target-search loop finds the \emph{first unfixed} index $k$
+where \code{word[k] == current\_char} and stops. This deterministic target
+selection prevents infinite swap cycles between two identical characters.
+
+\subsection{Partial Sorting}
+
+Sorting and character delivery are concurrent. A sorting process skips empty slots
+(Case 1) and processes whatever is already present, so sorting work is spread over
+time and the process does not have to wait for all characters.
+
+\subsection{No Busy-Waiting in Sorting}
+
+If a complete scan produces no progress (\code{did\_work==0}), the sorting process
+sleeps on \code{floor\_cond} for up to 100 ms. It is woken by
+\code{deliver\_char\_to\_sorting\_area()} which broadcasts on \code{floor\_cond}
+after each character placement.
+
+% =============================================================
+\section{Termination Detection}
+% =============================================================
+
+The system terminates only when all three conditions are satisfied:
+
+\begin{enumerate}
+  \item All words have \code{completed==1}.
+  \item The final output file has been written successfully.
+  \item The summary statistics have been printed to the terminal.
+\end{enumerate}
+
+\subsection{Parent Monitoring Loop}
+
+The parent polls \code{check\_all\_completed()} every 50 ms. When all words are
+done it sets \code{system\_running=0}, which causes every child's main loop
+condition to become false on its next iteration.
+
+\subsection{Role of Lifecycle Flags}
+
+\begin{table}[h!]
+\centering
+\caption{Lifecycle flag summary.}
+\begin{tabularx}{\textwidth}{>{\ttfamily}l l l X}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{\textbf{Flag}} &
+\textcolor{white}{\textbf{Set by}} &
+\textcolor{white}{\textbf{Cleared by}} &
+\textcolor{white}{\textbf{Effect when 1}} \\
+\midrule
+claimed   & word-carrier (RR lock) & word-carrier (fail) & Prevents double-claim. \\
+\rowcolor{rowgray}
+admitted  & word-carrier (OK)      & Never               & Enables carriers and sorters. \\
+completed & sorting process        & Never               & Parent counts word as done; floor counts decremented. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{SIGINT / Ctrl+C Handling}
+
+A \code{sigaction()} handler for both \code{SIGINT} and \code{SIGTERM} sets
+\code{system\_running=0}. \code{cleanup\_children()} then sends \code{SIGTERM} to
+all registered PIDs, waits 100 ms, sends \code{SIGKILL} to any survivors, and
+finally calls \code{waitpid()} for each child to prevent zombie processes.
+
+% =============================================================
+\section{Output File Generation}
+% =============================================================
+
+\code{write\_output\_file()} allocates a temporary copy of \code{words[]},
+sorts it with \code{qsort()} using a two-key comparator (primary:
+\code{sorting\_floor} ascending; secondary: \code{word\_id} ascending), and writes
+one line per word:
+
+\begin{lstlisting}[language={},caption={Output file format (no blank lines).}]
+<word_id> <word> <sorting_floor>
+\end{lstlisting}
+
+The arrival floor does not appear in the output. Correctness is verified by the
+automated test suite which checks line count, format (regex), absence of blank
+lines, and sort order.
+
+% =============================================================
+\section{Test Case Scenario}
+% =============================================================
+
+\subsection{Mandatory Test Case}
+
+\textbf{Input file (\texttt{input.txt}):}
+\begin{lstlisting}[language={},numbers=none]
+101 apple 2
+102 process 0
+103 system 1
+104 kernel 0
+105 thread 2
+\end{lstlisting}
+
+\textbf{Command used:}
+\begin{lstlisting}[language={},numbers=none]
+./hw3 -f 3 -w 2 -l 2 -s 2 -c 4 -d 3 -r 2 -i input.txt -o output.txt
+\end{lstlisting}
+
+Configuration: 3 floors (0--2), 2 word-carriers/floor, 2 letter-carriers/floor,
+2 sorting processes/floor, floor capacity 4, delivery elevator capacity 3,
+reposition elevator capacity 2.
+
+\subsection{Expected Output File}
+
+Sorted by (\code{sorting\_floor}, \code{word\_id}):
+\begin{lstlisting}[language={},numbers=none]
+102 process 0
+104 kernel 0
+103 system 1
+101 apple 2
+105 thread 2
+\end{lstlisting}
+
+\subsection{Observed Behaviour}
+
+The system starts by admitting all five words in round-robin order. Word-carriers
+on floors 0--2 claim words and check both floor capacities atomically. Letter-carriers
+begin picking up individual characters; those needing cross-floor delivery enqueue
+requests to the delivery elevator.
+
+The delivery elevator picks up carriers in direction order and drops them off at
+their destination floors. Sorting processes detect characters as they arrive;
+because sorting and delivery are concurrent, partial sorting begins before all
+characters of a word have arrived. For words where \code{arrival\_floor ==
+sorting\_floor} the letter-carrier uses the direct placement path (no elevator).
+
+When all characters of a word are fixed the sorting process sets
+\code{completed=1} and decrements \code{active\_word\_count} on both floors,
+freeing capacity. The parent detects all five words completed within a few seconds
+and writes the output file.
+
+\subsection{Terminal Summary (typical run)}
+
+\begin{lstlisting}[language={},numbers=none]
+System Summary:
+  Total words: 5
+  Completed words: 5
+  Retries: 0
+  Characters transported: 27
+  Delivery elevator operations: 8
+  Reposition elevator operations: 2
+
+Program terminated successfully.
+\end{lstlisting}
+
+Retries = 0 confirms that the floor capacity of 4 was sufficient to admit all
+5 words without any rejection.
+
+% =============================================================
+\section{Challenges and Solutions}
+% =============================================================
+
+\subsection{Challenge 1: Detecting Elevator Completion After Queue Cleanup}
+
+\textbf{Problem:} \code{clean\_served\_requests()} removes \code{served==1}
+entries. A carrier waiting for \code{served==1} could miss the transition if the
+entry is deleted before it can observe it.
+
+\textbf{Solution:} The carrier checks two conditions: (a) its request has
+\code{served==1} in the queue, \emph{or} (b) the request is no longer in the queue
+at all. Either condition means delivery is complete. This \emph{``served or gone''}
+logic is robust regardless of cleanup timing.
+
+\subsection{Challenge 2: Deadlock Between Two Floor Mutexes}
+
+\textbf{Problem:} If carrier A holds \code{floor[0]\_mutex} and waits for
+\code{floor[2]\_mutex} while carrier B holds \code{floor[2]\_mutex} and waits for
+\code{floor[0]\_mutex}, a deadlock occurs.
+
+\textbf{Solution:} Always lock the lower-numbered floor first. Since all carriers
+follow the same ordering, circular waits cannot form.
+
+\subsection{Challenge 3: Sorting Correctness With Repeated Characters}
+
+\textbf{Problem:} For words like \texttt{balloon} (two `\texttt{l}'s) a naive
+target-selection strategy might swap the two \texttt{l}'s back and forth
+indefinitely.
+
+\textbf{Solution:} The target-search loop always picks the \emph{first unfixed}
+index $k$ where \code{word[k] == current\_char}. This is deterministic and always
+resolves to the same target for a given character, breaking any potential cycle.
+
+\subsection{Challenge 4: Process-Shared Synchronisation Primitives}
+
+\textbf{Problem:} By default \code{pthread\_mutex\_t} and \code{pthread\_cond\_t}
+only work within a single process. Using them in shared memory across forked
+processes requires the \code{PTHREAD\_PROCESS\_SHARED} attribute -- forgetting it
+causes undefined behaviour that is very hard to debug.
+
+\textbf{Solution:} All mutex/cond initialisations go through dedicated helper
+functions (\code{init\_shared\_mutex}, \code{init\_shared\_cond}) that always
+set the process-shared attribute. All semaphores are initialised with
+\code{sem\_init(..., pshared=1, ...)}.
+
+\subsection{Challenge 5: Zombie Processes on Ctrl+C}
+
+\textbf{Problem:} When SIGINT arrives, some children may be blocked on
+\code{sem\_timedwait} or \code{pthread\_cond\_timedwait} and not notice
+\code{system\_running=0} for up to 100 ms.
+
+\textbf{Solution:} \code{cleanup\_children()} sends \code{SIGTERM} first (graceful
+exit chance), waits 100 ms, then \code{SIGKILL} to any survivors, and finally
+\code{waitpid()} for every PID. This guarantees no zombies regardless of how
+quickly children respond.
+
+% =============================================================
+\section{Additional Tests}
+% =============================================================
+
+The \code{run\_tests.sh} script automates 10 test scenarios that together cover
+the full requirement surface.
+
+\begin{table}[h!]
+\centering
+\caption{Automated test suite summary.}
+\begin{tabularx}{\textwidth}{c l X l}
+\toprule
+\rowcolor{darkblue}
+\textcolor{white}{\#} &
+\textcolor{white}{Test Name} &
+\textcolor{white}{Purpose} &
+\textcolor{white}{Pass Criterion} \\
+\midrule
+1  & Basic 3-floor        & General functional correctness           & 6 words; output sorted. \\
+\rowcolor{rowgray}
+2  & Single floor         & No elevator path                         & \code{delivery\_ops == 0}. \\
+3  & Repeated characters  & Sorting with duplicates                  & 4 words completed. \\
+\rowcolor{rowgray}
+4  & Same-floor delivery  & Direct placement path                    & \code{direct placement} in log. \\
+5  & Capacity stress (c=2)& Retry mechanism                          & retries > 0; 10 words done. \\
+\rowcolor{rowgray}
+6  & Argument validation  & Bad CLI flags rejected                   & Non-zero exit each case. \\
+7  & Input format errors  & Malformed files rejected                 & Non-zero exit each case. \\
+\rowcolor{rowgray}
+8  & SIGINT shutdown      & Clean termination, no zombies            & zombie count == 0. \\
+9  & Large input (15 words)& Scalability with 5 floors               & All 15 done within 90 s. \\
+\rowcolor{rowgray}
+10 & Consistency (3 runs) & Deterministic output format              & diff of 3 outputs = 0. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Stress Test Observations}
+
+\textbf{Test 5} (capacity stress, $c=2$) deliberately forces the retry mechanism:
+only 2 active words/floor with 10 total words. The system consistently completes
+all words within the 90 s timeout, demonstrating the retry + sleep-on-\code{state\_cond}
+mechanism is live (no starvation).
+
+\textbf{Test 9} (15 words, 5 floors) exercises $5 \times (2+3+2) + 2 = 37$ child
+processes. The system completes reliably within 90 s on a standard VM, confirming
+acceptable synchronisation overhead and no pathological contention.
+
+\textbf{Test 3} uses \texttt{mississippi} (4$\times$`s', 4$\times$`i', 2$\times$`p') and
+\texttt{balloon} (2$\times$`l', 2$\times$`o'). Both complete correctly in every run,
+confirming the first-match target selection prevents infinite swap cycles.
+
+% =============================================================
+% END
+% =============================================================
+\vspace{1.5cm}
+\noindent\rule{\textwidth}{0.8pt}
+\begin{center}
+\small\textit{End of Report \quad|\quad CSE 344 -- HW\#3 \quad|\quad
+Halit Batuhan ASLAN -- 220104004003}
+\end{center}
+
+\end{document}
