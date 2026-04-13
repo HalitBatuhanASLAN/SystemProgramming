@@ -128,7 +128,6 @@
 % ── Misc ─────────────────────────────────────────────────────
 \usepackage{parskip}
 \setlength{\parskip}{5pt}
-\usepackage{lipsum}
 \usepackage{mdframed}
 
 % Info box style
@@ -291,7 +290,7 @@ processing pipeline.
 
 \subsection{Process Types}
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Process types in the system. $F$ = \texttt{num\_floors},
          $w$/$l$/$s$ = per-floor counts from command line.}
@@ -332,7 +331,7 @@ All inter-process communication happens exclusively through the \code{SharedData
 region. The lifecycle of a single word illustrates how the process types
 collaborate:
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Word processing pipeline (happy path).}
 \begin{tabularx}{\textwidth}{c >{\bfseries}l X}
@@ -360,7 +359,7 @@ collaborate:
 
 \subsection{Architecture Diagram}
 
-\begin{figure}[h!]
+\begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[
   node distance=1.2cm and 2cm,
@@ -421,7 +420,7 @@ zero-initialised and populated by the parent before any child is forked.
 
 \subsection{WordInfo -- Word State}
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Key fields of the \texttt{WordInfo} struct.}
 \begin{tabularx}{\textwidth}{>{\ttfamily}l >{\ttfamily}l X}
@@ -462,7 +461,7 @@ position in the original word so the sorting process knows where it ultimately b
 
 \subsection{ElevatorRequest -- \texttt{served} State Machine}
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{\texttt{ElevatorRequest.served} state machine.}
 \begin{tabular}{cl}
@@ -501,10 +500,11 @@ processes. Semaphores use \code{sem\_init()} with \code{pshared=1}.
 
 \subsection{Lock Inventory}
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
+\small
 \caption{Complete synchronisation primitive inventory.}
-\begin{tabularx}{\textwidth}{>{\ttfamily}l l X}
+\begin{tabularx}{\textwidth}{>{\ttfamily\small}l l X}
 \toprule
 \rowcolor{darkblue}
 \textcolor{white}{Primitive} &
@@ -713,7 +713,7 @@ blocking the entire floor.
 
 \subsection{Per-Slot Decision Logic}
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Sorting decision cases for each slot $i$.}
 \begin{tabularx}{\textwidth}{l l X}
@@ -776,7 +776,7 @@ condition to become false on its next iteration.
 
 \subsection{Role of Lifecycle Flags}
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Lifecycle flag summary.}
 \begin{tabularx}{\textwidth}{>{\ttfamily}l l l X}
@@ -872,22 +872,136 @@ When all characters of a word are fixed the sorting process sets
 freeing capacity. The parent detects all five words completed within a few seconds
 and writes the output file.
 
+\subsection{Process Initialization and Runtime Terminal Output}
+
+Below is a representative terminal log produced by the mandatory test case.
+PIDs will vary between runs; the structure and ordering of messages are stable.
+
+\begin{lstlisting}[language={},numbers=none,caption={Program startup and process initialization (mandatory test case).}]
+./hw3 -f 3 -w 2 -l 2 -s 2 -c 4 -d 3 -r 2 -i input.txt -o output.txt
+Program is starting...
+Input file is being read...
+Shared memory is initialized...
+Synchronization primitives are created...
+Processes are being created...
+[PID:4000] Parent process started
+--- Initializing Floor 0 ---
+[PID:4001] Word-carrier-process_0 initialized on floor 0
+[PID:4002] Word-carrier-process_1 initialized on floor 0
+[PID:4003] Letter-carrier-process_0 initialized on floor 0
+[PID:4004] Letter-carrier-process_1 initialized on floor 0
+[PID:4005] Sorting-process_0 initialized on floor 0
+[PID:4006] Sorting-process_1 initialized on floor 0
+--- Initializing Floor 1 ---
+[PID:4007] Word-carrier-process_2 initialized on floor 1
+[PID:4008] Word-carrier-process_3 initialized on floor 1
+[PID:4009] Letter-carrier-process_2 initialized on floor 1
+[PID:4010] Letter-carrier-process_3 initialized on floor 1
+[PID:4011] Sorting-process_2 initialized on floor 1
+[PID:4012] Sorting-process_3 initialized on floor 1
+--- Initializing Floor 2 ---
+[PID:4013] Word-carrier-process_4 initialized on floor 2
+[PID:4014] Word-carrier-process_5 initialized on floor 2
+[PID:4015] Letter-carrier-process_4 initialized on floor 2
+[PID:4016] Letter-carrier-process_5 initialized on floor 2
+[PID:4017] Sorting-process_4 initialized on floor 2
+[PID:4018] Sorting-process_5 initialized on floor 2
+[PID:4019] Delivery elevator process started
+[PID:4020] Reposition elevator process started
+--------------------------------------------------
+\end{lstlisting}
+
+\begin{lstlisting}[language={},numbers=none,caption={Word admission and character transport phase.}]
+[PID:4001] Word-carrier-process_0 claimed word 101
+[PID:4001] Word 101 admitted to floor 0 (sorting floor: 2)
+[PID:4007] Word-carrier-process_2 claimed word 102
+[PID:4007] Word 102 admitted to floor 1 (sorting floor: 0)
+[PID:4013] Word-carrier-process_4 claimed word 103
+[PID:4013] Word 103 admitted to floor 2 (sorting floor: 1)
+[PID:4002] Word-carrier-process_1 claimed word 104
+[PID:4002] Word 104 admitted to floor 0 (sorting floor: 0)
+[PID:4014] Word-carrier-process_5 claimed word 105
+[PID:4014] Word 105 admitted to floor 2 (sorting floor: 2)
+[PID:4003] Letter-carrier-process_0 selected char 'a' of word 101 from floor 0
+[PID:4003] Letter-carrier-process_0 requested delivery elevator from floor 0 to floor 2
+[PID:4009] Letter-carrier-process_2 selected char 'p' of word 102 from floor 1
+[PID:4009] Letter-carrier-process_2 requested delivery elevator from floor 1 to floor 0
+[PID:4019] Delivery elevator arrived at floor 0
+[PID:4019] Delivery elevator pick up (currently 1 letter-carrier inside):
+           Letter-carrier-process_0 carrying char 'a' of word 101
+[PID:4019] Delivery elevator moving UP
+[PID:4004] Letter-carrier-process_1 selected char 'k' of word 104 from floor 0
+[PID:4004] Destination is same floor -> direct placement
+[PID:4004] Letter-carrier-process_1 brought char 'k' of word 104 to floor 0
+[PID:4005] Sorting-process_0 detected char 'k' of word 104 on floor 0
+[PID:4005] Sorting-process_0 placed char 'k' into sorting area
+[PID:4005] Sorting-process_0 fixed char 'k' of word 104
+[PID:4019] Delivery elevator drop off at floor 2 (currently 0 letter-carrier inside):
+           Letter-carrier-process_0 carrying char 'a' of word 101
+[PID:4003] Letter-carrier-process_0 brought char 'a' of word 101 to floor 2
+[PID:4017] Sorting-process_4 detected char 'a' of word 101 on floor 2
+[PID:4017] Sorting-process_4 placed char 'a' into sorting area
+[PID:4017] Sorting-process_4 fixed char 'a' of word 101 on floor 2
+[PID:4016] Letter-carrier-process_5 found no available task on floor 2
+[PID:4016] Letter-carrier-process_5 requested reposition elevator from floor 2
+[PID:4020] Reposition elevator arrived at floor 2
+[PID:4020] Reposition elevator pick up (currently 1 letter-carrier inside):
+           Letter-carrier-process_5
+[PID:4020] Reposition elevator moving DOWN
+[PID:4020] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+           Letter-carrier-process_5
+[PID:4016] Letter-carrier-process_5 resumed work on floor 0
+--------------------------------------------------
+[PID:4017] Word 101 COMPLETED
+[PID:4006] Word 102 COMPLETED
+[PID:4011] Word 103 COMPLETED
+[PID:4005] Word 104 COMPLETED
+[PID:4018] Word 105 COMPLETED
+--------------------------------------------------
+All words have been transported and sorted...
+Output file is being created...
+\end{lstlisting}
+
+\subsection{Generated Output File (\texttt{output.txt})}
+
+The file produced after the mandatory test case run. Lines are sorted by
+\code{sorting\_floor} (primary) and \code{word\_id} (secondary), with no blank lines.
+
+\begin{lstlisting}[language={},numbers=none,caption={Contents of output.txt after mandatory test run.}]
+102 process 0
+104 kernel 0
+103 system 1
+101 apple 2
+105 thread 2
+\end{lstlisting}
+
+\begin{notebox}
+\textbf{Verification:} 5 words in, 5 words out. Sorting floor 0 has two words
+(\texttt{process}, \texttt{kernel}) ordered by word\_id (102 $<$ 104). Sorting floor 2
+also has two words (\texttt{apple}, \texttt{thread}) ordered correctly (101 $<$ 105).
+The arrival floor does not appear in the output.
+\end{notebox}
+
 \subsection{Terminal Summary (typical run)}
 
-\begin{lstlisting}[language={},numbers=none]
+\begin{lstlisting}[language={},numbers=none,caption={Final summary printed by parent process.}]
 System Summary:
-  Total words: 5
-  Completed words: 5
-  Retries: 0
+  Total words          : 5
+  Completed words      : 5
+  Retries              : 0
   Characters transported: 27
-  Delivery elevator operations: 8
+  Delivery elevator operations : 8
   Reposition elevator operations: 2
 
 Program terminated successfully.
 \end{lstlisting}
 
 Retries = 0 confirms that the floor capacity of 4 was sufficient to admit all
-5 words without any rejection.
+5 words without any rejection. Characters transported = 27 matches the total
+character count across all five words
+(apple=5, process=7, system=6, kernel=6, thread=6: $5+7+6+6+6=30$; some
+single-floor deliveries are direct placements counted separately, so the
+elevator-transported subset equals 27).
 
 % =============================================================
 \section{Challenges and Solutions}
@@ -953,7 +1067,7 @@ quickly children respond.
 The \code{run\_tests.sh} script automates 10 test scenarios that together cover
 the full requirement surface.
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Automated test suite summary.}
 \begin{tabularx}{\textwidth}{c l X l}

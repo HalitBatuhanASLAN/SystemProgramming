@@ -1,0 +1,1625 @@
+Program is starting...
+Input file is being read...
+Shared memory is initialized...
+Synchronization primitives are created...
+Processes are being created...
+[PID:22366] Parent process started
+--- Initializing Floor 0 ---
+[PID:22367] Word-carrier-process_0 initialized on floor 0
+[PID:22367] Word-carrier-process_0 claimed word 1
+[PID:22368] Word-carrier-process_1 initialized on floor 0
+[PID:22368] Word-carrier-process_1 claimed word 2
+[PID:22368] Word 2 admitted to floor 0 (sorting floor: 1)
+[PID:22367] Word 1 admitted to floor 0 (sorting floor: 0)
+[PID:22369] Letter-carrier-process_2 initialized on floor 0
+[PID:22368] Word-carrier-process_1 claimed word 3
+[PID:22368] Word 3 admitted to floor 0 (sorting floor: 0)
+[PID:22369] Letter-carrier-process_2 selected char 'b' of word 1 from floor 0
+[PID:22369] Destination is same floor -> direct placement
+[PID:22367] Word-carrier-process_0 claimed word 4
+[PID:22367] Word 4 admitted to floor 0 (sorting floor: 1)
+[PID:22370] Letter-carrier-process_3 initialized on floor 0
+[PID:22370] Letter-carrier-process_3 selected char 'c' of word 1 from floor 0
+[PID:22370] Destination is same floor -> direct placement
+[PID:22369] Letter-carrier-process_2 brought char 'b' of word 1 to floor 0
+[PID:22369] Letter-carrier-process_2 selected char 'o' of word 3 from floor 0
+[PID:22371] Letter-carrier-process_4 initialized on floor 0
+[PID:22371] Letter-carrier-process_4 selected char 'a' of word 3 from floor 0
+[PID:22371] Destination is same floor -> direct placement
+[PID:22370] Letter-carrier-process_3 brought char 'c' of word 1 to floor 0
+[PID:22369] Destination is same floor -> direct placement
+[PID:22369] Letter-carrier-process_2 brought char 'o' of word 3 to floor 0
+[PID:22372] Sorting-process_5 initialized on floor 0
+[PID:22372] Sorting-process_5 moved char 'b' of word 1 to correct index
+[PID:22372] Sorting-process_5 fixed char 'b' of word 1 on floor 0
+[PID:22371] Letter-carrier-process_4 brought char 'a' of word 3 to floor 0
+[PID:22369] Letter-carrier-process_2 selected char 'e' of word 4 from floor 0
+[PID:22369] Letter-carrier-process_2 requested delivery elevator from floor 0 to floor 1
+[PID:22373] Sorting-process_6 initialized on floor 0
+--- Initializing Floor 1 ---
+[PID:22373] Sorting-process_6 swap performed for word 3
+[PID:22374] Word-carrier-process_7 initialized on floor 1
+[PID:22372] Sorting-process_5 moved char 'c' of word 1 to correct index
+[PID:22372] Sorting-process_5 fixed char 'c' of word 1 on floor 0
+[PID:22373] Sorting-process_6 fixed one index of word 3
+[PID:22375] Word-carrier-process_8 initialized on floor 1
+[PID:22370] Letter-carrier-process_3 selected char 'o' of word 4 from floor 0
+[PID:22370] Letter-carrier-process_3 requested delivery elevator from floor 0 to floor 1
+[PID:22373] Sorting-process_6 moved char 'o' of word 3 to correct index
+[PID:22373] Sorting-process_6 fixed char 'o' of word 3 on floor 0
+[PID:22376] Letter-carrier-process_9 initialized on floor 1
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22371] Letter-carrier-process_4 selected char 'c' of word 4 from floor 0
+[PID:22371] Letter-carrier-process_4 requested delivery elevator from floor 0 to floor 1
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22377] Letter-carrier-process_10 initialized on floor 1
+[PID:22378] Letter-carrier-process_11 initialized on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22379] Sorting-process_12 initialized on floor 1
+[PID:22380] Sorting-process_13 initialized on floor 1
+[PID:22381] Delivery elevator process started
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_2 carrying char 'e' of word 4
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3 carrying char 'o' of word 4
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22381] Delivery elevator pick up (currently 3 letter-carrier inside):
+  Letter-carrier-process_4 carrying char 'c' of word 4
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22381] Delivery elevator drop off at floor 1 (currently 2 letter-carrier inside):
+  Letter-carrier-process_2 carrying char 'e' of word 4
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 brought char 'e' of word 4 to floor 1
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3 carrying char 'o' of word 4
+[PID:22370] Letter-carrier-process_3 brought char 'o' of word 4 to floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22379] Sorting-process_12 moved char 'e' of word 4 to correct index
+[PID:22379] Sorting-process_12 fixed char 'e' of word 4 on floor 1
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_4 carrying char 'c' of word 4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 selected char 'c' of word 1 from floor 0
+[PID:22379] Sorting-process_12 fixed char 'o' of word 4 on floor 1
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22376] Destination is same floor -> direct placement
+[PID:22376] Letter-carrier-process_9 brought char 'c' of word 1 to floor 0
+[PID:22371] Letter-carrier-process_4 brought char 'c' of word 4 to floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22377] Letter-carrier-process_10 selected char 'f' of word 4 from floor 0
+[PID:22377] Letter-carrier-process_10 requested delivery elevator from floor 0 to floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 selected char 'l' of word 3 from floor 0
+[PID:22376] Destination is same floor -> direct placement
+[PID:22372] Sorting-process_5 moved char 'c' of word 1 to correct index
+[PID:22372] Sorting-process_5 fixed char 'c' of word 1 on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22380] Sorting-process_13 fixed char 'c' of word 4 on floor 1
+[PID:22381] Delivery elevator moving DOWN
+[PID:22381] Delivery elevator arrived at floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22376] Letter-carrier-process_9 brought char 'l' of word 3 to floor 0
+[PID:22372] Sorting-process_5 moved char 'l' of word 3 to correct index
+[PID:22372] Sorting-process_5 fixed char 'l' of word 3 on floor 0
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22376] Letter-carrier-process_9 selected char 'p' of word 2 from floor 0
+[PID:22376] Letter-carrier-process_9 requested delivery elevator from floor 0 to floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10 carrying char 'f' of word 4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 selected char 'l' of word 3 from floor 0
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9 carrying char 'p' of word 2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 selected char 'f' of word 4 from floor 0
+[PID:22378] Destination is same floor -> direct placement
+[PID:22378] Letter-carrier-process_11 brought char 'l' of word 3 to floor 0
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested delivery elevator from floor 0 to floor 1
+[PID:22372] Sorting-process_5 moved char 'l' of word 3 to correct index
+[PID:22372] Sorting-process_5 fixed char 'l' of word 3 on floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10 carrying char 'f' of word 4
+[PID:22377] Letter-carrier-process_10 brought char 'f' of word 4 to floor 1
+[PID:22378] Letter-carrier-process_11 selected char 'n' of word 3 from floor 0
+[PID:22378] Destination is same floor -> direct placement
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9 carrying char 'p' of word 2
+[PID:22376] Letter-carrier-process_9 brought char 'p' of word 2 to floor 1
+[PID:22380] Sorting-process_13 moved char 'p' of word 2 to correct index
+[PID:22380] Sorting-process_13 fixed char 'p' of word 2 on floor 1
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22379] Sorting-process_12 fixed char 'f' of word 4 on floor 1
+[PID:22378] Letter-carrier-process_11 brought char 'n' of word 3 to floor 0
+[PID:22381] Delivery elevator moving DOWN
+[PID:22381] Delivery elevator arrived at floor 0
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22372] Sorting-process_5 moved char 'n' of word 3 to correct index
+[PID:22372] Sorting-process_5 fixed char 'n' of word 3 on floor 0
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 selected char 'o' of word 3 from floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 selected char 'p' of word 2 from floor 0
+[PID:22378] Letter-carrier-process_11 selected char 'a' of word 1 from floor 0
+[PID:22378] Destination is same floor -> direct placement
+[PID:22370] Destination is same floor -> direct placement
+[PID:22370] Letter-carrier-process_3 brought char 'o' of word 3 to floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22371] Letter-carrier-process_4 requested delivery elevator from floor 0 to floor 1
+[PID:22378] Letter-carrier-process_11 brought char 'a' of word 1 to floor 0
+[PID:22370] Letter-carrier-process_3 selected char 'e' of word 4 from floor 0
+[PID:22370] Letter-carrier-process_3 requested delivery elevator from floor 0 to floor 1
+[PID:22373] Sorting-process_6 fixed char 'a' of word 1 on floor 0
+[PID:22372] Sorting-process_5 moved char 'o' of word 3 to correct index
+[PID:22372] Sorting-process_5 fixed char 'o' of word 3 on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_2 carrying char 'f' of word 4
+[PID:22378] Letter-carrier-process_11 selected char 'a' of word 1 from floor 0
+[PID:22378] Destination is same floor -> direct placement
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_4 carrying char 'p' of word 2
+[PID:22378] Letter-carrier-process_11 brought char 'a' of word 1 to floor 0
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22381] Delivery elevator pick up (currently 3 letter-carrier inside):
+  Letter-carrier-process_3 carrying char 'e' of word 4
+[PID:22372] Sorting-process_5 fixed char 'a' of word 1 on floor 0
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22378] Letter-carrier-process_11 selected char 'b' of word 1 from floor 0
+[PID:22378] Destination is same floor -> direct placement
+[PID:22381] Delivery elevator drop off at floor 1 (currently 2 letter-carrier inside):
+  Letter-carrier-process_2 carrying char 'f' of word 4
+[PID:22378] Letter-carrier-process_11 brought char 'b' of word 1 to floor 0
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4 carrying char 'p' of word 2
+[PID:22369] Letter-carrier-process_2 brought char 'f' of word 4 to floor 1
+[PID:22372] Sorting-process_5 fixed char 'b' of word 1 on floor 0
+[PID:22371] Letter-carrier-process_4 brought char 'p' of word 2 to floor 1
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3 carrying char 'e' of word 4
+[PID:22370] Letter-carrier-process_3 brought char 'e' of word 4 to floor 1
+[PID:22380] Sorting-process_13 moved char 'p' of word 2 to correct index
+[PID:22380] Sorting-process_13 fixed char 'p' of word 2 on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22379] Sorting-process_12 fixed char 'f' of word 4 on floor 1
+[PID:22379] Sorting-process_12 fixed char 'e' of word 4 on floor 1
+[PID:22372] Word 1 COMPLETED
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22379] Word 4 COMPLETED
+[PID:22378] Letter-carrier-process_11 selected char 'i' of word 2 from floor 0
+[PID:22378] Letter-carrier-process_11 requested delivery elevator from floor 0 to floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 selected char 'm' of word 2 from floor 0
+[PID:22377] Letter-carrier-process_10 requested delivery elevator from floor 0 to floor 1
+[PID:22376] Letter-carrier-process_9 selected char 's' of word 2 from floor 0
+[PID:22376] Letter-carrier-process_9 requested delivery elevator from floor 0 to floor 1
+[PID:22381] Delivery elevator moving DOWN
+[PID:22381] Delivery elevator arrived at floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11 carrying char 'i' of word 2
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_10 carrying char 'm' of word 2
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22381] Delivery elevator pick up (currently 3 letter-carrier inside):
+  Letter-carrier-process_9 carrying char 's' of word 2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22381] Delivery elevator drop off at floor 1 (currently 2 letter-carrier inside):
+  Letter-carrier-process_11 carrying char 'i' of word 2
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 selected char 'b' of word 3 from floor 0
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10 carrying char 'm' of word 2
+[PID:22378] Letter-carrier-process_11 brought char 'i' of word 2 to floor 1
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22379] Sorting-process_12 moved char 'i' of word 2 to correct index
+[PID:22379] Sorting-process_12 fixed char 'i' of word 2 on floor 1
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 selected char 'i' of word 2 from floor 0
+[PID:22369] Destination is same floor -> direct placement
+[PID:22369] Letter-carrier-process_2 brought char 'b' of word 3 to floor 0
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9 carrying char 's' of word 2
+[PID:22377] Letter-carrier-process_10 brought char 'm' of word 2 to floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22371] Letter-carrier-process_4 requested delivery elevator from floor 0 to floor 1
+[PID:22373] Sorting-process_6 fixed char 'b' of word 3 on floor 0
+[PID:22376] Letter-carrier-process_9 brought char 's' of word 2 to floor 1
+[PID:22379] Sorting-process_12 fixed char 'm' of word 2 on floor 1
+[PID:22379] Sorting-process_12 fixed char 's' of word 2 on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22381] Delivery elevator moving DOWN
+[PID:22381] Delivery elevator arrived at floor 0
+[PID:22373] Word 3 COMPLETED
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 selected char 'i' of word 2 from floor 0
+[PID:22369] Letter-carrier-process_2 requested delivery elevator from floor 0 to floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4 carrying char 'i' of word 2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2 carrying char 'i' of word 2
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 selected char 's' of word 2 from floor 0
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 selected char 's' of word 2 from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22370] Letter-carrier-process_3 requested delivery elevator from floor 0 to floor 1
+[PID:22378] Letter-carrier-process_11 requested delivery elevator from floor 0 to floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4 carrying char 'i' of word 2
+[PID:22371] Letter-carrier-process_4 brought char 'i' of word 2 to floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2 carrying char 'i' of word 2
+[PID:22380] Sorting-process_13 moved char 'i' of word 2 to correct index
+[PID:22380] Sorting-process_13 fixed char 'i' of word 2 on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22381] Delivery elevator moving DOWN
+[PID:22381] Delivery elevator arrived at floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 brought char 'i' of word 2 to floor 1
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3 carrying char 's' of word 2
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22380] Sorting-process_13 moved char 'i' of word 2 to correct index
+[PID:22380] Sorting-process_13 fixed char 'i' of word 2 on floor 1
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11 carrying char 's' of word 2
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22377] Letter-carrier-process_10 selected char 'i' of word 2 from floor 0
+[PID:22377] Letter-carrier-process_10 requested delivery elevator from floor 0 to floor 1
+[PID:22376] Letter-carrier-process_9 selected char 's' of word 2 from floor 0
+[PID:22376] Letter-carrier-process_9 requested delivery elevator from floor 0 to floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3 carrying char 's' of word 2
+[PID:22370] Letter-carrier-process_3 brought char 's' of word 2 to floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11 carrying char 's' of word 2
+[PID:22378] Letter-carrier-process_11 brought char 's' of word 2 to floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22380] Sorting-process_13 fixed char 's' of word 2 on floor 1
+[PID:22380] Sorting-process_13 fixed char 's' of word 2 on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22381] Delivery elevator moving DOWN
+[PID:22381] Delivery elevator arrived at floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22381] Delivery elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10 carrying char 'i' of word 2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22381] Delivery elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9 carrying char 's' of word 2
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22381] Delivery elevator moving UP
+[PID:22381] Delivery elevator arrived at floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22381] Delivery elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10 carrying char 'i' of word 2
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22381] Delivery elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9 carrying char 's' of word 2
+[PID:22377] Letter-carrier-process_10 brought char 'i' of word 2 to floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22376] Letter-carrier-process_9 brought char 's' of word 2 to floor 1
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22379] Sorting-process_12 swap performed for word 2
+[PID:22379] Sorting-process_12 fixed one index of word 2
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22379] Sorting-process_12 fixed one more position of word 2
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22379] Word 2 COMPLETED
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22377] Letter-carrier-process_10 found no available task on floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 found no available task on floor 0
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 1
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22376] Letter-carrier-process_9 resumed work on floor 1
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22377] Letter-carrier-process_10 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 found no available task on floor 0
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 1
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 resumed work on floor 1
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22377] Letter-carrier-process_10 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 found no available task on floor 0
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 1
+[PID:22377] Letter-carrier-process_10 found no available task on floor 1
+[PID:22376] Letter-carrier-process_9 resumed work on floor 1
+[PID:22376] Letter-carrier-process_9 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 1
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 0
+[PID:22378] Letter-carrier-process_11 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22370] Letter-carrier-process_3 resumed work on floor 0
+[PID:22370] Letter-carrier-process_3 found no available task on floor 0
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 1
+[PID:22371] Letter-carrier-process_4 found no available task on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22369] Letter-carrier-process_2 resumed work on floor 1
+[PID:22369] Letter-carrier-process_2 found no available task on floor 1
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 0
+[PID:22377] Letter-carrier-process_10 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 resumed work on floor 0
+[PID:22376] Letter-carrier-process_9 found no available task on floor 0
+[PID:22377] Letter-carrier-process_10 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22376] Letter-carrier-process_9 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22378] Letter-carrier-process_11 resumed work on floor 1
+[PID:22370] Letter-carrier-process_3 resumed work on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22378] Letter-carrier-process_11 found no available task on floor 1
+[PID:22378] Letter-carrier-process_11 requested reposition elevator from floor 1
+[PID:22370] Letter-carrier-process_3 found no available task on floor 1
+[PID:22370] Letter-carrier-process_3 requested reposition elevator from floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0
+[PID:22382] Reposition elevator drop off at floor 0 (currently 1 letter-carrier inside):
+  Letter-carrier-process_4
+[PID:22382] Reposition elevator drop off at floor 0 (currently 0 letter-carrier inside):
+  Letter-carrier-process_2
+[PID:22371] Letter-carrier-process_4 resumed work on floor 0
+[PID:22371] Letter-carrier-process_4 found no available task on floor 0
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22369] Letter-carrier-process_2 resumed work on floor 0
+[PID:22369] Letter-carrier-process_2 found no available task on floor 0
+[PID:22371] Letter-carrier-process_4 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22369] Letter-carrier-process_2 requested reposition elevator from floor 0
+[PID:22382] Reposition elevator moving UP
+[PID:22382] Reposition elevator arrived at floor 1
+[PID:22382] Reposition elevator drop off at floor 1 (currently 1 letter-carrier inside):
+  Letter-carrier-process_10
+[PID:22382] Reposition elevator drop off at floor 1 (currently 0 letter-carrier inside):
+  Letter-carrier-process_9
+[PID:22377] Letter-carrier-process_10 resumed work on floor 1
+[PID:22382] Reposition elevator pick up (currently 1 letter-carrier inside):
+  Letter-carrier-process_11
+[PID:22376] Letter-carrier-process_9 resumed work on floor 1
+[PID:22382] Reposition elevator pick up (currently 2 letter-carrier inside):
+  Letter-carrier-process_3
+[PID:22382] Reposition elevator moving DOWN
+[PID:22382] Reposition elevator arrived at floor 0

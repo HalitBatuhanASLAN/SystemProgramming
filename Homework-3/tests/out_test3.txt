@@ -1,0 +1,4 @@
+1 aabbcc 0
+3 balloon 0
+2 mississippi 1
+4 coffee 1

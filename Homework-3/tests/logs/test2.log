@@ -1,0 +1,107 @@
+Program is starting...
+Input file is being read...
+Shared memory is initialized...
+Synchronization primitives are created...
+Processes are being created...
+[PID:22346] Parent process started
+--- Initializing Floor 0 ---
+[PID:22347] Word-carrier-process_0 initialized on floor 0
+[PID:22347] Word-carrier-process_0 claimed word 1
+[PID:22347] Word 1 admitted to floor 0 (sorting floor: 0)
+[PID:22347] Word-carrier-process_0 claimed word 2
+[PID:22348] Letter-carrier-process_1 initialized on floor 0
+[PID:22348] Letter-carrier-process_1 selected char 'e' of word 1 from floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22347] Word 2 admitted to floor 0 (sorting floor: 0)
+[PID:22347] Word-carrier-process_0 claimed word 3
+[PID:22349] Letter-carrier-process_2 initialized on floor 0
+[PID:22349] Letter-carrier-process_2 selected char 'l' of word 1 from floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22348] Letter-carrier-process_1 brought char 'e' of word 1 to floor 0
+[PID:22347] Word 3 admitted to floor 0 (sorting floor: 0)
+[PID:22350] Sorting-process_3 initialized on floor 0
+[PID:22350] Sorting-process_3 moved char 'e' of word 1 to correct index
+[PID:22350] Sorting-process_3 fixed char 'e' of word 1 on floor 0
+[PID:22351] Delivery elevator process started
+[PID:22349] Letter-carrier-process_2 brought char 'l' of word 1 to floor 0
+[PID:22348] Letter-carrier-process_1 selected char 'l' of word 2 from floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22349] Letter-carrier-process_2 selected char 's' of word 3 from floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22350] Sorting-process_3 moved char 'l' of word 1 to correct index
+[PID:22350] Sorting-process_3 fixed char 'l' of word 1 on floor 0
+[PID:22348] Letter-carrier-process_1 brought char 'l' of word 2 to floor 0
+[PID:22349] Letter-carrier-process_2 brought char 's' of word 3 to floor 0
+[PID:22350] Sorting-process_3 moved char 'l' of word 2 to correct index
+[PID:22350] Sorting-process_3 fixed char 'l' of word 2 on floor 0
+[PID:22350] Sorting-process_3 moved char 's' of word 3 to correct index
+[PID:22350] Sorting-process_3 fixed char 's' of word 3 on floor 0
+[PID:22349] Letter-carrier-process_2 selected char 'r' of word 2 from floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22348] Letter-carrier-process_1 selected char 'e' of word 3 from floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22349] Letter-carrier-process_2 brought char 'r' of word 2 to floor 0
+[PID:22348] Letter-carrier-process_1 brought char 'e' of word 3 to floor 0
+[PID:22348] Letter-carrier-process_1 selected char 'o' of word 1 from floor 0
+[PID:22349] Letter-carrier-process_2 selected char 'l' of word 1 from floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22350] Sorting-process_3 moved char 'r' of word 2 to correct index
+[PID:22350] Sorting-process_3 fixed char 'r' of word 2 on floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22348] Letter-carrier-process_1 brought char 'o' of word 1 to floor 0
+[PID:22349] Letter-carrier-process_2 brought char 'l' of word 1 to floor 0
+[PID:22349] Letter-carrier-process_2 selected char 'd' of word 2 from floor 0
+[PID:22350] Sorting-process_3 moved char 'e' of word 3 to correct index
+[PID:22350] Sorting-process_3 fixed char 'e' of word 3 on floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22349] Letter-carrier-process_2 brought char 'd' of word 2 to floor 0
+[PID:22350] Sorting-process_3 swap performed for word 1
+[PID:22350] Sorting-process_3 fixed one index of word 1
+[PID:22348] Letter-carrier-process_1 selected char 't' of word 3 from floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22349] Letter-carrier-process_2 selected char 't' of word 3 from floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22350] Sorting-process_3 moved char 'd' of word 2 to correct index
+[PID:22350] Sorting-process_3 fixed char 'd' of word 2 on floor 0
+[PID:22348] Letter-carrier-process_1 brought char 't' of word 3 to floor 0
+[PID:22349] Letter-carrier-process_2 brought char 't' of word 3 to floor 0
+[PID:22350] Sorting-process_3 fixed char 't' of word 3 on floor 0
+[PID:22350] Sorting-process_3 fixed char 't' of word 3 on floor 0
+[PID:22350] Word 3 COMPLETED
+[PID:22350] Sorting-process_3 moved char 'o' of word 1 to correct index
+[PID:22348] Letter-carrier-process_1 selected char 'w' of word 2 from floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22349] Letter-carrier-process_2 selected char 'h' of word 1 from floor 0
+[PID:22349] Destination is same floor -> direct placement
+[PID:22350] Sorting-process_3 fixed char 'o' of word 1 on floor 0
+[PID:22348] Letter-carrier-process_1 brought char 'w' of word 2 to floor 0
+[PID:22350] Sorting-process_3 fixed char 'w' of word 2 on floor 0
+[PID:22349] Letter-carrier-process_2 brought char 'h' of word 1 to floor 0
+[PID:22350] Sorting-process_3 fixed char 'h' of word 1 on floor 0
+[PID:22350] Word 1 COMPLETED
+[PID:22348] Letter-carrier-process_1 selected char 'o' of word 2 from floor 0
+[PID:22348] Destination is same floor -> direct placement
+[PID:22349] Letter-carrier-process_2 found no available task on floor 0
+[PID:22348] Letter-carrier-process_1 brought char 'o' of word 2 to floor 0
+[PID:22348] Letter-carrier-process_1 found no available task on floor 0
+[PID:22349] Letter-carrier-process_2 found no available task on floor 0
+[PID:22350] Sorting-process_3 fixed char 'o' of word 2 on floor 0
+[PID:22350] Word 2 COMPLETED
+[PID:22349] Letter-carrier-process_2 found no available task on floor 0
+[PID:22348] Letter-carrier-process_1 found no available task on floor 0
+[PID:22352] Reposition elevator process started
+--------------------------------------------------
+
+--------------------------------------------------
+All words have been transported and sorted...
+Output file is being created...
+
+System Summary:
+  Total words: 3
+  Completed words: 3
+  Retries: 0
+  Characters transported: 14
+  Delivery elevator operations: 0
+  Reposition elevator operations: 0
+
+Program terminated successfully.
