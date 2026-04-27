@@ -1,0 +1,85 @@
+[PID:897] Parent started. Files: 2, Keywords: error,fail
+[PID:897] Shared memory initialized (A:16 B:16x4 D:8).
+[PID:897] Forking Reader 0 -> simple_kernel.log
+[PID:897] Forking Reader 1 -> simple_nginx.log
+[PID:898] Reader 0 started. File: simple_kernel.log, Threads: 2
+[PID:897] Forking Dispatcher
+[PID:899] Reader 1 started. File: simple_nginx.log, Threads: 2
+[PID:897] Forking Analyzer ERROR (index 0)
+[PID:900] Dispatcher started.
+[PID:898][TID:reader0] Reader thread 0: range [0, 250) bytes
+[PID:897] Forking Analyzer WARN (index 1)
+[PID:901] Analyzer ERROR started. Workers: 2
+[PID:899][TID:reader0] Reader thread 0: range [0, 210) bytes
+[PID:898][TID:reader1] Reader thread 1: range [251, 503) bytes
+[PID:897] Forking Analyzer INFO (index 2)
+[PID:903] Analyzer WARN started. Workers: 2
+[PID:901][TID:904] Worker 0 started.
+[PID:899][TID:reader1] Reader thread 1: range [211, 423) bytes
+[PID:897] Forking Analyzer DEBUG (index 3)
+[PID:909] Analyzer INFO started. Workers: 2
+[PID:898][TID:reader0] Reader thread 0: finished, lines_read=4, malformed=0
+[PID:900] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:903][TID:910] Worker 0 started.
+[PID:901][TID:905] Worker 1 started.
+[PID:897] Forking Aggregator
+[PID:914] Analyzer DEBUG started. Workers: 2
+[PID:917] Aggregator started. Waiting for 4 levels...
+[PID:899][TID:reader0] Reader thread 0: finished, lines_read=4, malformed=0
+[PID:909][TID:915] Worker 0 started.
+[PID:898][TID:reader1] Reader thread 1: finished, lines_read=3, malformed=0
+[PID:900] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:903][TID:911] Worker 1 started.
+[PID:897] Watchdog thread started.
+[PID:914][TID:920] Worker 1 started.
+[PID:899][TID:reader1] Reader thread 1: finished, lines_read=2, malformed=1
+[PID:909][TID:916] Worker 1 started.
+[PID:900] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:898] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
+[PID:914][TID:919] Worker 0 started.
+[PID:899] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
+[PID:900] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:898] Reader 0 exiting.
+[PID:899] Reader 1 exiting.
+[PID:914][TID:920] Worker 1 done. Entries: 1, Weighted: 0.0
+[PID:901][TID:905] Worker 1 done. Entries: 0, Weighted: 0.0
+[PID:903][TID:911] Worker 1 done. Entries: 1, Weighted: 0.0
+[PID:909][TID:915] Worker 0 done. Entries: 2, Weighted: 0.0
+[PID:900] All EOF markers forwarded to Region B. Routed=13, Priority=4. Exiting.
+[PID:914][TID:919] Worker 0 done. Entries: 2, Weighted: 0.0
+[PID:901][TID:904] Worker 0 done. Entries: 4, Weighted: 16.0
+[PID:903][TID:910] Worker 0 done. Entries: 2, Weighted: 0.0
+[PID:909][TID:916] Worker 1 done. Entries: 1, Weighted: 0.0
+[PID:914][TID:919] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:901][TID:904] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:903][TID:910] ** Reporting thread (lowest TID). Level: WARN **
+[PID:903][TID:910] Total entries: 3 | Weighted score: 0.0
+[PID:909][TID:915] ** Reporting thread (lowest TID). Level: INFO **
+[PID:914][TID:919] Total entries: 3 | Weighted score: 0.0
+[PID:901][TID:904] Total entries: 4 | Weighted score: 16.0
+[PID:917] ERROR result received.
+[PID:917] WARN result received.
+[PID:903] Analyzer WARN exiting.
+[PID:909][TID:915] Total entries: 3 | Weighted score: 0.0
+[PID:914] Analyzer DEBUG exiting.
+[PID:901] Analyzer ERROR exiting.
+[PID:917] INFO result received.
+[PID:917] DEBUG result received.
+[PID:909] Analyzer INFO exiting.
+[PID:917] All results received. Writing output files...
+[PID:917] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/cli_valid.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/cli_valid.bin
+[PID:917] Aggregator exiting.
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error,fail
+Log files     : 2
+Total entries : 13
+Total weighted: 16.0
+Filter file   : simple_priority.txt
+  ERROR : 4 entries, score: 16.0
+  WARN  : 3 entries, score: 0.0
+  INFO  : 3 entries, score: 0.0
+  DEBUG : 3 entries, score: 0.0
+==================================================
+Program terminated successfully.

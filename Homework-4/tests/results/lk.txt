@@ -1,0 +1,21 @@
+KEYWORD_LIST: error,fail,timeout,success,OK,retry,done,process
+FILES: 3
+TOTAL_WEIGHTED_SCORE: 7623.0
+HIGH_PRIORITY_SCORE: 2680.0
+FILTER_FILE: big_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE     error      fail   timeout   success        OK     retry      done   process
+  ERROR      247          2976.0     432.0     364.0     340.0     396.0     388.0     388.0     344.0     324.0
+   WARN      248          2313.0     243.0     264.0     321.0     261.0     339.0     282.0     285.0     318.0
+   INFO      250          1556.0     176.0     188.0     190.0     194.0     184.0     202.0     192.0     230.0
+  DEBUG      254           778.0      97.0      88.0     107.0      90.0      71.0     110.0      99.0     116.0
+# Top-3 sources per level
+ERROR    disk:38  app:36  net:34
+WARN     nginx:38  auth:38  db:35
+INFO     nginx:36  app:35  net:35
+DEBUG    nginx:43  db:39  auth:35
+# Per-thread contributions (weighted score)
+ERROR    thread_0:720.0  thread_1:660.0  thread_2:836.0  thread_3:760.0
+WARN     thread_0:630.0  thread_1:774.0  thread_2:480.0  thread_3:429.0
+INFO     thread_0:424.0  thread_1:350.0  thread_2:410.0  thread_3:372.0
+DEBUG    thread_0:201.0  thread_1:216.0  thread_2:155.0  thread_3:206.0

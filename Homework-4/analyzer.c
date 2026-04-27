@@ -1,15 +1,4 @@
-/* =============================================================================
- * analyzer.c - Analyzer process implementation
- * =============================================================================
- *
- * Per-level pipeline:
- *
- *   region_b[level]  --(workers)-->  per-thread TLS scores
- *                                          |
- *                                  TLS destructor or manual flush
- *                                          v
- *                              region_c.results[level]   <-- aggregator
- *
+/* analyzer.c - Analyzer process implementation
  * Worker lifecycle:
  *
  *   1. Each worker thread calls syscall(SYS_gettid) to get its kernel
@@ -36,8 +25,7 @@
  *
  * The reporting thread also flushes its OWN TLS data manually (because
  * it doesn't return until after the publish step) and clears its TLS
- * pointer so the destructor doesn't double-flush at thread exit.
- * ============================================================================= */
+ * pointer so the destructor doesn't double-flush at thread exit.*/
 
 #include "analyzer.h"
 #include <stdio.h>
@@ -144,31 +132,24 @@ static pthread_mutex_t   g_destr_mu = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t    g_destr_cv = PTHREAD_COND_INITIALIZER;
 static int               g_destr_done = 0;
 
-/* =============================================================================
+/*
  * tls_data_t - the value stored under g_tls_key
  * scores: per-keyword tally for this worker
- * worker_idx: needed by the destructor to write per_thread_score[w]
- * ============================================================================= */
+ * worker_idx: needed by the destructor to write per_thread_score[w]*/
 typedef struct
 {
     double* scores;
     int     worker_idx;
 } tls_data_t;
 
-/* =============================================================================
- * tls_destructor - automatically called by pthreads when a worker thread
- * exits, with the value previously set via pthread_setspecific.
+/*
+ * tls_destructor - automatically called by pthreads when a worker thread exits, with the value previously set via pthread_setspecific.
  *
- * Flushes per-keyword scores to Region C, fills per_thread_score[idx],
- * frees the TLS struct, then increments g_destr_done so the reporting
- * thread can proceed.
- * ============================================================================= */
+ * Flushes per-keyword scores to Region C, fills per_thread_score[idx], frees the TLS struct, then increments g_destr_done so the reporting thread can proceed.*/
 static void tls_destructor(void* val)
 {
     if (!val)
-    {
         return;
-    }
     tls_data_t* td = (tls_data_t*)val;
 
     /* Flush this worker's contribution to Region C under the shared lock. */
@@ -181,9 +162,7 @@ static void tls_destructor(void* val)
         thread_total              += td->scores[k];
     }
     if (td->worker_idx >= 0 && td->worker_idx < MAX_WORKERS)
-    {
         res->per_thread_score[td->worker_idx] = thread_total;
-    }
     pthread_mutex_unlock(&g_region_c->result_mutex);
 
     free(td->scores);
@@ -196,9 +175,8 @@ static void tls_destructor(void* val)
     pthread_mutex_unlock(&g_destr_mu);
 }
 
-/* =============================================================================
- * worker_thread_func - one worker thread inside the Analyzer
- * ============================================================================= */
+/*
+ * worker_thread_func - one worker thread inside the Analyzer*/
 typedef struct
 {
     int worker_idx;
@@ -213,13 +191,10 @@ static void* worker_thread_func(void* arg)
     pid_t my_tid = (pid_t)syscall(SYS_gettid);
     pthread_mutex_lock(&g_tid_mu);
     if (g_tid_count < MAX_WORKERS)
-    {
         g_tids[g_tid_count++] = my_tid;
-    }
     pthread_mutex_unlock(&g_tid_mu);
 
-    printf("[PID:%d][TID:%d] Worker %d started.\n",
-           getpid(), (int)my_tid, widx);
+    printf("[PID:%d][TID:%d] Worker %d started.\n",getpid(), (int)my_tid, widx);
     fflush(stdout);
 
     /* --- Allocate the TLS struct and bind it to g_tls_key. */
@@ -260,74 +235,58 @@ static void* worker_thread_func(void* arg)
         srcmap_inc(&local_src, entry.source, 1);
     }
 
-    /* --- Merge local stats into the process-global aggregates. */
+    /* Merge local stats into the process-global aggregates. */
     pthread_mutex_lock(&g_agg_mu);
     g_total_entries  += local_cnt;
     g_total_weighted += local_weighted;
     for (int i = 0; i < local_src.n; i++)
-    {
         srcmap_inc(&g_src_map, local_src.e[i].name, local_src.e[i].hits);
-    }
     pthread_mutex_unlock(&g_agg_mu);
 
-    printf("[PID:%d][TID:%d] Worker %d done. Entries: %ld, Weighted: %.1f\n",
-           getpid(), (int)my_tid, widx, local_cnt, local_weighted);
+    printf("[PID:%d][TID:%d] Worker %d done. Entries: %ld, Weighted: %.1f\n",getpid(), (int)my_tid, widx, local_cnt, local_weighted);
     fflush(stdout);
 
-    /* --- Barrier: every worker is here, so g_tids[] is fully populated. */
+    /* Barrier: every worker is here, so g_tids[] is fully populated. */
     pthread_barrier_wait(&g_barrier);
 
-    /* --- Find the lowest TID; that worker becomes the reporting thread. */
+    /* Find the lowest TID; that worker becomes the reporting thread. */
     pid_t min_tid = g_tids[0];
     for (int i = 1; i < g_tid_count; i++)
     {
         if (g_tids[i] < min_tid)
-        {
             min_tid = g_tids[i];
-        }
     }
     int am_reporting = (my_tid == min_tid);
 
-    /* --- Non-reporting threads return immediately; the TLS destructor
-     *     fires automatically on thread exit and flushes their data. */
+    /* --- Non-reporting threads return immediately; the TLS destructor fires automatically on thread exit and flushes their data. */
     if (!am_reporting)
-    {
         return NULL;
-    }
 
-    /* ===== Reporting thread path ============================================
-     * Wait for every other worker's TLS destructor to finish before
-     * publishing the level's summary. expected = n_workers - 1 because
-     * we (the reporting thread) flush our own data manually below. */
+    /* Reporting thread path 
+     * Wait for every other worker's TLS destructor to finish before publishing the level's summary. expected = n_workers - 1 because we (the reporting thread) flush our own data manually below. */
     int expected_destr = g_n_workers - 1;
     pthread_mutex_lock(&g_destr_mu);
     while (g_destr_done < expected_destr)
-    {
         pthread_cond_wait(&g_destr_cv, &g_destr_mu);
-    }
     pthread_mutex_unlock(&g_destr_mu);
 
-    printf("[PID:%d][TID:%d] ** Reporting thread (lowest TID). Level: %s **\n",
-           getpid(), (int)my_tid, LEVEL_NAMES[g_level_idx]);
+    printf("[PID:%d][TID:%d] ** Reporting thread (lowest TID). Level: %s **\n", getpid(), (int)my_tid, LEVEL_NAMES[g_level_idx]);
     fflush(stdout);
 
     pthread_mutex_lock(&g_region_c->result_mutex);
     level_result_t* res = &g_region_c->results[g_level_idx];
 
-    /* --- Flush our own TLS data manually (the destructor would fire too
-     *     late, after we have already published ready=1). */
+    /* --- Flush our own TLS data manually (the destructor would fire too late, after we have already published ready=1). */
     if (td)
     {
         double my_total = 0.0;
         for (int k = 0; k < g_n_keywords; k++)
         {
             res->per_keyword_score[k] += td->scores[k];
-            my_total                  += td->scores[k];
+            my_total += td->scores[k];
         }
         if (widx >= 0 && widx < MAX_WORKERS)
-        {
             res->per_thread_score[widx] = my_total;
-        }
         free(td->scores);
         free(td);
         /* Clear the TLS pointer so the destructor does NOT double-flush. */
@@ -339,17 +298,15 @@ static void* worker_thread_func(void* arg)
     res->total_weighted_score = g_total_weighted;
 
     /* --- Compute top-3 sources by selecting max three times. */
-    src_map_t* sm    = &g_src_map;
-    int        top_n = sm->n < 3 ? sm->n : 3;
+    src_map_t* sm = &g_src_map;
+    int top_n = sm->n < 3 ? sm->n : 3;
     for (int t = 0; t < top_n; t++)
     {
         int best = t;
         for (int j = t + 1; j < sm->n; j++)
         {
             if (sm->e[j].hits > sm->e[best].hits)
-            {
                 best = j;
-            }
         }
         src_entry_t tmp = sm->e[t];
         sm->e[t]    = sm->e[best];
@@ -363,24 +320,19 @@ static void* worker_thread_func(void* arg)
     pthread_cond_broadcast(&g_region_c->result_cond);
     pthread_mutex_unlock(&g_region_c->result_mutex);
 
-    /* The semaphore acts as a redundant signal that some Aggregator
-     * implementations might prefer over cond_wait. */
+    /* The semaphore acts as a redundant signal that some Aggregator implementations might prefer over cond_wait. */
     sem_post(&g_region_c->level_sems[g_level_idx]);
 
-    printf("[PID:%d][TID:%d] Total entries: %ld | Weighted score: %.1f\n",
-           getpid(), (int)my_tid, g_total_entries, g_total_weighted);
+    printf("[PID:%d][TID:%d] Total entries: %ld | Weighted score: %.1f\n",getpid(), (int)my_tid, g_total_entries, g_total_weighted);
     fflush(stdout);
 
     return NULL;
 }
 
-/* =============================================================================
- * analyzer_process_main - entry point of the Analyzer child process
- * ============================================================================= */
+/* analyzer_process_main - entry point of the Analyzer child process*/
 void analyzer_process_main(analyzer_arg_t* a)
 {
-    /* Capture argument-derived state into the file-scope globals so
-     * that worker threads can see them. */
+    /* Capture argument-derived state into the file-scope globals so that worker threads can see them. */
     g_level_idx       = a->level_idx;
     g_n_keywords      = a->n_keywords;
     g_n_workers       = a->n_workers;
@@ -399,8 +351,7 @@ void analyzer_process_main(analyzer_arg_t* a)
     pthread_mutex_init(&g_destr_mu, NULL);
     pthread_cond_init (&g_destr_cv, NULL);
 
-    printf("[PID:%d] Analyzer %s started. Workers: %d\n",
-           getpid(), LEVEL_NAMES[a->level_idx], a->n_workers);
+    printf("[PID:%d] Analyzer %s started. Workers: %d\n", getpid(), LEVEL_NAMES[a->level_idx], a->n_workers);
     fflush(stdout);
 
     /* Create the TLS key with the destructor that flushes per-thread
@@ -426,9 +377,7 @@ void analyzer_process_main(analyzer_arg_t* a)
 
     /* Wait for every worker to finish. */
     for (int w = 0; w < a->n_workers; w++)
-    {
         pthread_join(tids[w], NULL);
-    }
 
     /* Tear down sync primitives. */
     pthread_barrier_destroy(&g_barrier);
@@ -440,8 +389,7 @@ void analyzer_process_main(analyzer_arg_t* a)
     free(tids);
     free(wargs);
 
-    printf("[PID:%d] Analyzer %s exiting.\n",
-           getpid(), LEVEL_NAMES[a->level_idx]);
+    printf("[PID:%d] Analyzer %s exiting.\n", getpid(), LEVEL_NAMES[a->level_idx]);
     fflush(stdout);
     exit(EXIT_SUCCESS);
 }

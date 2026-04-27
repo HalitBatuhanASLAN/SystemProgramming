@@ -1,0 +1,67 @@
+[PID:987] Parent started. Files: 1, Keywords: error,aa
+[PID:987] Shared memory initialized (A:8 B:8x4 D:4).
+[PID:987] Forking Reader 0 -> overlap.log
+[PID:987] Forking Dispatcher
+[PID:987] Forking Analyzer ERROR (index 0)
+[PID:988] Reader 0 started. File: overlap.log, Threads: 1
+[PID:990] Analyzer ERROR started. Workers: 1
+[PID:989] Dispatcher started.
+[PID:990][TID:991] Worker 0 started.
+[PID:987] Forking Analyzer WARN (index 1)
+[PID:988][TID:reader0] Reader thread 0: range [0, 152) bytes
+[PID:987] Forking Analyzer INFO (index 2)
+[PID:992] Analyzer WARN started. Workers: 1
+[PID:987] Forking Analyzer DEBUG (index 3)
+[PID:992][TID:996] Worker 0 started.
+[PID:995] Analyzer INFO started. Workers: 1
+[PID:987] Forking Aggregator
+[PID:997] Analyzer DEBUG started. Workers: 1
+[PID:995][TID:998] Worker 0 started.
+[PID:988][TID:reader0] Reader thread 0: finished, lines_read=3, malformed=0
+[PID:999] Aggregator started. Waiting for 4 levels...
+[PID:987] Watchdog thread started.
+[PID:989] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:997][TID:1001] Worker 0 started.
+[PID:988] Parser thread: dispatched E:3 W:0 I:0 D:0 -> Region A
+[PID:989] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:988] Reader 0 exiting.
+[PID:989] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:990][TID:991] Worker 0 done. Entries: 3, Weighted: 24.0
+[PID:990][TID:991] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:992][TID:996] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:992][TID:996] ** Reporting thread (lowest TID). Level: WARN **
+[PID:995][TID:998] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:989] All EOF markers forwarded to Region B. Routed=3, Priority=3. Exiting.
+[PID:997][TID:1001] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:997][TID:1001] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:990][TID:991] Total entries: 3 | Weighted score: 24.0
+[PID:999] ERROR result received.
+[PID:992][TID:996] Total entries: 0 | Weighted score: 0.0
+[PID:995][TID:998] ** Reporting thread (lowest TID). Level: INFO **
+[PID:997][TID:1001] Total entries: 0 | Weighted score: 0.0
+[PID:990] Analyzer ERROR exiting.
+[PID:999] WARN result received.
+[PID:999] INFO result received.
+[PID:992] Analyzer WARN exiting.
+[PID:995][TID:998] Total entries: 0 | Weighted score: 0.0
+[PID:997] Analyzer DEBUG exiting.
+[PID:999] DEBUG result received.
+[PID:999] All results received. Writing output files...
+[PID:995] Analyzer INFO exiting.
+[PID:999] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/overlap.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/overlap.bin
+[PID:999] Aggregator exiting.
+[WATCHDOG] Progress at T+0s: Reader0(overlap.log)=3 children_alive=0
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error,aa
+Log files     : 1
+Total entries : 3
+Total weighted: 24.0
+Filter file   : overlap_priority.txt
+  ERROR : 3 entries, score: 24.0
+  WARN  : 0 entries, score: 0.0
+  INFO  : 0 entries, score: 0.0
+  DEBUG : 0 entries, score: 0.0
+==================================================
+Program terminated successfully.

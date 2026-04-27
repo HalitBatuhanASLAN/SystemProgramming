@@ -1,0 +1,32 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Stress Test 22: Long-Running Workload
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 22.1 Many files in config (8 logs) ───
+  ✓ PASS  many files: exit 0
+  ✓ PASS  many files: completed in 1s (<= 60s)
+  ✓ PASS  many files: 8 readers forked
+
+─── 22.2 Ten consecutive medium runs (runtime budget) ───
+  ✓ PASS  10 consecutive runs: all exit 0
+  ✓ PASS  avg run time = 0s (acceptable, total=1s)
+
+─── 22.3 Maximum keyword list (8 keywords) ───
+  ✓ PASS  8 keywords: exit 0
+  ✓ PASS  8 keywords in binary header
+
+─── 22.4 Result consistency across 10 runs (huge log) ───
+  ✓ PASS  10 runs: TOTAL identical (REF=2810.0)
+
+─── 22.5 Watchdog reports during long runs ───
+  ✓ PASS  watchdog run: exit 0
+  ✓ PASS  watchdog active (heartbeat detected in stdout)
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 10
+  Başarılı     : 10
+  Başarısız    : 0
+  Atlandı      : 0

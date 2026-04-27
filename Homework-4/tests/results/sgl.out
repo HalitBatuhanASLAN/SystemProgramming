@@ -1,0 +1,64 @@
+[PID:1362] Parent started. Files: 1, Keywords: error,one
+[PID:1362] Shared memory initialized (A:4 B:4x4 D:2).
+[PID:1362] Forking Reader 0 -> single_line.log
+[PID:1362] Forking Dispatcher
+[PID:1363] Reader 0 started. File: single_line.log, Threads: 1
+[PID:1364] Dispatcher started.
+[PID:1362] Forking Analyzer ERROR (index 0)
+[PID:1362] Forking Analyzer WARN (index 1)
+[PID:1365] Analyzer ERROR started. Workers: 1
+[PID:1362] Forking Analyzer INFO (index 2)
+[PID:1367] Analyzer WARN started. Workers: 1
+[PID:1363][TID:reader0] Reader thread 0: range [0, 57) bytes
+[PID:1365][TID:1368] Worker 0 started.
+[PID:1362] Forking Analyzer DEBUG (index 3)
+[PID:1369] Analyzer INFO started. Workers: 1
+[PID:1367][TID:1370] Worker 0 started.
+[PID:1362] Forking Aggregator
+[PID:1373] Analyzer DEBUG started. Workers: 1
+[PID:1369][TID:1374] Worker 0 started.
+[PID:1375] Aggregator started. Waiting for 4 levels...
+[PID:1362] Watchdog thread started.
+[PID:1363][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=0
+[PID:1373][TID:1377] Worker 0 started.
+[PID:1363] Parser thread: dispatched E:1 W:0 I:0 D:0 -> Region A
+[PID:1365][TID:1368] Worker 0 done. Entries: 1, Weighted: 8.0
+[PID:1365][TID:1368] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:1367][TID:1370] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1367][TID:1370] ** Reporting thread (lowest TID). Level: WARN **
+[PID:1369][TID:1374] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1373][TID:1377] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1364] All EOF markers forwarded to Region B. Routed=1, Priority=0. Exiting.
+[PID:1363] Reader 0 exiting.
+[PID:1365][TID:1368] Total entries: 1 | Weighted score: 8.0
+[PID:1375] ERROR result received.
+[PID:1367][TID:1370] Total entries: 0 | Weighted score: 0.0
+[PID:1369][TID:1374] ** Reporting thread (lowest TID). Level: INFO **
+[PID:1369][TID:1374] Total entries: 0 | Weighted score: 0.0
+[PID:1373][TID:1377] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:1373][TID:1377] Total entries: 0 | Weighted score: 0.0
+[PID:1365] Analyzer ERROR exiting.
+[PID:1375] WARN result received.
+[PID:1375] INFO result received.
+[PID:1367] Analyzer WARN exiting.
+[PID:1369] Analyzer INFO exiting.
+[PID:1373] Analyzer DEBUG exiting.
+[PID:1375] DEBUG result received.
+[PID:1375] All results received. Writing output files...
+[PID:1375] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/sgl.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/sgl.bin
+[PID:1375] Aggregator exiting.
+[WATCHDOG] Progress at T+0s: Reader0(single_line.log)=1 children_alive=0
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error,one
+Log files     : 1
+Total entries : 1
+Total weighted: 8.0
+Filter file   : empty_priority.txt
+  ERROR : 1 entries, score: 8.0
+  WARN  : 0 entries, score: 0.0
+  INFO  : 0 entries, score: 0.0
+  DEBUG : 0 entries, score: 0.0
+==================================================
+Program terminated successfully.

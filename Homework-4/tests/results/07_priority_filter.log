@@ -1,0 +1,36 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Unit Test 07: High Priority Filter
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 7.1 Empty priority file → HP score = 0 ───
+  ✓ PASS  empty priority: HP = 0.0
+  ✓ PASS  empty priority: total > 0 (still computed)
+
+─── 7.2 Priority = {kernel}: only kernel entries count ───
+  ✓ PASS  priority kernel+auth: HP > 0 (HP=12.0)
+  ✓ PASS  priority kernel+auth: HP <= TOTAL (12.0 <= 16.0)
+
+─── 7.3 Controlled test: known HP score ───
+  ✓ PASS  controlled: TOTAL = 14.0
+  ✓ PASS  controlled: HP (src1 only) = 7.0
+
+─── 7.4 Two priority sources: HP = TOTAL ───
+  ✓ PASS  all-in-priority: HP == TOTAL (14.0)
+
+─── 7.5 Priority with no matching source ───
+  ✓ PASS  no-match priority: HP = 0.0
+  ✓ PASS  no-match priority: TOTAL preserved (TOTAL=14.0)
+
+─── 7.6 Dispatcher logs 'High-priority: YES/NO' ───
+  ✓ PASS  dispatcher: YES count = 2 (src1 entries)
+  ✓ PASS  dispatcher summary: 'Routed=4'
+  ✓ PASS  dispatcher summary: 'Priority=2'
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 12
+  Başarılı     : 12
+  Başarısız    : 0
+  Atlandı      : 0

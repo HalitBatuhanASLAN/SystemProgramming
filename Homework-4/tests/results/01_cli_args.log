@@ -1,0 +1,47 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Unit Test 01: CLI Argument Validation
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 1.1 No arguments ───
+  ✓ PASS  exit code is not 0 for missing args
+
+─── 1.2 Missing required flag (-c) ───
+  ✓ PASS  exit != 0 when -c is missing
+
+─── 1.3 Non-existent config file ───
+  ✓ PASS  non-existent file: no segfault
+
+─── 1.4 Invalid thread count (0) ───
+  ✓ PASS  exit != 0 for -t 0
+
+─── 1.5 Invalid worker count (0) ───
+  ✓ PASS  exit != 0 for -w 0
+
+─── 1.6 Invalid buffer size (-a 0) ───
+  ✓ PASS  exit != 0 for -a 0
+
+─── 1.7 Empty keyword list ───
+  ✓ PASS  empty keyword list: no segfault
+
+─── 1.8 Valid arguments accepted ───
+  ✓ PASS  valid run exits 0
+  ✓ PASS  valid run creates .txt output
+  ✓ PASS  valid run creates .bin output
+
+─── 1.9 Multiple keywords parsing ───
+  ✓ PASS  multi-keyword run exits 0
+  ✓ PASS  keyword list preserved in output
+
+─── 1.10 Output file writability ───
+  ✓ PASS  subdir output exit 0
+  ✓ PASS  subdir .txt output
+  ✓ PASS  subdir .bin output
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 15
+  Başarılı     : 15
+  Başarısız    : 0
+  Atlandı      : 0

@@ -1,0 +1,93 @@
+[PID:5176] Parent started. Files: 1, Keywords: error,fail,timeout,success,OK,retry,done,process
+[PID:5176] Shared memory initialized (A:16 B:16x4 D:8).
+[PID:5176] Forking Reader 0 -> long_lines.log
+[PID:5176] Forking Dispatcher
+[PID:5177] Reader 0 started. File: long_lines.log, Threads: 4
+[PID:5176] Forking Analyzer ERROR (index 0)
+[PID:5176] Forking Analyzer WARN (index 1)
+[PID:5178] Dispatcher started.
+[PID:5179] Analyzer ERROR started. Workers: 4
+[PID:5177][TID:reader0] Reader thread 0: range [0, 2886) bytes
+[PID:5176] Forking Analyzer INFO (index 2)
+[PID:5180] Analyzer WARN started. Workers: 4
+[PID:5179][TID:5183] Worker 2 started.
+[PID:5177][TID:reader1] Reader thread 1: range [2887, 5773) bytes
+[PID:5176] Forking Analyzer DEBUG (index 3)
+[PID:5186] Analyzer INFO started. Workers: 4
+[PID:5192] Analyzer DEBUG started. Workers: 4
+[PID:5180][TID:5188] Worker 1 started.
+[PID:5179][TID:5184] Worker 3 started.
+[PID:5179][TID:5182] Worker 1 started.
+[PID:5177][TID:reader0] Reader thread 0: finished, lines_read=13, malformed=0
+[PID:5176] Forking Aggregator
+[PID:5186][TID:5193] Worker 0 started.
+[PID:5192][TID:5197] Worker 0 started.
+[PID:5180][TID:5187] Worker 0 started.
+[PID:5179][TID:5181] Worker 0 started.
+[PID:5177][TID:reader2] Reader thread 2: range [5774, 8660) bytes
+[PID:5201] Aggregator started. Waiting for 4 levels...
+[PID:5176] Watchdog thread started.
+[PID:5186][TID:5194] Worker 1 started.
+[PID:5192][TID:5198] Worker 1 started.
+[PID:5180][TID:5190] Worker 3 started.
+[PID:5177][TID:reader1] Reader thread 1: finished, lines_read=12, malformed=0
+[PID:5186][TID:5196] Worker 3 started.
+[PID:5186][TID:5195] Worker 2 started.
+[PID:5192][TID:5200] Worker 3 started.
+[PID:5180][TID:5189] Worker 2 started.
+[PID:5177][TID:reader3] Reader thread 3: range [8661, 11550) bytes
+[PID:5192][TID:5199] Worker 2 started.
+[PID:5177][TID:reader2] Reader thread 2: finished, lines_read=13, malformed=0
+[PID:5177][TID:reader3] Reader thread 3: finished, lines_read=12, malformed=0
+[PID:5177] Parser thread: dispatched E:50 W:0 I:0 D:0 -> Region A
+[PID:5186][TID:5194] Worker 1 done. Entries: 0, Weighted: 0.0
+[PID:5186][TID:5195] Worker 2 done. Entries: 0, Weighted: 0.0
+[PID:5179][TID:5181] Worker 0 done. Entries: 10, Weighted: 1200.0
+[PID:5180][TID:5189] Worker 2 done. Entries: 0, Weighted: 0.0
+[PID:5180][TID:5190] Worker 3 done. Entries: 0, Weighted: 0.0
+[PID:5180][TID:5187] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:5192][TID:5199] Worker 2 done. Entries: 0, Weighted: 0.0
+[PID:5177] Reader 0 exiting.
+[PID:5178] All EOF markers forwarded to Region B. Routed=50, Priority=0. Exiting.
+[PID:5186][TID:5196] Worker 3 done. Entries: 0, Weighted: 0.0
+[PID:5186][TID:5193] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:5179][TID:5183] Worker 2 done. Entries: 20, Weighted: 2400.0
+[PID:5180][TID:5188] Worker 1 done. Entries: 0, Weighted: 0.0
+[PID:5192][TID:5197] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:5186][TID:5193] ** Reporting thread (lowest TID). Level: INFO **
+[PID:5179][TID:5184] Worker 3 done. Entries: 7, Weighted: 840.0
+[PID:5180][TID:5187] ** Reporting thread (lowest TID). Level: WARN **
+[PID:5192][TID:5198] Worker 1 done. Entries: 0, Weighted: 0.0
+[PID:5186][TID:5193] Total entries: 0 | Weighted score: 0.0
+[PID:5179][TID:5182] Worker 1 done. Entries: 13, Weighted: 1560.0
+[PID:5180][TID:5187] Total entries: 0 | Weighted score: 0.0
+[PID:5192][TID:5200] Worker 3 done. Entries: 0, Weighted: 0.0
+[PID:5186] Analyzer INFO exiting.
+[PID:5179][TID:5181] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:5180] Analyzer WARN exiting.
+[PID:5192][TID:5197] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:5179][TID:5181] Total entries: 50 | Weighted score: 6000.0
+[PID:5201] ERROR result received.
+[PID:5201] WARN result received.
+[PID:5192][TID:5197] Total entries: 0 | Weighted score: 0.0
+[PID:5179] Analyzer ERROR exiting.
+[PID:5201] INFO result received.
+[PID:5201] DEBUG result received.
+[PID:5192] Analyzer DEBUG exiting.
+[PID:5201] All results received. Writing output files...
+[PID:5201] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/stk.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/stk.bin
+[PID:5201] Aggregator exiting.
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error,fail,timeout,success,OK,retry,done,process
+Log files     : 1
+Total entries : 50
+Total weighted: 6000.0
+Filter file   : empty_priority.txt
+  ERROR : 50 entries, score: 6000.0
+  WARN  : 0 entries, score: 0.0
+  INFO  : 0 entries, score: 0.0
+  DEBUG : 0 entries, score: 0.0
+==================================================
+Program terminated successfully.

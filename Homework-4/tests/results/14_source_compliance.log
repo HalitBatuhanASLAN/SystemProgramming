@@ -1,0 +1,57 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Integration Test 14: Source Code Compliance
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 14.1 PDF Mandatory primitives present ───
+  ✓ PASS  pthread_key_t (TLS) used
+  ✓ PASS  pthread_barrier_t used
+  ✓ PASS  pthread_cond_timedwait used
+  ✓ PASS  sem_t (POSIX semaphore) used
+  ✓ PASS  syscall(SYS_gettid) used
+  ✓ PASS  fork() used (multi-process design)
+  ✓ PASS  waitpid() used
+  ✓ PASS  MAP_SHARED used (shared memory)
+  ✓ PASS  PTHREAD_PROCESS_SHARED used
+
+─── 14.2 Forbidden APIs not used ───
+  ✓ PASS  gets() not used
+  ✓ PASS  system() not used
+
+─── 14.3 Signal handler safety ───
+  ℹ  found handlers: 
+  ✓ PASS  sigaction used (PDF Section 14)
+  ✓ PASS  volatile sig_atomic_t used
+
+─── 14.4 Atomic rename for binary output ───
+  ✓ PASS  rename() used (atomic binary write)
+
+─── 14.5 Lock ordering (no nested locks across regions) ───
+  ✓ PASS  shm.c uses pthread_mutex_init
+  ✓ PASS  shm.c initializes synchronization primitives (2 calls)
+
+─── 14.6 Clean compile (-Wall -Wextra) ───
+  ✓ PASS  compile: 0 warnings
+
+─── 14.7 Makefile targets present ───
+  ✓ PASS  Makefile: 'all' or 'analyzer' target present
+  ✓ PASS  Makefile: 'clean' target present
+
+─── 14.8 Header files have include guards ───
+  ✓ PASS  shm.h: has include guard
+  ✓ PASS  reader.h: has include guard
+  ✓ PASS  dispatcher.h: has include guard
+  ✓ PASS  analyzer.h: has include guard
+  ✓ PASS  aggregator.h: has include guard
+  ✓ PASS  watchdog.h: has include guard
+
+─── 14.9 -pthread linking flag ───
+  ✓ PASS  Makefile uses -pthread
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 26
+  Başarılı     : 26
+  Başarısız    : 0
+  Atlandı      : 0

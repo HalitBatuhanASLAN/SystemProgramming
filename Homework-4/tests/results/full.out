@@ -1,0 +1,85 @@
+[PID:2504] Parent started. Files: 2, Keywords: error,fail,timeout
+[PID:2504] Shared memory initialized (A:16 B:16x4 D:8).
+[PID:2504] Forking Reader 0 -> simple_kernel.log
+[PID:2504] Forking Reader 1 -> simple_nginx.log
+[PID:2505] Reader 0 started. File: simple_kernel.log, Threads: 2
+[PID:2506] Reader 1 started. File: simple_nginx.log, Threads: 2
+[PID:2504] Forking Dispatcher
+[PID:2504] Forking Analyzer ERROR (index 0)
+[PID:2505][TID:reader0] Reader thread 0: range [0, 250) bytes
+[PID:2507] Dispatcher started.
+[PID:2506][TID:reader0] Reader thread 0: range [0, 210) bytes
+[PID:2504] Forking Analyzer WARN (index 1)
+[PID:2508] Analyzer ERROR started. Workers: 2
+[PID:2505][TID:reader1] Reader thread 1: range [251, 503) bytes
+[PID:2506][TID:reader1] Reader thread 1: range [211, 423) bytes
+[PID:2505][TID:reader0] Reader thread 0: finished, lines_read=4, malformed=0
+[PID:2504] Forking Analyzer INFO (index 2)
+[PID:2511] Analyzer WARN started. Workers: 2
+[PID:2508][TID:2512] Worker 0 started.
+[PID:2506][TID:reader0] Reader thread 0: finished, lines_read=4, malformed=0
+[PID:2507] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:2504] Forking Analyzer DEBUG (index 3)
+[PID:2518] Analyzer INFO started. Workers: 2
+[PID:2511][TID:2519] Worker 0 started.
+[PID:2508][TID:2513] Worker 1 started.
+[PID:2505][TID:reader1] Reader thread 1: finished, lines_read=3, malformed=0
+[PID:2506][TID:reader1] Reader thread 1: finished, lines_read=2, malformed=1
+[PID:2507] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:2504] Forking Aggregator
+[PID:2506] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
+[PID:2521] Analyzer DEBUG started. Workers: 2
+[PID:2518][TID:2522] Worker 0 started.
+[PID:2511][TID:2520] Worker 1 started.
+[PID:2505] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
+[PID:2507] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:2524] Aggregator started. Waiting for 4 levels...
+[PID:2504] Watchdog thread started.
+[PID:2506] Reader 1 exiting.
+[PID:2521][TID:2526] Worker 0 started.
+[PID:2518][TID:2523] Worker 1 started.
+[PID:2505] Reader 0 exiting.
+[PID:2507] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:2521][TID:2527] Worker 1 started.
+[PID:2508][TID:2513] Worker 1 done. Entries: 1, Weighted: 12.0
+[PID:2511][TID:2520] Worker 1 done. Entries: 0, Weighted: 0.0
+[PID:2518][TID:2522] Worker 0 done. Entries: 2, Weighted: 0.0
+[PID:2507] All EOF markers forwarded to Region B. Routed=13, Priority=4. Exiting.
+[PID:2521][TID:2527] Worker 1 done. Entries: 0, Weighted: 0.0
+[PID:2508][TID:2512] Worker 0 done. Entries: 3, Weighted: 4.0
+[PID:2511][TID:2519] Worker 0 done. Entries: 3, Weighted: 3.0
+[PID:2518][TID:2523] Worker 1 done. Entries: 1, Weighted: 0.0
+[PID:2521][TID:2526] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:2508][TID:2512] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:2511][TID:2519] ** Reporting thread (lowest TID). Level: WARN **
+[PID:2511][TID:2519] Total entries: 3 | Weighted score: 3.0
+[PID:2518][TID:2522] ** Reporting thread (lowest TID). Level: INFO **
+[PID:2518][TID:2522] Total entries: 3 | Weighted score: 0.0
+[PID:2521][TID:2526] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:2521][TID:2526] Total entries: 3 | Weighted score: 0.0
+[PID:2508][TID:2512] Total entries: 4 | Weighted score: 16.0
+[PID:2524] ERROR result received.
+[PID:2524] WARN result received.
+[PID:2511] Analyzer WARN exiting.
+[PID:2518] Analyzer INFO exiting.
+[PID:2521] Analyzer DEBUG exiting.
+[PID:2508] Analyzer ERROR exiting.
+[PID:2524] INFO result received.
+[PID:2524] DEBUG result received.
+[PID:2524] All results received. Writing output files...
+[PID:2524] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/full.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/full.bin
+[PID:2524] Aggregator exiting.
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error,fail,timeout
+Log files     : 2
+Total entries : 13
+Total weighted: 19.0
+Filter file   : simple_priority.txt
+  ERROR : 4 entries, score: 16.0
+  WARN  : 3 entries, score: 3.0
+  INFO  : 3 entries, score: 0.0
+  DEBUG : 3 entries, score: 0.0
+==================================================
+Program terminated successfully.

@@ -1,0 +1,21 @@
+KEYWORD_LIST: error,fail,timeout
+FILES: 2
+TOTAL_WEIGHTED_SCORE: 19.0
+HIGH_PRIORITY_SCORE: 12.0
+FILTER_FILE: simple_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE     error      fail   timeout
+  ERROR        4            16.0      12.0       4.0       0.0
+   WARN        3             3.0       0.0       0.0       3.0
+   INFO        3             0.0       0.0       0.0       0.0
+  DEBUG        3             0.0       0.0       0.0       0.0
+# Top-3 sources per level
+ERROR    kernel:3  nginx:1
+WARN     nginx:2  disk:1
+INFO     nginx:3
+DEBUG    nginx:2  auth:1
+# Per-thread contributions (weighted score)
+ERROR    thread_0:4.0  thread_1:12.0
+WARN     thread_0:3.0  thread_1:0.0
+INFO     thread_0:0.0  thread_1:0.0
+DEBUG    thread_0:0.0  thread_1:0.0

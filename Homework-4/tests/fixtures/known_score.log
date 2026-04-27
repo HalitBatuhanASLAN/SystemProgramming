@@ -1,0 +1,4 @@
+[2025-03-10 08:00:00] [ERROR] [src1] error fail
+[2025-03-10 08:00:01] [WARN] [src1] error fail
+[2025-03-10 08:00:02] [INFO] [src1] error fail
+[2025-03-10 08:00:03] [DEBUG] [src1] error fail

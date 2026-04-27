@@ -1,0 +1,9 @@
+stat: No such file or directory
+[WATCHDOG] Progress at T+3s: Reader0(/nonexistent/path/foo.log)=0 children_alive=6
+[AGG] WARNING: timeout waiting for level ERROR (cond)
+[WATCHDOG] Progress at T+6s: Reader0(/nonexistent/path/foo.log)=0 children_alive=6
+[WATCHDOG] Progress at T+9s: Reader0(/nonexistent/path/foo.log)=0 children_alive=6
+[WATCHDOG] Progress at T+12s: Reader0(/nonexistent/path/foo.log)=0 children_alive=6
+[WATCHDOG] Progress at T+15s: Reader0(/nonexistent/path/foo.log)=0 children_alive=6
+[AGG] WARNING: timeout waiting for level WARN (cond)
+[WATCHDOG] Progress at T+18s: Reader0(/nonexistent/path/foo.log)=0 children_alive=6

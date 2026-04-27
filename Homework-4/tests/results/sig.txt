@@ -1,0 +1,21 @@
+KEYWORD_LIST: error,fail,timeout
+FILES: 2
+TOTAL_WEIGHTED_SCORE: 57177.0
+HIGH_PRIORITY_SCORE: 6080.0
+FILTER_FILE: huge_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE     error      fail   timeout
+  ERROR     1307         23760.0    7892.0    7852.0    8016.0
+   WARN     1208         16434.0    5457.0    5448.0    5529.0
+   INFO     1257         11510.0    3676.0    3896.0    3938.0
+  DEBUG     1228          5473.0    1867.0    1839.0    1767.0
+# Top-3 sources per level
+ERROR    kernel:152  auth:145  daemon:140
+WARN     db:131  nginx:127  daemon:126
+INFO     svc:140  daemon:139  disk:138
+DEBUG    db:152  nginx:138  app:128
+# Per-thread contributions (weighted score)
+ERROR    thread_0:5852.0  thread_1:6420.0  thread_2:5540.0  thread_3:5948.0
+WARN     thread_0:4440.0  thread_1:3870.0  thread_2:4116.0  thread_3:4008.0
+INFO     thread_0:3058.0  thread_1:2820.0  thread_2:2788.0  thread_3:2844.0
+DEBUG    thread_0:1657.0  thread_1:1236.0  thread_2:1204.0  thread_3:1376.0

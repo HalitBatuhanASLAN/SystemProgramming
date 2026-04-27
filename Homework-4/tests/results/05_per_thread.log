@@ -1,0 +1,49 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Unit Test 05: Per-Thread Score Accounting
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 5.1 Single worker: thread_0 == LEVEL total ───
+  ✓ PASS  1 worker: ERROR.thread_0 == ERROR weighted (16.0)
+
+─── 5.2 Two workers: sum(thread_i) == LEVEL total ───
+  ✓ PASS  ERROR: thread_0 + thread_1 == LEVEL_TOTAL (16.0)
+  ✓ PASS  WARN: thread_0 + thread_1 == LEVEL_TOTAL (0.0)
+  ✓ PASS  INFO: thread_0 + thread_1 == LEVEL_TOTAL (0.0)
+  ✓ PASS  DEBUG: thread_0 + thread_1 == LEVEL_TOTAL (0.0)
+
+─── 5.3 Four workers: sum(all threads) == LEVEL total ───
+  ✓ PASS  ERROR: 4-thread sum == LEVEL_TOTAL (1136.0)
+  ✓ PASS  WARN: 4-thread sum == LEVEL_TOTAL (828.0)
+  ✓ PASS  INFO: 4-thread sum == LEVEL_TOTAL (554.0)
+  ✓ PASS  DEBUG: 4-thread sum == LEVEL_TOTAL (292.0)
+
+─── 5.4 At least one thread has non-zero contribution ───
+  ✓ PASS  ERROR: en az bir thread'in skoru > 0
+
+─── 5.5 Six workers: comprehensive per-thread sum check ───
+  ✓ PASS  ERROR: 6-thread sum == LEVEL_TOTAL (1136.0)
+  ✓ PASS  WARN: 6-thread sum == LEVEL_TOTAL (828.0)
+  ✓ PASS  INFO: 6-thread sum == LEVEL_TOTAL (554.0)
+  ✓ PASS  DEBUG: 6-thread sum == LEVEL_TOTAL (292.0)
+
+─── 5.6 Thread index continuity (0 .. w-1) ───
+  ✓ PASS  ERROR.thread_0 present (score=248.0)
+  ✓ PASS  ERROR.thread_1 present (score=228.0)
+  ✓ PASS  ERROR.thread_2 present (score=308.0)
+  ✓ PASS  ERROR.thread_3 present (score=352.0)
+  ✓ PASS  ERROR.thread_4 absent (or 0.0) – correct
+
+─── 5.7 Sum of per-keyword scores == LEVEL weighted total ───
+  ✓ PASS  ERROR: kw1+kw2+kw3 == WEIGHTED (1136.0)
+  ✓ PASS  WARN: kw1+kw2+kw3 == WEIGHTED (828.0)
+  ✓ PASS  INFO: kw1+kw2+kw3 == WEIGHTED (554.0)
+  ✓ PASS  DEBUG: kw1+kw2+kw3 == WEIGHTED (292.0)
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 23
+  Başarılı     : 23
+  Başarısız    : 0
+  Atlandı      : 0

@@ -1,0 +1,21 @@
+KEYWORD_LIST: error
+FILES: 3
+TOTAL_WEIGHTED_SCORE: 948.0
+HIGH_PRIORITY_SCORE: 340.0
+FILTER_FILE: big_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE     error
+  ERROR      247           432.0     432.0
+   WARN      248           243.0     243.0
+   INFO      250           176.0     176.0
+  DEBUG      254            97.0      97.0
+# Top-3 sources per level
+ERROR    disk:38  app:36  net:34
+WARN     nginx:38  auth:38  db:35
+INFO     nginx:36  app:35  net:35
+DEBUG    nginx:43  db:39  auth:35
+# Per-thread contributions (weighted score)
+ERROR    thread_0:108.0  thread_1:108.0  thread_2:136.0  thread_3:80.0
+WARN     thread_0:54.0  thread_1:72.0  thread_2:45.0  thread_3:72.0
+INFO     thread_0:46.0  thread_1:58.0  thread_2:22.0  thread_3:50.0
+DEBUG    thread_0:26.0  thread_1:31.0  thread_2:22.0  thread_3:18.0

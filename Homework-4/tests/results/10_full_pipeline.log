@@ -1,0 +1,68 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Integration Test 10: Full Pipeline
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 10.1 Baseline run with realistic params ───
+  ✓ PASS  baseline: exit 0
+  ✓ PASS  baseline: .txt output
+  ✓ PASS  baseline: .bin output
+  ✓ PASS  baseline: .txt non-empty
+
+─── 10.2 stdout: PID-tagged log messages ───
+  ✓ PASS  stdout: 'Parent started'
+  ✓ PASS  stdout: 'Forking Reader'
+  ✓ PASS  stdout: 'Forking Dispatcher'
+  ✓ PASS  stdout: 'Forking Analyzer'
+  ✓ PASS  stdout: 'Forking Aggregator'
+  ✓ PASS  stdout: '[PID:'
+
+─── 10.3 All 4 Analyzers started ───
+  ✓ PASS  4 Analyzer process started
+
+─── 10.4 All Readers dispatched their parser thread ───
+  ✓ PASS  2 reader parser threads
+
+─── 10.5 Dispatcher EOF forwarding ───
+  ✓ PASS  EOF markers forwarded to Region B
+
+─── 10.6 Aggregator received all 4 results ───
+  ✓ PASS  Aggregator: ERROR result received
+  ✓ PASS  Aggregator: WARN result received
+  ✓ PASS  Aggregator: INFO result received
+  ✓ PASS  Aggregator: DEBUG result received
+
+─── 10.7 Aggregator wrote output files ───
+  ✓ PASS  Aggregator: 'Output files written'
+
+─── 10.8 No zombie processes after exit ───
+  ✓ PASS  stdout: 'Program terminated successfully'
+  ✓ PASS  no leftover analyzer processes
+
+─── 10.9 'Reporting thread' messages (lowest TID per analyzer) ───
+  ✓ PASS  4 reporting threads (1 per analyzer)
+  ✓ PASS  ERROR reporting thread
+  ✓ PASS  WARN reporting thread
+  ✓ PASS  INFO reporting thread
+  ✓ PASS  DEBUG reporting thread
+
+─── 10.10 Worker thread messages ───
+  ✓ PASS  8 'Worker N started' messages (4×2)
+  ✓ PASS  8 'Worker N done' messages
+
+─── 10.11 Final SYSTEM_SUMMARY block ───
+  ✓ PASS  SYSTEM SUMMARY header
+  ✓ PASS  summary: 'Keywords'
+  ✓ PASS  summary: 'Log files'
+  ✓ PASS  summary: 'Total entries'
+
+─── 10.12 SUMMARY total = sum of LEVEL entries ───
+  ✓ PASS  summary entries == sum(level entries)
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 32
+  Başarılı     : 32
+  Başarısız    : 0
+  Atlandı      : 0

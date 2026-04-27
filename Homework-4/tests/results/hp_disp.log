@@ -1,0 +1,66 @@
+[PID:2342] Parent started. Files: 1, Keywords: error
+[PID:2342] Shared memory initialized (A:4 B:4x4 D:2).
+[PID:2342] Forking Reader 0 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/hp_ctrl.log
+[PID:2342] Forking Dispatcher
+[PID:2343] Reader 0 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/hp_ctrl.log, Threads: 1
+[PID:2342] Forking Analyzer ERROR (index 0)
+[PID:2344] Dispatcher started.
+[PID:2342] Forking Analyzer WARN (index 1)
+[PID:2345] Analyzer ERROR started. Workers: 1
+[PID:2343][TID:reader0] Reader thread 0: range [0, 170) bytes
+[PID:2342] Forking Analyzer INFO (index 2)
+[PID:2346] Analyzer WARN started. Workers: 1
+[PID:2345][TID:2347] Worker 0 started.
+[PID:2342] Forking Analyzer DEBUG (index 3)
+[PID:2350] Analyzer INFO started. Workers: 1
+[PID:2343][TID:reader0] Reader thread 0: finished, lines_read=4, malformed=0
+[PID:2346][TID:2351] Worker 0 started.
+[PID:2342] Forking Aggregator
+[PID:2352] Analyzer DEBUG started. Workers: 1
+[PID:2342] Watchdog thread started.
+[PID:2344] Routed entry to ERROR buffer. High-priority: YES (source: src1)
+[PID:2350][TID:2353] Worker 0 started.
+[PID:2354] Aggregator started. Waiting for 4 levels...
+[PID:2352][TID:2356] Worker 0 started.
+[PID:2344] Routed entry to WARN buffer. High-priority: YES (source: src1)
+[PID:2343] Parser thread: dispatched E:2 W:2 I:0 D:0 -> Region A
+[PID:2345][TID:2347] Worker 0 done. Entries: 2, Weighted: 8.0
+[PID:2345][TID:2347] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:2346][TID:2351] Worker 0 done. Entries: 2, Weighted: 6.0
+[PID:2346][TID:2351] ** Reporting thread (lowest TID). Level: WARN **
+[PID:2350][TID:2353] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:2344] All EOF markers forwarded to Region B. Routed=4, Priority=2. Exiting.
+[PID:2352][TID:2356] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:2352][TID:2356] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:2343] Reader 0 exiting.
+[PID:2345][TID:2347] Total entries: 2 | Weighted score: 8.0
+[PID:2354] ERROR result received.
+[PID:2354] WARN result received.
+[PID:2346][TID:2351] Total entries: 2 | Weighted score: 6.0
+[PID:2350][TID:2353] ** Reporting thread (lowest TID). Level: INFO **
+[PID:2352][TID:2356] Total entries: 0 | Weighted score: 0.0
+[PID:2345] Analyzer ERROR exiting.
+[PID:2346] Analyzer WARN exiting.
+[PID:2350][TID:2353] Total entries: 0 | Weighted score: 0.0
+[PID:2354] INFO result received.
+[PID:2354] DEBUG result received.
+[PID:2352] Analyzer DEBUG exiting.
+[PID:2350] Analyzer INFO exiting.
+[PID:2354] All results received. Writing output files...
+[PID:2354] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/hp_ctrl2.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/hp_ctrl2.bin
+[PID:2354] Aggregator exiting.
+[WATCHDOG] Progress at T+0s: Reader0(/mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/hp_ctrl.log)=4 children_alive=0
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error
+Log files     : 1
+Total entries : 4
+Total weighted: 14.0
+Filter file   : /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/hp_ctrl_priority.txt
+  ERROR : 2 entries, score: 8.0
+  WARN  : 2 entries, score: 6.0
+  INFO  : 0 entries, score: 0.0
+  DEBUG : 0 entries, score: 0.0
+==================================================
+Program terminated successfully.

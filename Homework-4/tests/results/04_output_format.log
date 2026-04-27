@@ -1,0 +1,72 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Unit Test 04: Output Format Compliance
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 4.1 Required header fields present ───
+  ✓ PASS  KEYWORD_LIST present
+  ✓ PASS  FILES present
+  ✓ PASS  TOTAL_WEIGHTED_SCORE present
+  ✓ PASS  HIGH_PRIORITY_SCORE present
+  ✓ PASS  FILTER_FILE present
+
+─── 4.2 Section headers present ───
+  ✓ PASS  Levels section header
+  ✓ PASS  Top-3 sources section
+  ✓ PASS  Per-thread section
+
+─── 4.3 All 4 level rows present ───
+  ✓ PASS  ERROR satırı (1 levels + 1 top-3 + 1 per-thread)
+  ✓ PASS  WARN satırı
+  ✓ PASS  INFO satırı
+  ✓ PASS  DEBUG satırı
+
+─── 4.4 Levels sorted DESC by weighted score ───
+  ✓ PASS  levels: weighted score DESC sıralı
+
+─── 4.5 Top-3 sources: at most 3 per level ───
+  ✓ PASS  ERROR: top-3 source count <= 3 (NF=3)
+  ✓ PASS  WARN: top-3 source count <= 3 (NF=3)
+  ✓ PASS  INFO: top-3 source count <= 3 (NF=2)
+  ✓ PASS  DEBUG: top-3 source count <= 3 (NF=3)
+
+─── 4.6 Per-thread entry format ───
+  ✓ PASS  per-thread entries match thread_N:F.F
+
+─── 4.7 Binary file magic header ───
+  ✓ PASS  binary magic = 0xC5E3440B
+
+─── 4.8 Binary file header values ───
+  ✓ PASS  binary version=1
+  ✓ PASS  binary levels=4
+  ✓ PASS  binary keywords=3
+
+─── 4.9 Binary file size sanity ───
+  ✓ PASS  binary size makul (size=3328)
+
+─── 4.10 Output files are regular (atomic rename test) ───
+  ✓ PASS  .txt is a regular file
+  ✓ PASS  .bin is a regular file
+  ✓ PASS  no .bin.tmp leftover (atomic rename clean)
+
+─── 4.11 KEYWORD_LIST content ───
+  ✓ PASS  KEYWORD_LIST = 'error,fail,timeout'
+
+─── 4.12 FILES count ───
+  ✓ PASS  FILES = 2
+
+─── 4.13 FILTER_FILE name ───
+  ✓ PASS  FILTER_FILE içeriyor 'priority.txt'
+
+─── 4.14 Column header line ───
+  ✓ PASS  column header (LEVEL ENTRIES WEIGHTED_SCORE)
+  ✓ PASS  header: 'error' column
+  ✓ PASS  header: 'fail' column
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 32
+  Başarılı     : 32
+  Başarısız    : 0
+  Atlandı      : 0

@@ -1,0 +1,8 @@
+[2025-03-10 09:00:01] [INFO] [nginx] Server started on port 80
+[2025-03-10 09:00:02] [WARN] [nginx] Slow upstream response timeout
+[2025-03-10 09:00:03] [ERROR] [nginx] Backend connection failed
+[2025-03-10 09:00:04] [DEBUG] [nginx] Health check passed
+[2025-03-10 09:00:05] [DEBUG] [nginx] Test malformed line below
+
+[2025-03-10 09:00:06] [BADLEVEL] [foo] should be skipped
+[2025-03-10 09:00:07] [INFO] [nginx] Last entry

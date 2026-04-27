@@ -1,0 +1,39 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Unit Test 06: Top-3 Source Selection
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 6.1 Top-3 from 4 sources (alpha:3, beta:2, gamma:2, delta:1) ───
+  ✓ PASS  ERROR: alpha hits = 3
+  ✓ PASS  ERROR: beta hits = 2
+  ✓ PASS  ERROR: gamma hits = 2
+  ✓ PASS  ERROR: delta NOT in top-3 (correct - only 1 hit)
+
+─── 6.2 Top-3 sorted by hits DESC ───
+  ✓ PASS  first source = alpha (highest hits)
+  ✓ PASS  top-3 hits non-increasing
+
+─── 6.3 Single source: only one entry in top-3 ───
+  ✓ PASS  single source: onlysrc:3 in top-3
+
+─── 6.4 Exactly 3 sources (boundary case) ───
+  ✓ PASS  three sources: s1:3
+  ✓ PASS  three sources: s2:2
+  ✓ PASS  three sources: s3:1
+  ✓ PASS  exactly 3 sources: NF = 4 (LEVEL + 3 src)
+
+─── 6.5 Many sources (5): only top-3 displayed ───
+  ✓ PASS  many sources: top-3 limited to 3 (NF=4)
+  ✓ PASS  many: a:5 in top-3
+  ✓ PASS  many: b:4 in top-3
+  ✓ PASS  many: c:3 in top-3
+  ✓ PASS  many: d NOT in top-3 (correct)
+  ✓ PASS  many: e NOT in top-3 (correct)
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 17
+  Başarılı     : 17
+  Başarısız    : 0
+  Atlandı      : 0

@@ -1,0 +1,73 @@
+[PID:3482] Parent started. Files: 2, Keywords: error
+[PID:3482] Shared memory initialized (A:8 B:8x4 D:4).
+[PID:3482] Forking Reader 0 -> simple_kernel.log
+[PID:3482] Forking Reader 1 -> simple_nginx.log
+[PID:3483] Reader 0 started. File: simple_kernel.log, Threads: 1
+[PID:3482] Forking Dispatcher
+[PID:3484] Reader 1 started. File: simple_nginx.log, Threads: 1
+[PID:3482] Forking Analyzer ERROR (index 0)
+[PID:3485] Dispatcher started.
+[PID:3483][TID:reader0] Reader thread 0: range [0, 503) bytes
+[PID:3484][TID:reader0] Reader thread 0: range [0, 423) bytes
+[PID:3482] Forking Analyzer WARN (index 1)
+[PID:3486] Analyzer ERROR started. Workers: 1
+[PID:3482] Forking Analyzer INFO (index 2)
+[PID:3491] Analyzer WARN started. Workers: 1
+[PID:3486][TID:3492] Worker 0 started.
+[PID:3482] Forking Analyzer DEBUG (index 3)
+[PID:3485] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:3483][TID:reader0] Reader thread 0: finished, lines_read=7, malformed=0
+[PID:3493] Analyzer INFO started. Workers: 1
+[PID:3491][TID:3494] Worker 0 started.
+[PID:3484][TID:reader0] Reader thread 0: finished, lines_read=6, malformed=1
+[PID:3482] Forking Aggregator
+[PID:3495] Analyzer DEBUG started. Workers: 1
+[PID:3497] Aggregator started. Waiting for 4 levels...
+[PID:3485] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:3493][TID:3496] Worker 0 started.
+[PID:3482] Watchdog thread started.
+[PID:3495][TID:3499] Worker 0 started.
+[PID:3485] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:3485] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:3484] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
+[PID:3483] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
+[PID:3486][TID:3492] Worker 0 done. Entries: 4, Weighted: 12.0
+[PID:3486][TID:3492] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:3491][TID:3494] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:3491][TID:3494] ** Reporting thread (lowest TID). Level: WARN **
+[PID:3493][TID:3496] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:3493][TID:3496] ** Reporting thread (lowest TID). Level: INFO **
+[PID:3485] All EOF markers forwarded to Region B. Routed=13, Priority=4. Exiting.
+[PID:3484] Reader 1 exiting.
+[PID:3495][TID:3499] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:3495][TID:3499] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:3483] Reader 0 exiting.
+[PID:3486][TID:3492] Total entries: 4 | Weighted score: 12.0
+[PID:3486] Analyzer ERROR exiting.
+[PID:3497] ERROR result received.
+[PID:3497] WARN result received.
+[PID:3491][TID:3494] Total entries: 3 | Weighted score: 0.0
+[PID:3493][TID:3496] Total entries: 3 | Weighted score: 0.0
+[PID:3495][TID:3499] Total entries: 3 | Weighted score: 0.0
+[PID:3497] INFO result received.
+[PID:3497] DEBUG result received.
+[PID:3491] Analyzer WARN exiting.
+[PID:3493] Analyzer INFO exiting.
+[PID:3495] Analyzer DEBUG exiting.
+[PID:3497] All results received. Writing output files...
+[PID:3497] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/to1.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/to1.bin
+[PID:3497] Aggregator exiting.
+
+==================================================
+SYSTEM SUMMARY
+Keywords      : error
+Log files     : 2
+Total entries : 13
+Total weighted: 12.0
+Filter file   : simple_priority.txt
+  ERROR : 4 entries, score: 12.0
+  WARN  : 3 entries, score: 0.0
+  INFO  : 3 entries, score: 0.0
+  DEBUG : 3 entries, score: 0.0
+==================================================
+Program terminated successfully.

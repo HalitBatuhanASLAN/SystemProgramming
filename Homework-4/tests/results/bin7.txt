@@ -1,0 +1,21 @@
+KEYWORD_LIST: a,b,c,d,e,f,g
+FILES: 2
+TOTAL_WEIGHTED_SCORE: 249.0
+HIGH_PRIORITY_SCORE: 97.0
+FILTER_FILE: simple_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE         a         b         c         d         e         f         g
+  ERROR        4           132.0      12.0       0.0      24.0      16.0      64.0      12.0       4.0
+   WARN        3            60.0      18.0       0.0       0.0       6.0      27.0       6.0       3.0
+   INFO        3            32.0       6.0       0.0       6.0       4.0      14.0       2.0       0.0
+  DEBUG        3            25.0       4.0       1.0       2.0       4.0      11.0       3.0       0.0
+# Top-3 sources per level
+ERROR    kernel:3  nginx:1
+WARN     nginx:2  disk:1
+INFO     nginx:3
+DEBUG    nginx:2  auth:1
+# Per-thread contributions (weighted score)
+ERROR    thread_0:132.0
+WARN     thread_0:60.0
+INFO     thread_0:32.0
+DEBUG    thread_0:25.0

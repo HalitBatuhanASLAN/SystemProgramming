@@ -1,0 +1,21 @@
+KEYWORD_LIST: error,fail,timeout
+FILES: 1
+TOTAL_WEIGHTED_SCORE: 24.0
+HIGH_PRIORITY_SCORE: 12.0
+FILTER_FILE: error_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE     error      fail   timeout
+  ERROR        5            24.0       8.0       8.0       8.0
+   WARN        0             0.0       0.0       0.0       0.0
+   INFO        0             0.0       0.0       0.0       0.0
+  DEBUG        0             0.0       0.0       0.0       0.0
+# Top-3 sources per level
+ERROR    a:3  b:2
+WARN     -
+INFO     -
+DEBUG    -
+# Per-thread contributions (weighted score)
+ERROR    thread_0:24.0
+WARN     thread_0:0.0
+INFO     thread_0:0.0
+DEBUG    thread_0:0.0

@@ -1,0 +1,31 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Integration Test 12: Signal Handling
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 12.1 SIGINT during execution ───
+  ⊘ SKIP  12.1 process exited too fast for SIGINT (log too small)
+
+─── 12.2 No leftover analyzer processes ───
+  ✓ PASS  no leftover processes (clean shutdown)
+
+─── 12.3 No zombie/defunct processes ───
+  ✓ PASS  no defunct analyzer processes
+
+─── 12.4 No shared memory leak ───
+  ✓ PASS  no /dev/shm leak
+  ✓ PASS  no SysV shm owned by user
+
+─── 12.5 SIGTERM handling ───
+  ⊘ SKIP  12.5 process exited before SIGTERM (test inconclusive)
+
+─── 12.6 Multiple SIGINT signals ───
+  ✓ PASS  multi-SIGINT: process exited cleanly
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 7
+  Başarılı     : 5
+  Başarısız    : 0
+  Atlandı      : 2

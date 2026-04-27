@@ -1,0 +1,31 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Integration Test 13: Timeout Handling
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 13.1 Sufficient timeout (T=10): normal completion ───
+  ✓ PASS  T=10: exit 0
+  ✓ PASS  T=10: 'All results received'
+  ✓ PASS  T=10: no timeout messages
+
+─── 13.2 Very short timeout (T=2): may still complete ───
+  ✓ PASS  T=2: completed normally (exit 0)
+
+─── 13.3 Tight timeout (T=1): completes or times out gracefully ───
+  ✓ PASS  T=1: clean exit (no segfault, exit=0)
+
+─── 13.4 Output file written even if some levels timed out ───
+  ✓ PASS  T=1: output .txt exists despite tight timeout
+  ✓ PASS  T=1: KEYWORD_LIST present
+
+─── 13.5 aggregator.c uses pthread_cond_timedwait (source check) ───
+  ✓ PASS  aggregator.c contains pthread_cond_timedwait
+  ✓ PASS  aggregator.c contains sem_timedwait
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 9
+  Başarılı     : 9
+  Başarısız    : 0
+  Atlandı      : 0

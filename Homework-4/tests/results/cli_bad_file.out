@@ -1,0 +1,22 @@
+[PID:794] Parent started. Files: 1, Keywords: error
+[PID:794] Shared memory initialized (A:4 B:4x4 D:2).
+[PID:794] Forking Reader 0 -> /nonexistent/path/foo.log
+[PID:794] Forking Dispatcher
+[PID:795] Reader 0 started. File: /nonexistent/path/foo.log, Threads: 1
+[PID:794] Forking Analyzer ERROR (index 0)
+[PID:796] Dispatcher started.
+[PID:794] Forking Analyzer WARN (index 1)
+[PID:797] Analyzer ERROR started. Workers: 1
+[PID:794] Forking Analyzer INFO (index 2)
+[PID:798] Analyzer WARN started. Workers: 1
+[PID:797][TID:799] Worker 0 started.
+[PID:794] Forking Analyzer DEBUG (index 3)
+[PID:800] Analyzer INFO started. Workers: 1
+[PID:798][TID:801] Worker 0 started.
+[PID:794] Forking Aggregator
+[PID:802] Analyzer DEBUG started. Workers: 1
+[PID:800][TID:803] Worker 0 started.
+[PID:802][TID:807] Worker 0 started.
+[PID:805] Aggregator started. Waiting for 4 levels...
+[PID:794] Watchdog thread started.
+[PID:805] ERROR result received.

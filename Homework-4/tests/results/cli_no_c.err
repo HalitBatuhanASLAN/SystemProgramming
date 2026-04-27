@@ -1,0 +1,6 @@
+Hata: zorunlu parametreler eksik
+Kullanim: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/analyzer -c <config> -f <filter> -k <keywords>
+  -t <reader_threads> -w <worker_threads>
+  -a <cap_A> -b <cap_B> -d <cap_D>
+  -T <timeout> -o <output> -O <binary>
+Default -T: 10 sec

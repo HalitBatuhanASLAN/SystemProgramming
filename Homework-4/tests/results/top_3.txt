@@ -1,0 +1,21 @@
+KEYWORD_LIST: msg
+FILES: 1
+TOTAL_WEIGHTED_SCORE: 28.0
+HIGH_PRIORITY_SCORE: 12.0
+FILTER_FILE: multi_source_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE       msg
+  ERROR        7            28.0      28.0
+   WARN        0             0.0       0.0
+   INFO        0             0.0       0.0
+  DEBUG        0             0.0       0.0
+# Top-3 sources per level
+ERROR    alpha:3  beta:2  gamma:1
+WARN     -
+INFO     -
+DEBUG    -
+# Per-thread contributions (weighted score)
+ERROR    thread_0:8.0  thread_1:0.0  thread_2:12.0  thread_3:8.0
+WARN     thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0
+INFO     thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0
+DEBUG    thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0

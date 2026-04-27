@@ -1,0 +1,47 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Integration Test 11: Determinism
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 11.1 Single thread: 5 runs identical ───
+  ✓ PASS  single thread: all 5 runs identical (TOTAL=19.0)
+
+─── 11.2 Multi-thread: 5 runs identical TOTAL ───
+  ✓ PASS  multi-thread: 5 runs identical (TOTAL=2810.0)
+
+─── 11.3 Multi-thread: per-LEVEL totals identical ───
+  ✓ PASS  ERROR: identical across 5 runs (1136.0)
+  ✓ PASS  WARN: identical across 5 runs (828.0)
+  ✓ PASS  INFO: identical across 5 runs (554.0)
+  ✓ PASS  DEBUG: identical across 5 runs (292.0)
+
+─── 11.4 Same TOTAL with t=1 vs t=4 (algorithm consistency, ±1%) ───
+  ✓ PASS  t=1 ≈ t=4 TOTAL (2813.0 vs 2810.0, ±1%)
+
+─── 11.5 LEVEL totals stable across thread counts ───
+  ✓ PASS  ERROR: t=1 ≈ t=4 (1136.0 vs 1136.0, ±2% or ±1)
+  ✓ PASS  WARN: t=1 ≈ t=4 (831.0 vs 828.0, ±2% or ±1)
+  ✓ PASS  INFO: t=1 ≈ t=4 (554.0 vs 554.0, ±2% or ±1)
+  ✓ PASS  DEBUG: t=1 ≈ t=4 (292.0 vs 292.0, ±2% or ±1)
+
+─── 11.6 ENTRIES counts stable (±2 entries) ───
+  ✓ PASS  ERROR: ENTRIES t=1≈t=4 (247 vs 247, diff=0)
+  ✓ PASS  WARN: ENTRIES t=1≈t=4 (249 vs 248, diff=1)
+  ✓ PASS  INFO: ENTRIES t=1≈t=4 (250 vs 250, diff=0)
+  ✓ PASS  DEBUG: ENTRIES t=1≈t=4 (254 vs 254, diff=0)
+
+─── 11.7 Top-3 sources identical across runs ───
+  ✓ PASS  run 1: alpha:3 (always rank 1)
+  ✓ PASS  run 2: alpha:3 (always rank 1)
+  ✓ PASS  run 3: alpha:3 (always rank 1)
+
+─── 11.8 HIGH_PRIORITY_SCORE deterministic ───
+  ✓ PASS  HP: identical across 5 runs (HP=991.0)
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 19
+  Başarılı     : 19
+  Başarısız    : 0
+  Atlandı      : 0

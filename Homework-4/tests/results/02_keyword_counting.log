@@ -1,0 +1,42 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Unit Test 02: Keyword Counting (Sliding Window)
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 2.1 Overlapping keyword matches ───
+  ✓ PASS  overlap output exists
+  ✓ PASS  ERROR.error = 8.0 (2 occurrences × weight 4)
+  ✓ PASS  ERROR.aa = 16.0 (4 occurrences × weight 4)
+  ✓ PASS  TOTAL_WEIGHTED_SCORE = 24.0
+
+─── 2.2 Non-overlapping simple count ───
+  ✓ PASS  ERROR.error count = 8.0
+  ✓ PASS  ERROR.fail count = 8.0
+  ✓ PASS  ERROR.timeout count = 8.0
+  ✓ PASS  ERROR weighted total = 24.0
+
+─── 2.3 Known-score deterministic check ───
+  ✓ PASS  TOTAL_WEIGHTED = 20.0
+  ✓ PASS  ERROR weighted = 8.0
+  ✓ PASS  WARN weighted = 6.0
+  ✓ PASS  INFO weighted = 4.0
+  ✓ PASS  DEBUG weighted = 2.0
+
+─── 2.4 Keywords with no matches ───
+  ✓ PASS  no-match keywords: total = 0.0
+
+─── 2.5 Long lines (10 error/line × 49 lines × weight 4) ───
+  ✓ PASS  long lines: exit 0
+  ✓ PASS  long lines: ERROR.error = 1960.0
+
+─── 2.6 Counting is deterministic across runs ───
+  ✓ PASS  deterministic: run1 == run2
+  ✓ PASS  deterministic: run2 == run3
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 18
+  Başarılı     : 18
+  Başarısız    : 0
+  Atlandı      : 0

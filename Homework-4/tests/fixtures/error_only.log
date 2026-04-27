@@ -1,0 +1,5 @@
+[2025-03-10 08:00:00] [ERROR] [a] error
+[2025-03-10 08:00:01] [ERROR] [a] fail
+[2025-03-10 08:00:02] [ERROR] [a] timeout
+[2025-03-10 08:00:03] [ERROR] [b] error fail timeout
+[2025-03-10 08:00:04] [ERROR] [b] no match

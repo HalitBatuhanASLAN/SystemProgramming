@@ -1,0 +1,49 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Stress Test 20: High Concurrency
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 20.1 Reference run (t=1, w=1) - ground truth ───
+  ✓ PASS  ref run: exit 0
+  ℹ  reference TOTAL=2813.0 HP=991.0
+
+─── 20.2 Medium concurrency (t=4, w=4) ───
+  ✓ PASS  medium: exit 0
+  ✓ PASS  medium: TOTAL ≈ ref (2813.0, ±2%)
+  ✓ PASS  medium: HP ≈ ref (991.0, ±2%)
+  ✓ PASS  medium: ERROR ≈ ref (1136.0, ±2%)
+  ✓ PASS  medium: WARN ≈ ref (831.0, ±2%)
+  ✓ PASS  medium: INFO ≈ ref (554.0, ±2%)
+  ✓ PASS  medium: DEBUG ≈ ref (292.0, ±2%)
+
+─── 20.3 High concurrency (t=8, w=6) ───
+  ✓ PASS  high: exit 0
+  ✓ PASS  high: TOTAL ≈ ref (2813.0, ±2%)
+  ✓ PASS  high: HP ≈ ref (991.0, ±2%)
+
+─── 20.4 Max concurrency (t=16, w=8) ───
+  ✓ PASS  max: exit 0
+  ✓ PASS  max: TOTAL ≈ ref (2813.0, ±2%)
+  ✓ PASS  max: HP ≈ ref (991.0, ±2%)
+
+─── 20.5 Small buffers, many threads (queue contention) ───
+  ✓ PASS  small buf + many threads: exit 0
+  ✓ PASS  small buffer: TOTAL ≈ ref (2813.0, ±2%)
+
+─── 20.6 Single thread + huge buffers (sanity) ───
+  ✓ PASS  large buffer: exit 0
+  ✓ PASS  large buffer: TOTAL ≈ ref
+
+─── 20.7 5 consecutive high-concurrency runs ───
+  ✓ PASS  5 consecutive stress runs: all within ±2% of reference
+
+─── 20.8 No leftover after stress ───
+  ✓ PASS  no leftover analyzer processes
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 20
+  Başarılı     : 20
+  Başarısız    : 0
+  Atlandı      : 0

@@ -1,0 +1,21 @@
+KEYWORD_LIST: error
+FILES: 1
+TOTAL_WEIGHTED_SCORE: 0.0
+HIGH_PRIORITY_SCORE: 0.0
+FILTER_FILE: empty_priority.txt
+# Levels sorted by total_weighted_score DESC
+  LEVEL  ENTRIES  WEIGHTED_SCORE     error
+  ERROR        1             0.0       0.0
+   WARN        0             0.0       0.0
+   INFO        0             0.0       0.0
+  DEBUG        0             0.0       0.0
+# Top-3 sources per level
+ERROR    src:1
+WARN     -
+INFO     -
+DEBUG    -
+# Per-thread contributions (weighted score)
+ERROR    thread_0:0.0
+WARN     thread_0:0.0
+INFO     thread_0:0.0
+DEBUG    thread_0:0.0

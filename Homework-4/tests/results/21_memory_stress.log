@@ -1,0 +1,33 @@
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Stress Test 21: Memory & Resource Stress
+╚═══════════════════════════════════════════════════════════════════╝
+
+─── 21.1 Minimum buffers (a=4, b=4, d=2): heavy contention ───
+  ✓ PASS  min buffer: exit 0
+  ✓ PASS  min buffer: result ≈ ref (2813.0, ±2%)
+
+─── 21.2 No FD leak across 10 consecutive runs ───
+  ✓ PASS  FD count stable (4 → 4, diff=0)
+
+─── 21.3 /dev/shm leak detection ───
+  ✓ PASS  /dev/shm clean (init=0 final=0)
+
+─── 21.4 Process table clean after burst ───
+  ✓ PASS  no leftover processes after burst
+  ✓ PASS  no zombie/defunct after burst
+
+─── 21.5 RSS memory growth check (single long run) ───
+  ⊘ SKIP  21.5 RSS unmeasurable (process state lost)
+
+─── 21.6 Stack stress: long lines, MAX_KEYWORDS=8 ───
+  ✓ PASS  stack stress: exit 0
+  ✓ PASS  stack stress: ERROR.error in [1900,2050] (got 2000.0)
+
+═══════════════════════════════════════════════════════════════════
+ TEST ÖZETİ
+═══════════════════════════════════════════════════════════════════
+  Toplam        : 9
+  Başarılı     : 8
+  Başarısız    : 0
+  Atlandı      : 1
