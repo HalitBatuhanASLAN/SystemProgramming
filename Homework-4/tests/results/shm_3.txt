@@ -15,7 +15,7 @@ WARN     db:131  nginx:127  daemon:126
 INFO     svc:140  daemon:139  disk:138
 DEBUG    db:152  nginx:138  app:128
 # Per-thread contributions (weighted score)
-ERROR    thread_0:1892.0  thread_1:2072.0  thread_2:1872.0  thread_3:2056.0
-WARN     thread_0:1353.0  thread_1:1389.0  thread_2:1410.0  thread_3:1305.0
-INFO     thread_0:962.0  thread_1:910.0  thread_2:766.0  thread_3:1038.0
-DEBUG    thread_0:462.0  thread_1:478.0  thread_2:456.0  thread_3:471.0
+ERROR    thread_0:1844.0  thread_1:2164.0  thread_2:1964.0  thread_3:1920.0
+WARN     thread_0:1230.0  thread_1:1308.0  thread_2:1317.0  thread_3:1602.0
+INFO     thread_0:914.0  thread_1:992.0  thread_2:900.0  thread_3:870.0
+DEBUG    thread_0:402.0  thread_1:564.0  thread_2:457.0  thread_3:444.0

@@ -5,7 +5,7 @@
 
 ─── 22.1 Many files in config (8 logs) ───
   ✓ PASS  many files: exit 0
-  ✓ PASS  many files: completed in 1s (<= 60s)
+  ✓ PASS  many files: completed in 0s (<= 60s)
   ✓ PASS  many files: 8 readers forked
 
 ─── 22.2 Ten consecutive medium runs (runtime budget) ───

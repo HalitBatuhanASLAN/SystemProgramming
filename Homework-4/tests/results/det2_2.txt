@@ -11,11 +11,11 @@ FILTER_FILE: big_priority.txt
   DEBUG      254           292.0      97.0      88.0     107.0
 # Top-3 sources per level
 ERROR    disk:38  app:36  net:34
-WARN     auth:38  nginx:38  db:35
-INFO     nginx:36  app:35  net:35
+WARN     nginx:38  auth:38  db:35
+INFO     nginx:36  net:35  app:35
 DEBUG    nginx:43  db:39  auth:35
 # Per-thread contributions (weighted score)
-ERROR    thread_0:284.0  thread_1:356.0  thread_2:248.0  thread_3:248.0
-WARN     thread_0:213.0  thread_1:180.0  thread_2:183.0  thread_3:252.0
-INFO     thread_0:136.0  thread_1:120.0  thread_2:136.0  thread_3:162.0
-DEBUG    thread_0:51.0  thread_1:85.0  thread_2:83.0  thread_3:73.0
+ERROR    thread_0:296.0  thread_1:300.0  thread_2:292.0  thread_3:248.0
+WARN     thread_0:222.0  thread_1:216.0  thread_2:198.0  thread_3:192.0
+INFO     thread_0:142.0  thread_1:136.0  thread_2:130.0  thread_3:146.0
+DEBUG    thread_0:74.0  thread_1:83.0  thread_2:73.0  thread_3:62.0

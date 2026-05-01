@@ -15,7 +15,7 @@ WARN     -
 INFO     -
 DEBUG    -
 # Per-thread contributions (weighted score)
-ERROR    thread_0:16.0  thread_1:8.0  thread_2:0.0  thread_3:4.0
+ERROR    thread_0:4.0  thread_1:4.0  thread_2:12.0  thread_3:8.0
 WARN     thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0
 INFO     thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0
 DEBUG    thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0

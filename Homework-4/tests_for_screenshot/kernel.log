@@ -1,0 +1,15 @@
+[2025-03-10 08:15:02] [ERROR] [kernel] Out of memory: kill process 4821
+[2025-03-10 08:15:03] [WARN] [disk] Disk usage at 91% on /dev/sda1
+[2025-03-10 08:15:04] [INFO] [nginx] Connection accepted from 192.168.1.5
+[2025-03-10 08:15:05] [DEBUG] [auth] Token verified for user: admin
+[2025-03-10 08:15:06] [ERROR] [kernel] Segfault in process 4822 (core dumped)
+[2025-03-10 08:15:07] [WARN] [nginx] Retry attempt 3 of 5 for upstream
+[2025-03-10 08:15:08] [ERROR] [auth] Login error for user root
+[2025-03-10 08:15:09] [INFO] [nginx] error in upstream connection
+[2025-03-10 08:15:10] [DEBUG] [kernel] timeout reached during boot
+[2025-03-10 08:15:11] [ERROR] [disk] error writing block 4096
+[2025-03-10 08:15:12] [WARN] [auth] Password retry timeout for guest
+[2025-03-10 08:15:13] [INFO] [kernel] Boot complete after error recovery
+[2025-03-10 08:15:14] [ERROR] [nginx] Failed to bind socket: error code 13
+[2025-03-10 08:15:15] [DEBUG] [disk] Background scan completed
+[2025-03-10 08:15:16] [ERROR] [kernel] Critical error in module xfs

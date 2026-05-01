@@ -1,53 +1,53 @@
-[PID:1305] Parent started. Files: 1, Keywords: error
-[PID:1305] Shared memory initialized (A:4 B:4x4 D:2).
-[PID:1305] Forking Reader 0 -> all_malformed.log
-[PID:1305] Forking Dispatcher
-[PID:1305] Forking Analyzer ERROR (index 0)
-[PID:1307] Dispatcher started.
-[PID:1306] Reader 0 started. File: all_malformed.log, Threads: 1
-[PID:1305] Forking Analyzer WARN (index 1)
-[PID:1308] Analyzer ERROR started. Workers: 1
-[PID:1309] Analyzer WARN started. Workers: 1
-[PID:1305] Forking Analyzer INFO (index 2)
-[PID:1308][TID:1310] Worker 0 started.
-[PID:1309][TID:1311] Worker 0 started.
-[PID:1306][TID:reader0] Reader thread 0: range [0, 177) bytes
-[PID:1305] Forking Analyzer DEBUG (index 3)
-[PID:1312] Analyzer INFO started. Workers: 1
-[PID:1305] Forking Aggregator
-[PID:1315] Analyzer DEBUG started. Workers: 1
-[PID:1305] Watchdog thread started.
-[PID:1312][TID:1316] Worker 0 started.
-[PID:1317] Aggregator started. Waiting for 4 levels...
-[PID:1315][TID:1319] Worker 0 started.
-[PID:1306][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=4
-[PID:1306] Parser thread: dispatched E:1 W:0 I:0 D:0 -> Region A
-[PID:1308][TID:1310] Worker 0 done. Entries: 1, Weighted: 0.0
-[PID:1308][TID:1310] ** Reporting thread (lowest TID). Level: ERROR **
-[PID:1312][TID:1316] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1312][TID:1316] ** Reporting thread (lowest TID). Level: INFO **
-[PID:1315][TID:1319] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1315][TID:1319] ** Reporting thread (lowest TID). Level: DEBUG **
-[PID:1307] All EOF markers forwarded to Region B. Routed=1, Priority=0. Exiting.
-[PID:1309][TID:1311] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1309][TID:1311] ** Reporting thread (lowest TID). Level: WARN **
-[PID:1306] Reader 0 exiting.
-[PID:1308][TID:1310] Total entries: 1 | Weighted score: 0.0
-[PID:1317] ERROR result received.
-[PID:1312][TID:1316] Total entries: 0 | Weighted score: 0.0
-[PID:1315][TID:1319] Total entries: 0 | Weighted score: 0.0
-[PID:1309][TID:1311] Total entries: 0 | Weighted score: 0.0
-[PID:1308] Analyzer ERROR exiting.
-[PID:1317] WARN result received.
-[PID:1317] INFO result received.
-[PID:1312] Analyzer INFO exiting.
-[PID:1315] Analyzer DEBUG exiting.
-[PID:1309] Analyzer WARN exiting.
-[PID:1317] DEBUG result received.
-[PID:1317] All results received. Writing output files...
-[PID:1317] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/malf.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/malf.bin
-[PID:1317] Aggregator exiting.
-[WATCHDOG] Progress at T+0s: Reader0(all_malformed.log)=1 children_alive=0
+[PID:2009] Parent started. Files: 1, Keywords: error
+[PID:2009] Shared memory initialized (A:4 B:4x4 D:2).
+[PID:2009] Forking Reader 0 -> all_malformed.log
+[PID:2009] Forking Dispatcher
+[PID:2010] Reader 0 started. File: all_malformed.log, Threads: 1
+[PID:2009] Forking Analyzer ERROR (index 0)
+[PID:2011] Dispatcher started.
+[PID:2009] Forking Analyzer WARN (index 1)
+[PID:2012] Analyzer ERROR started. Workers: 1
+[PID:2010][TID:reader0] Reader thread 0: range [0, 177) bytes
+[PID:2009] Forking Analyzer INFO (index 2)
+[PID:2013] Analyzer WARN started. Workers: 1
+[PID:2012][TID:2014] Worker 0 started.
+[PID:2009] Forking Analyzer DEBUG (index 3)
+[PID:2017] Analyzer INFO started. Workers: 1
+[PID:2013][TID:2018] Worker 0 started.
+[PID:2009] Forking Aggregator
+[PID:2019] Analyzer DEBUG started. Workers: 1
+[PID:2021] Aggregator started. Waiting for 4 levels...
+[PID:2017][TID:2020] Worker 0 started.
+[PID:2010][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=4
+[PID:2009] Watchdog thread started.
+[PID:2019][TID:2023] Worker 0 started.
+[PID:2010] Parser thread: dispatched E:1 W:0 I:0 D:0 -> Region A
+[PID:2013][TID:2018] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:2013][TID:2018] ** Reporting thread (lowest TID). Level: WARN **
+[PID:2011] All EOF markers forwarded to Region B. Routed=1, Priority=0. Exiting.
+[PID:2017][TID:2020] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:2017][TID:2020] ** Reporting thread (lowest TID). Level: INFO **
+[PID:2012][TID:2014] Worker 0 done. Entries: 1, Weighted: 0.0
+[PID:2019][TID:2023] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:2019][TID:2023] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:2010] Reader 0 exiting.
+[PID:2013][TID:2018] Total entries: 0 | Weighted score: 0.0
+[PID:2017][TID:2020] Total entries: 0 | Weighted score: 0.0
+[PID:2012][TID:2014] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:2019][TID:2023] Total entries: 0 | Weighted score: 0.0
+[PID:2013] Analyzer WARN exiting.
+[PID:2017] Analyzer INFO exiting.
+[PID:2012][TID:2014] Total entries: 1 | Weighted score: 0.0
+[PID:2012] Analyzer ERROR exiting.
+[PID:2021] ERROR result received.
+[PID:2021] WARN result received.
+[PID:2019] Analyzer DEBUG exiting.
+[PID:2021] INFO result received.
+[PID:2021] DEBUG result received.
+[PID:2021] All results received. Writing output files...
+[PID:2021] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/malf.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/malf.bin
+[PID:2021] Aggregator exiting.
+[WATCHDOG] Progress at T+1s: Reader0(all_malformed.log)=1 children_alive=0
 
 ==================================================
 SYSTEM SUMMARY

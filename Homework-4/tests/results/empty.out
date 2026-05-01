@@ -1,52 +1,52 @@
-[PID:1283] Parent started. Files: 1, Keywords: error
-[PID:1283] Shared memory initialized (A:4 B:4x4 D:2).
-[PID:1283] Forking Reader 0 -> empty_file.log
-[PID:1283] Forking Dispatcher
-[PID:1284] Reader 0 started. File: empty_file.log, Threads: 1
-[PID:1283] Forking Analyzer ERROR (index 0)
-[PID:1285] Dispatcher started.
-[PID:1283] Forking Analyzer WARN (index 1)
-[PID:1284][TID:reader0] Reader thread 0: range [0, 0) bytes
-[PID:1286] Analyzer ERROR started. Workers: 1
-[PID:1283] Forking Analyzer INFO (index 2)
-[PID:1287] Analyzer WARN started. Workers: 1
-[PID:1286][TID:1290] Worker 0 started.
-[PID:1283] Forking Analyzer DEBUG (index 3)
-[PID:1291] Analyzer INFO started. Workers: 1
-[PID:1287][TID:1292] Worker 0 started.
-[PID:1283] Forking Aggregator
-[PID:1293] Analyzer DEBUG started. Workers: 1
-[PID:1284][TID:reader0] Reader thread 0: finished, lines_read=0, malformed=0
-[PID:1291][TID:1294] Worker 0 started.
-[PID:1295] Aggregator started. Waiting for 4 levels...
-[PID:1283] Watchdog thread started.
-[PID:1293][TID:1297] Worker 0 started.
-[PID:1284] Parser thread: dispatched E:0 W:0 I:0 D:0 -> Region A
-[PID:1286][TID:1290] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1286][TID:1290] ** Reporting thread (lowest TID). Level: ERROR **
-[PID:1287][TID:1292] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1287][TID:1292] ** Reporting thread (lowest TID). Level: WARN **
-[PID:1291][TID:1294] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1285] All EOF markers forwarded to Region B. Routed=0, Priority=0. Exiting.
-[PID:1293][TID:1297] Worker 0 done. Entries: 0, Weighted: 0.0
-[PID:1293][TID:1297] ** Reporting thread (lowest TID). Level: DEBUG **
-[PID:1284] Reader 0 exiting.
-[PID:1286][TID:1290] Total entries: 0 | Weighted score: 0.0
-[PID:1295] ERROR result received.
-[PID:1295] WARN result received.
-[PID:1287][TID:1292] Total entries: 0 | Weighted score: 0.0
-[PID:1291][TID:1294] ** Reporting thread (lowest TID). Level: INFO **
-[PID:1293][TID:1297] Total entries: 0 | Weighted score: 0.0
-[PID:1286] Analyzer ERROR exiting.
-[PID:1287] Analyzer WARN exiting.
-[PID:1291][TID:1294] Total entries: 0 | Weighted score: 0.0
-[PID:1295] INFO result received.
-[PID:1295] DEBUG result received.
-[PID:1293] Analyzer DEBUG exiting.
-[PID:1291] Analyzer INFO exiting.
-[PID:1295] All results received. Writing output files...
-[PID:1295] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/empty.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/empty.bin
-[PID:1295] Aggregator exiting.
+[PID:1987] Parent started. Files: 1, Keywords: error
+[PID:1987] Shared memory initialized (A:4 B:4x4 D:2).
+[PID:1987] Forking Reader 0 -> empty_file.log
+[PID:1987] Forking Dispatcher
+[PID:1988] Reader 0 started. File: empty_file.log, Threads: 1
+[PID:1987] Forking Analyzer ERROR (index 0)
+[PID:1989] Dispatcher started.
+[PID:1987] Forking Analyzer WARN (index 1)
+[PID:1990] Analyzer ERROR started. Workers: 1
+[PID:1988][TID:reader0] Reader thread 0: range [0, 0) bytes
+[PID:1987] Forking Analyzer INFO (index 2)
+[PID:1991] Analyzer WARN started. Workers: 1
+[PID:1990][TID:1992] Worker 0 started.
+[PID:1987] Forking Analyzer DEBUG (index 3)
+[PID:1987] Forking Aggregator
+[PID:1995] Analyzer INFO started. Workers: 1
+[PID:1991][TID:1996] Worker 0 started.
+[PID:1997] Analyzer DEBUG started. Workers: 1
+[PID:1998] Aggregator started. Waiting for 4 levels...
+[PID:1997][TID:2001] Worker 0 started.
+[PID:1987] Watchdog thread started.
+[PID:1988][TID:reader0] Reader thread 0: finished, lines_read=0, malformed=0
+[PID:1995][TID:2000] Worker 0 started.
+[PID:1988] Parser thread: dispatched E:0 W:0 I:0 D:0 -> Region A
+[PID:1989] All EOF markers forwarded to Region B. Routed=0, Priority=0. Exiting.
+[PID:1990][TID:1992] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1990][TID:1992] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:1991][TID:1996] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1991][TID:1996] ** Reporting thread (lowest TID). Level: WARN **
+[PID:1995][TID:2000] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1995][TID:2000] ** Reporting thread (lowest TID). Level: INFO **
+[PID:1997][TID:2001] Worker 0 done. Entries: 0, Weighted: 0.0
+[PID:1997][TID:2001] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:1988] Reader 0 exiting.
+[PID:1990][TID:1992] Total entries: 0 | Weighted score: 0.0
+[PID:1998] ERROR result received.
+[PID:1991][TID:1996] Total entries: 0 | Weighted score: 0.0
+[PID:1995][TID:2000] Total entries: 0 | Weighted score: 0.0
+[PID:1997][TID:2001] Total entries: 0 | Weighted score: 0.0
+[PID:1990] Analyzer ERROR exiting.
+[PID:1998] WARN result received.
+[PID:1998] INFO result received.
+[PID:1991] Analyzer WARN exiting.
+[PID:1995] Analyzer INFO exiting.
+[PID:1997] Analyzer DEBUG exiting.
+[PID:1998] DEBUG result received.
+[PID:1998] All results received. Writing output files...
+[PID:1998] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/empty.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/empty.bin
+[PID:1998] Aggregator exiting.
 [WATCHDOG] Progress at T+0s: Reader0(empty_file.log)=0 children_alive=0
 
 ==================================================

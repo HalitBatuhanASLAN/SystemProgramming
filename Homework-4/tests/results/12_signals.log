@@ -20,12 +20,12 @@
   ⊘ SKIP  12.5 process exited before SIGTERM (test inconclusive)
 
 ─── 12.6 Multiple SIGINT signals ───
-  ✓ PASS  multi-SIGINT: process exited cleanly
+  ⊘ SKIP  12.6 process exited too fast (test inconclusive)
 
 ═══════════════════════════════════════════════════════════════════
  TEST ÖZETİ
 ═══════════════════════════════════════════════════════════════════
   Toplam        : 7
-  Başarılı     : 5
+  Başarılı     : 4
   Başarısız    : 0
-  Atlandı      : 2
+  Atlandı      : 3

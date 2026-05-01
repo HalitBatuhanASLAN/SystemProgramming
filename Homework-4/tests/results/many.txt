@@ -15,7 +15,7 @@ WARN     nginx:167  db:166  auth:163
 INFO     disk:170  kernel:166  nginx:158
 DEBUG    db:191  nginx:183  kernel:158
 # Per-thread contributions (weighted score)
-ERROR    thread_0:5268.0  thread_1:5696.0  thread_2:5372.0  thread_3:5040.0  thread_4:4384.0  thread_5:5152.0
-WARN     thread_0:3018.0  thread_1:3189.0  thread_2:2352.0  thread_3:3216.0  thread_4:2886.0  thread_5:2604.0
-INFO     thread_0:1908.0  thread_1:2504.0  thread_2:2004.0  thread_3:1854.0  thread_4:1790.0  thread_5:2004.0
-DEBUG    thread_0:1312.0  thread_1:884.0  thread_2:823.0  thread_3:1064.0  thread_4:758.0  thread_5:924.0
+ERROR    thread_0:5680.0  thread_1:5940.0  thread_2:4740.0  thread_3:4664.0  thread_4:4640.0  thread_5:5248.0
+WARN     thread_0:3375.0  thread_1:3231.0  thread_2:2559.0  thread_3:2976.0  thread_4:2682.0  thread_5:2442.0
+INFO     thread_0:2562.0  thread_1:1960.0  thread_2:1866.0  thread_3:1940.0  thread_4:1954.0  thread_5:1782.0
+DEBUG    thread_0:939.0  thread_1:1470.0  thread_2:852.0  thread_3:825.0  thread_4:863.0  thread_5:816.0

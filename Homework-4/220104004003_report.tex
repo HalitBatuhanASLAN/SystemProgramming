@@ -172,12 +172,12 @@ Concurrent Log Analysis Pipeline \par}
 \vspace{3cm}
 
 \begin{tabular}{rl}
-\textbf{Student Name:} & \texttt{[Halit Surname]} \\[6pt]
-\textbf{Student ID:}   & \texttt{[XXXXXXXXX]} \\[6pt]
+\textbf{Student Name:} & \texttt{Halit Batuhan ASLAN} \\[6pt]
+\textbf{Student ID:}   & \texttt{220104004003} \\[6pt]
 \textbf{Course:}       & CSE 344 -- System Programming \\[6pt]
 \textbf{Homework:}     & \#4 \\[6pt]
 \textbf{Due Date:}     & 02 April 2026 \\[6pt]
-\textbf{Platform:}     & Debian 12 (64-bit) on VirtualBox \\[6pt]
+\textbf{Platform:}     & Debian 11 (64-bit) on VirtualBox \\[6pt]
 \textbf{Compiler:}     & \code{gcc -Wall -Wextra -pthread -O2} \\
 \end{tabular}
 
@@ -1043,13 +1043,6 @@ the assignment. Each test was run on Debian~12 (64-bit) inside
 VirtualBox, with the binary compiled by
 \code{gcc -Wall -Wextra -pthread -O2 -g}.
 
-\begin{infobox}
-Each subsection includes the exact command, the expected outcome, and
-a placeholder for the uncut terminal screenshot. To complete the
-report, replace each \code{\textbackslash{}includegraphics} placeholder
-with your own screenshot taken on your VM.
-\end{infobox}
-
 \subsection{Test 1 -- Baseline}
 \label{sec:test1}
 
@@ -1072,14 +1065,11 @@ $ od -An -N4 -tx1 out.bin
  0b 44 e3 c5
 \end{lstlisting}
 
-% Replace this with a real screenshot:
-% \begin{figure}[H]\centering
-%     \includegraphics[width=0.95\textwidth]{screenshots/test1_baseline.png}
-%     \caption{Test~1 -- Baseline. Uncut terminal from prompt to exit.}
-% \end{figure}
-
-\noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test1\_baseline.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test1_baseline.png}
+    \caption{Test~1 -- Baseline. Uncut terminal output showing correct counts, output format, and binary magic 0xC5E3440B.}
+\end{figure}
 
 \subsection{Test 2 -- Multi-keyword Weighted Scoring}
 
@@ -1105,7 +1095,11 @@ should read:
 \end{lstlisting}
 
 \noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test2\_multikw.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test2_multikw.png}
+    \caption{Test~2 -- Multi-keyword weighted scoring. TOTAL\_WEIGHTED\_SCORE: 12.0 confirmed (1 ERROR entry $\times$ 3 keywords $\times$ weight 4).}
+\end{figure}
 
 \subsection{Test 3 -- Single Thread}
 
@@ -1124,7 +1118,11 @@ identical). This proves the single-thread path matches the multi-thread
 path on the same input.
 
 \noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test3\_single.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test3_single.png}
+    \caption{Test~3 -- Single thread (\code{-t 1 -w 1}). TOTAL and HIGH\_PRIORITY scores match the multi-thread run.}
+\end{figure}
 
 \subsection{Test 4 -- High Concurrency \& Determinism}
 
@@ -1144,7 +1142,11 @@ $ md5sum run_1.txt run_2.txt run_3.txt
 determinism.
 
 \noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test4\_concurrency.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test4_concurrency.png}
+    \caption{Test~4 -- High concurrency (\code{-t 8 -w 6}). Three independent runs produce identical TOTAL\_WEIGHTED\_SCORE and HIGH\_PRIORITY\_SCORE values.}
+\end{figure}
 
 \subsection{Test 5 -- Empty Filter}
 
@@ -1161,7 +1163,11 @@ HIGH_PRIORITY_SCORE: 0.0
 \end{lstlisting}
 
 \noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test5\_emptyfilter.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test5_emptyfilter.png}
+    \caption{Test~5 -- Empty priority filter. HIGH\_PRIORITY\_SCORE: 0.0 confirmed, no crash.}
+\end{figure}
 
 \subsection{Test 6 -- Valgrind (Memory Leaks)}
 
@@ -1187,7 +1193,11 @@ $ valgrind --leak-check=full --error-exitcode=1 \
 \end{lstlisting}
 
 \noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test6\_valgrind.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test6_valgrind.png}
+    \caption{Test~6 -- Valgrind: 0 errors, 0 leaks, all heap blocks freed.}
+\end{figure}
 
 \subsection{Test 7 -- Ctrl+C Cleanup}
 
@@ -1213,7 +1223,11 @@ $ ipcs -m | awk -v u="$(whoami)" '$3==u'
 \end{lstlisting}
 
 \noindent
-\textit{[Screenshot to be inserted: \code{screenshots/test7\_sigint.png}.]}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{screenshots/test7_sigint.png}
+    \caption{Test~7 -- SIGINT cleanup. Zero zombies, zero orphan shared memory segments.}
+\end{figure}
 
 % =============================================================================
 % 10. CHALLENGES & SOLUTIONS

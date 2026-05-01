@@ -1,246 +1,246 @@
-[PID:5241] Parent started. Files: 8, Keywords: error,fail,timeout
-[PID:5241] Shared memory initialized (A:64 B:64x4 D:16).
-[PID:5241] Forking Reader 0 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big1.log
-[PID:5241] Forking Reader 1 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big2.log
-[PID:5242] Reader 0 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big1.log, Threads: 8
-[PID:5241] Forking Reader 2 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big3.log
-[PID:5243] Reader 1 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big2.log, Threads: 8
-[PID:5241] Forking Reader 3 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge1.log
-[PID:5244] Reader 2 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big3.log, Threads: 8
-[PID:5242][TID:reader0] Reader thread 0: range [0, 3675) bytes
-[PID:5242][TID:reader1] Reader thread 1: range [3676, 7351) bytes
-[PID:5241] Forking Reader 4 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge2.log
-[PID:5245] Reader 3 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge1.log, Threads: 8
-[PID:5243][TID:reader0] Reader thread 0: range [0, 3750) bytes
-[PID:5242][TID:reader2] Reader thread 2: range [7352, 11027) bytes
-[PID:5244][TID:reader0] Reader thread 0: range [0, 1842) bytes
-[PID:5241] Forking Reader 5 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_kernel.log
-[PID:5248] Reader 4 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge2.log, Threads: 8
-[PID:5243][TID:reader1] Reader thread 1: range [3751, 7501) bytes
-[PID:5243][TID:reader2] Reader thread 2: range [7502, 11252) bytes
-[PID:5242][TID:reader3] Reader thread 3: range [11028, 14703) bytes
-[PID:5245][TID:reader0] Reader thread 0: range [0, 24503) bytes
-[PID:5244][TID:reader1] Reader thread 1: range [1843, 3685) bytes
-[PID:5241] Forking Reader 6 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_nginx.log
-[PID:5252] Reader 5 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_kernel.log, Threads: 8
-[PID:5243][TID:reader0] Reader thread 0: finished, lines_read=52, malformed=0
-[PID:5243][TID:reader3] Reader thread 3: range [11253, 15003) bytes
-[PID:5242][TID:reader4] Reader thread 4: range [14704, 18379) bytes
-[PID:5248][TID:reader0] Reader thread 0: range [0, 24487) bytes
-[PID:5245][TID:reader1] Reader thread 1: range [24504, 49007) bytes
-[PID:5244][TID:reader2] Reader thread 2: range [3686, 5528) bytes
-[PID:5244][TID:reader0] Reader thread 0: finished, lines_read=27, malformed=0
-[PID:5241] Forking Reader 7 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/long_lines.log
-[PID:5258] Reader 6 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_nginx.log, Threads: 8
-[PID:5243][TID:reader2] Reader thread 2: finished, lines_read=52, malformed=0
-[PID:5252][TID:reader0] Reader thread 0: range [0, 61) bytes
-[PID:5242][TID:reader1] Reader thread 1: finished, lines_read=49, malformed=0
-[PID:5248][TID:reader1] Reader thread 1: range [24488, 48975) bytes
-[PID:5245][TID:reader2] Reader thread 2: range [49008, 73511) bytes
-[PID:5244][TID:reader3] Reader thread 3: range [5529, 7371) bytes
-[PID:5241] Forking Dispatcher
-[PID:5264] Reader 7 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/long_lines.log, Threads: 8
-[PID:5243][TID:reader4] Reader thread 4: range [15004, 18754) bytes
-[PID:5252][TID:reader1] Reader thread 1: range [62, 123) bytes
-[PID:5242][TID:reader2] Reader thread 2: finished, lines_read=49, malformed=0
-[PID:5248][TID:reader2] Reader thread 2: range [48976, 73463) bytes
-[PID:5258][TID:reader0] Reader thread 0: range [0, 51) bytes
-[PID:5245][TID:reader3] Reader thread 3: range [73512, 98015) bytes
-[PID:5244][TID:reader1] Reader thread 1: finished, lines_read=24, malformed=0
-[PID:5241] Forking Analyzer ERROR (index 0)
-[PID:5269] Dispatcher started.
-[PID:5243][TID:reader3] Reader thread 3: finished, lines_read=49, malformed=0
-[PID:5252][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=0
-[PID:5264][TID:reader0] Reader thread 0: range [0, 1442) bytes
-[PID:5264][TID:reader1] Reader thread 1: range [1443, 2885) bytes
-[PID:5242][TID:reader0] Reader thread 0: finished, lines_read=51, malformed=0
-[PID:5242][TID:reader4] Reader thread 4: finished, lines_read=51, malformed=0
-[PID:5248][TID:reader3] Reader thread 3: range [73464, 97951) bytes
-[PID:5258][TID:reader1] Reader thread 1: range [52, 103) bytes
-[PID:5245][TID:reader4] Reader thread 4: range [98016, 122519) bytes
-[PID:5244][TID:reader2] Reader thread 2: finished, lines_read=25, malformed=0
-[PID:5244][TID:reader3] Reader thread 3: finished, lines_read=24, malformed=0
-[PID:5241] Forking Analyzer WARN (index 1)
-[PID:5275] Analyzer ERROR started. Workers: 6
-[PID:5243][TID:reader1] Reader thread 1: finished, lines_read=50, malformed=0
-[PID:5252][TID:reader2] Reader thread 2: range [124, 185) bytes
-[PID:5264][TID:reader2] Reader thread 2: range [2886, 4328) bytes
-[PID:5242][TID:reader5] Reader thread 5: range [18380, 22055) bytes
-[PID:5248][TID:reader4] Reader thread 4: range [97952, 122439) bytes
-[PID:5258][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=0
-[PID:5245][TID:reader5] Reader thread 5: range [122520, 147023) bytes
-[PID:5244][TID:reader4] Reader thread 4: range [7372, 9214) bytes
-[PID:5241] Forking Analyzer INFO (index 2)
-[PID:5281] Analyzer WARN started. Workers: 6
-[PID:5275][TID:5282] Worker 0 started.
-[PID:5243][TID:reader4] Reader thread 4: finished, lines_read=49, malformed=0
-[PID:5252][TID:reader1] Reader thread 1: finished, lines_read=1, malformed=0
-[PID:5252][TID:reader3] Reader thread 3: range [186, 247) bytes
-[PID:5264][TID:reader0] Reader thread 0: finished, lines_read=7, malformed=0
-[PID:5242][TID:reader3] Reader thread 3: finished, lines_read=51, malformed=0
-[PID:5248][TID:reader5] Reader thread 5: range [122440, 146927) bytes
-[PID:5258][TID:reader2] Reader thread 2: range [104, 155) bytes
-[PID:5245][TID:reader6] Reader thread 6: range [147024, 171527) bytes
-[PID:5244][TID:reader5] Reader thread 5: range [9215, 11057) bytes
-[PID:5241] Forking Analyzer DEBUG (index 3)
-[PID:5294] Analyzer INFO started. Workers: 6
-[PID:5281][TID:5295] Worker 0 started.
-[PID:5275][TID:5283] Worker 1 started.
-[PID:5243][TID:reader5] Reader thread 5: range [18755, 22505) bytes
-[PID:5252][TID:reader2] Reader thread 2: finished, lines_read=1, malformed=0
-[PID:5252][TID:reader4] Reader thread 4: range [248, 309) bytes
-[PID:5264][TID:reader1] Reader thread 1: finished, lines_read=6, malformed=0
-[PID:5242][TID:reader6] Reader thread 6: range [22056, 25731) bytes
-[PID:5258][TID:reader1] Reader thread 1: finished, lines_read=1, malformed=0
-[PID:5245][TID:reader7] Reader thread 7: range [171528, 196032) bytes
-[PID:5244][TID:reader4] Reader thread 4: finished, lines_read=24, malformed=0
-[PID:5248][TID:reader6] Reader thread 6: range [146928, 171415) bytes
-[PID:5241] Forking Aggregator
-[PID:5305] Analyzer DEBUG started. Workers: 6
-[PID:5294][TID:5307] Worker 1 started.
-[PID:5281][TID:5296] Worker 1 started.
-[PID:5275][TID:5285] Worker 3 started.
-[PID:5252][TID:reader3] Reader thread 3: finished, lines_read=1, malformed=0
-[PID:5264][TID:reader2] Reader thread 2: finished, lines_read=6, malformed=0
-[PID:5243][TID:reader6] Reader thread 6: range [22506, 26256) bytes
-[PID:5242][TID:reader7] Reader thread 7: range [25732, 29411) bytes
-[PID:5258][TID:reader3] Reader thread 3: range [156, 207) bytes
-[PID:5244][TID:reader6] Reader thread 6: range [11058, 12900) bytes
-[PID:5248][TID:reader7] Reader thread 7: range [171416, 195906) bytes
-[PID:5241] Watchdog thread started.
-[PID:5319] Aggregator started. Waiting for 4 levels...
-[PID:5305][TID:5321] Worker 0 started.
-[PID:5294][TID:5306] Worker 0 started.
-[PID:5281][TID:5298] Worker 3 started.
-[PID:5275][TID:5287] Worker 5 started.
-[PID:5252][TID:reader5] Reader thread 5: range [310, 371) bytes
-[PID:5264][TID:reader3] Reader thread 3: range [4329, 5771) bytes
-[PID:5243][TID:reader7] Reader thread 7: range [26257, 30008) bytes
-[PID:5258][TID:reader2] Reader thread 2: finished, lines_read=1, malformed=0
-[PID:5242][TID:reader5] Reader thread 5: finished, lines_read=50, malformed=0
-[PID:5244][TID:reader5] Reader thread 5: finished, lines_read=25, malformed=0
-[PID:5305][TID:5322] Worker 1 started.
-[PID:5294][TID:5309] Worker 3 started.
-[PID:5281][TID:5300] Worker 5 started.
-[PID:5275][TID:5286] Worker 4 started.
-[PID:5252][TID:reader4] Reader thread 4: finished, lines_read=1, malformed=0
-[PID:5264][TID:reader4] Reader thread 4: range [5772, 7214) bytes
-[PID:5258][TID:reader4] Reader thread 4: range [208, 259) bytes
-[PID:5242][TID:reader6] Reader thread 6: finished, lines_read=49, malformed=0
-[PID:5244][TID:reader7] Reader thread 7: range [12901, 14748) bytes
-[PID:5305][TID:5324] Worker 3 started.
-[PID:5294][TID:5312] Worker 5 started.
-[PID:5294][TID:5308] Worker 2 started.
-[PID:5281][TID:5299] Worker 4 started.
-[PID:5275][TID:5284] Worker 2 started.
-[PID:5252][TID:reader6] Reader thread 6: range [372, 433) bytes
-[PID:5264][TID:reader3] Reader thread 3: finished, lines_read=6, malformed=0
-[PID:5258][TID:reader3] Reader thread 3: finished, lines_read=1, malformed=0
-[PID:5244][TID:reader6] Reader thread 6: finished, lines_read=26, malformed=0
-[PID:5244][TID:reader7] Reader thread 7: finished, lines_read=25, malformed=0
-[PID:5305][TID:5326] Worker 5 started.
-[PID:5294][TID:5310] Worker 4 started.
-[PID:5281][TID:5297] Worker 2 started.
-[PID:5252][TID:reader5] Reader thread 5: finished, lines_read=1, malformed=0
-[PID:5264][TID:reader5] Reader thread 5: range [7215, 8657) bytes
-[PID:5264][TID:reader4] Reader thread 4: finished, lines_read=7, malformed=0
-[PID:5258][TID:reader5] Reader thread 5: range [260, 311) bytes
-[PID:5305][TID:5325] Worker 4 started.
-[PID:5305][TID:5323] Worker 2 started.
-[PID:5252][TID:reader7] Reader thread 7: range [434, 503) bytes
-[PID:5258][TID:reader4] Reader thread 4: finished, lines_read=1, malformed=0
-[PID:5252][TID:reader6] Reader thread 6: finished, lines_read=1, malformed=0
-[PID:5258][TID:reader6] Reader thread 6: range [312, 363) bytes
-[PID:5264][TID:reader6] Reader thread 6: range [8658, 10100) bytes
-[PID:5258][TID:reader7] Reader thread 7: range [364, 423) bytes
-[PID:5264][TID:reader7] Reader thread 7: range [10101, 11550) bytes
-[PID:5242][TID:reader7] Reader thread 7: finished, lines_read=50, malformed=0
-[PID:5252][TID:reader7] Reader thread 7: finished, lines_read=0, malformed=0
-[PID:5264][TID:reader5] Reader thread 5: finished, lines_read=6, malformed=0
-[PID:5258][TID:reader6] Reader thread 6: finished, lines_read=0, malformed=1
-[PID:5264][TID:reader6] Reader thread 6: finished, lines_read=6, malformed=0
-[PID:5258][TID:reader5] Reader thread 5: finished, lines_read=0, malformed=0
-[PID:5264][TID:reader7] Reader thread 7: finished, lines_read=6, malformed=0
-[PID:5258][TID:reader7] Reader thread 7: finished, lines_read=1, malformed=0
-[PID:5252] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
-[PID:5252] Reader 5 exiting.
-[PID:5258] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
-[PID:5258] Reader 6 exiting.
-[PID:5264] Parser thread: dispatched E:50 W:0 I:0 D:0 -> Region A
-[PID:5264] Reader 7 exiting.
-[PID:5243][TID:reader5] Reader thread 5: finished, lines_read=48, malformed=0
-[PID:5243][TID:reader6] Reader thread 6: finished, lines_read=49, malformed=0
-[PID:5243][TID:reader7] Reader thread 7: finished, lines_read=50, malformed=0
-[PID:5244] Parser thread: dispatched E:49 W:53 I:43 D:55 -> Region A
-[PID:5244] Reader 2 exiting.
-[PID:5245][TID:reader0] Reader thread 0: finished, lines_read=316, malformed=0
-[PID:5242] Parser thread: dispatched E:93 W:105 I:100 D:102 -> Region A
-[PID:5242] Reader 0 exiting.
-[PID:5243] Parser thread: dispatched E:105 W:90 I:107 D:97 -> Region A
-[PID:5243] Reader 1 exiting.
-[PID:5248][TID:reader0] Reader thread 0: finished, lines_read=311, malformed=0
-[PID:5245][TID:reader4] Reader thread 4: finished, lines_read=303, malformed=0
-[PID:5245][TID:reader3] Reader thread 3: finished, lines_read=314, malformed=0
-[PID:5245][TID:reader1] Reader thread 1: finished, lines_read=314, malformed=0
-[PID:5245][TID:reader6] Reader thread 6: finished, lines_read=315, malformed=0
-[PID:5245][TID:reader5] Reader thread 5: finished, lines_read=316, malformed=0
-[PID:5245][TID:reader2] Reader thread 2: finished, lines_read=312, malformed=0
-[PID:5245][TID:reader7] Reader thread 7: finished, lines_read=310, malformed=0
-[PID:5248][TID:reader3] Reader thread 3: finished, lines_read=310, malformed=0
-[PID:5245] Parser thread: dispatched E:673 W:592 I:627 D:608 -> Region A
-[PID:5245] Reader 3 exiting.
-[PID:5248][TID:reader6] Reader thread 6: finished, lines_read=315, malformed=0
-[PID:5248][TID:reader1] Reader thread 1: finished, lines_read=311, malformed=0
-[PID:5248][TID:reader2] Reader thread 2: finished, lines_read=313, malformed=0
-[PID:5248][TID:reader5] Reader thread 5: finished, lines_read=308, malformed=0
-[PID:5248][TID:reader7] Reader thread 7: finished, lines_read=314, malformed=0
-[PID:5248][TID:reader4] Reader thread 4: finished, lines_read=318, malformed=0
-[PID:5248] Parser thread: dispatched E:634 W:616 I:630 D:620 -> Region A
-[PID:5248] Reader 4 exiting.
-[PID:5275][TID:5282] Worker 0 done. Entries: 290, Weighted: 5268.0
-[PID:5281][TID:5296] Worker 1 done. Entries: 257, Weighted: 3189.0
-[PID:5294][TID:5310] Worker 4 done. Entries: 218, Weighted: 1790.0
-[PID:5305][TID:5324] Worker 3 done. Entries: 259, Weighted: 1064.0
-[PID:5269] All EOF markers forwarded to Region B. Routed=6062, Priority=0. Exiting.
-[PID:5275][TID:5285] Worker 3 done. Entries: 263, Weighted: 5040.0
-[PID:5281][TID:5299] Worker 4 done. Entries: 230, Weighted: 2886.0
-[PID:5294][TID:5309] Worker 3 done. Entries: 238, Weighted: 1854.0
-[PID:5305][TID:5322] Worker 1 done. Entries: 235, Weighted: 884.0
-[PID:5275][TID:5284] Worker 2 done. Entries: 253, Weighted: 5372.0
-[PID:5281][TID:5298] Worker 3 done. Entries: 270, Weighted: 3216.0
-[PID:5294][TID:5306] Worker 0 done. Entries: 244, Weighted: 1908.0
-[PID:5305][TID:5323] Worker 2 done. Entries: 219, Weighted: 823.0
-[PID:5275][TID:5286] Worker 4 done. Entries: 235, Weighted: 4384.0
-[PID:5281][TID:5297] Worker 2 done. Entries: 204, Weighted: 2352.0
-[PID:5294][TID:5308] Worker 2 done. Entries: 250, Weighted: 2004.0
-[PID:5305][TID:5325] Worker 4 done. Entries: 206, Weighted: 758.0
-[PID:5275][TID:5287] Worker 5 done. Entries: 266, Weighted: 5152.0
-[PID:5281][TID:5300] Worker 5 done. Entries: 235, Weighted: 2604.0
-[PID:5294][TID:5312] Worker 5 done. Entries: 245, Weighted: 2004.0
-[PID:5305][TID:5321] Worker 0 done. Entries: 331, Weighted: 1312.0
-[PID:5275][TID:5283] Worker 1 done. Entries: 301, Weighted: 5696.0
-[PID:5281][TID:5295] Worker 0 done. Entries: 263, Weighted: 3018.0
-[PID:5294][TID:5307] Worker 1 done. Entries: 315, Weighted: 2504.0
-[PID:5305][TID:5326] Worker 5 done. Entries: 235, Weighted: 924.0
-[PID:5275][TID:5282] ** Reporting thread (lowest TID). Level: ERROR **
-[PID:5281][TID:5295] ** Reporting thread (lowest TID). Level: WARN **
-[PID:5281][TID:5295] Total entries: 1459 | Weighted score: 17265.0
-[PID:5294][TID:5306] ** Reporting thread (lowest TID). Level: INFO **
-[PID:5294][TID:5306] Total entries: 1510 | Weighted score: 12064.0
-[PID:5305][TID:5321] ** Reporting thread (lowest TID). Level: DEBUG **
-[PID:5305][TID:5321] Total entries: 1485 | Weighted score: 5765.0
-[PID:5275][TID:5282] Total entries: 1608 | Weighted score: 30912.0
-[PID:5319] ERROR result received.
-[PID:5319] WARN result received.
-[PID:5281] Analyzer WARN exiting.
-[PID:5294] Analyzer INFO exiting.
-[PID:5305] Analyzer DEBUG exiting.
-[PID:5275] Analyzer ERROR exiting.
-[PID:5319] INFO result received.
-[PID:5319] DEBUG result received.
-[PID:5319] All results received. Writing output files...
-[PID:5319] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/many.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/many.bin
-[PID:5319] Aggregator exiting.
+[PID:5930] Parent started. Files: 8, Keywords: error,fail,timeout
+[PID:5930] Shared memory initialized (A:64 B:64x4 D:16).
+[PID:5930] Forking Reader 0 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big1.log
+[PID:5930] Forking Reader 1 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big2.log
+[PID:5931] Reader 0 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big1.log, Threads: 8
+[PID:5930] Forking Reader 2 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big3.log
+[PID:5932] Reader 1 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big2.log, Threads: 8
+[PID:5930] Forking Reader 3 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge1.log
+[PID:5933] Reader 2 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/big3.log, Threads: 8
+[PID:5931][TID:reader0] Reader thread 0: range [0, 3675) bytes
+[PID:5930] Forking Reader 4 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge2.log
+[PID:5932][TID:reader0] Reader thread 0: range [0, 3750) bytes
+[PID:5934] Reader 3 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge1.log, Threads: 8
+[PID:5931][TID:reader1] Reader thread 1: range [3676, 7351) bytes
+[PID:5930] Forking Reader 5 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_kernel.log
+[PID:5936] Reader 4 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/huge2.log, Threads: 8
+[PID:5933][TID:reader0] Reader thread 0: range [0, 1842) bytes
+[PID:5932][TID:reader1] Reader thread 1: range [3751, 7501) bytes
+[PID:5931][TID:reader2] Reader thread 2: range [7352, 11027) bytes
+[PID:5930] Forking Reader 6 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_nginx.log
+[PID:5934][TID:reader0] Reader thread 0: range [0, 24503) bytes
+[PID:5939] Reader 5 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_kernel.log, Threads: 8
+[PID:5933][TID:reader1] Reader thread 1: range [1843, 3685) bytes
+[PID:5932][TID:reader0] Reader thread 0: finished, lines_read=52, malformed=0
+[PID:5931][TID:reader0] Reader thread 0: finished, lines_read=51, malformed=0
+[PID:5936][TID:reader0] Reader thread 0: range [0, 24487) bytes
+[PID:5930] Forking Reader 7 -> /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/long_lines.log
+[PID:5943] Reader 6 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/simple_nginx.log, Threads: 8
+[PID:5934][TID:reader1] Reader thread 1: range [24504, 49007) bytes
+[PID:5934][TID:reader2] Reader thread 2: range [49008, 73511) bytes
+[PID:5933][TID:reader0] Reader thread 0: finished, lines_read=27, malformed=0
+[PID:5932][TID:reader2] Reader thread 2: range [7502, 11252) bytes
+[PID:5939][TID:reader0] Reader thread 0: range [0, 61) bytes
+[PID:5931][TID:reader1] Reader thread 1: finished, lines_read=49, malformed=0
+[PID:5936][TID:reader1] Reader thread 1: range [24488, 48975) bytes
+[PID:5930] Forking Dispatcher
+[PID:5947] Reader 7 started. File: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/fixtures/long_lines.log, Threads: 8
+[PID:5934][TID:reader3] Reader thread 3: range [73512, 98015) bytes
+[PID:5943][TID:reader0] Reader thread 0: range [0, 51) bytes
+[PID:5933][TID:reader2] Reader thread 2: range [3686, 5528) bytes
+[PID:5932][TID:reader1] Reader thread 1: finished, lines_read=50, malformed=0
+[PID:5939][TID:reader1] Reader thread 1: range [62, 123) bytes
+[PID:5939][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=0
+[PID:5931][TID:reader2] Reader thread 2: finished, lines_read=49, malformed=0
+[PID:5936][TID:reader2] Reader thread 2: range [48976, 73463) bytes
+[PID:5930] Forking Analyzer ERROR (index 0)
+[PID:5953] Dispatcher started.
+[PID:5943][TID:reader1] Reader thread 1: range [52, 103) bytes
+[PID:5933][TID:reader1] Reader thread 1: finished, lines_read=24, malformed=0
+[PID:5947][TID:reader0] Reader thread 0: range [0, 1442) bytes
+[PID:5932][TID:reader3] Reader thread 3: range [11253, 15003) bytes
+[PID:5939][TID:reader2] Reader thread 2: range [124, 185) bytes
+[PID:5934][TID:reader4] Reader thread 4: range [98016, 122519) bytes
+[PID:5931][TID:reader3] Reader thread 3: range [11028, 14703) bytes
+[PID:5936][TID:reader3] Reader thread 3: range [73464, 97951) bytes
+[PID:5930] Forking Analyzer WARN (index 1)
+[PID:5959] Analyzer ERROR started. Workers: 6
+[PID:5943][TID:reader0] Reader thread 0: finished, lines_read=1, malformed=0
+[PID:5933][TID:reader3] Reader thread 3: range [5529, 7371) bytes
+[PID:5947][TID:reader1] Reader thread 1: range [1443, 2885) bytes
+[PID:5947][TID:reader0] Reader thread 0: finished, lines_read=7, malformed=0
+[PID:5932][TID:reader2] Reader thread 2: finished, lines_read=52, malformed=0
+[PID:5939][TID:reader1] Reader thread 1: finished, lines_read=1, malformed=0
+[PID:5934][TID:reader5] Reader thread 5: range [122520, 147023) bytes
+[PID:5930] Forking Analyzer INFO (index 2)
+[PID:5965] Analyzer WARN started. Workers: 6
+[PID:5931][TID:reader4] Reader thread 4: range [14704, 18379) bytes
+[PID:5959][TID:5967] Worker 0 started.
+[PID:5936][TID:reader4] Reader thread 4: range [97952, 122439) bytes
+[PID:5943][TID:reader2] Reader thread 2: range [104, 155) bytes
+[PID:5933][TID:reader2] Reader thread 2: finished, lines_read=25, malformed=0
+[PID:5947][TID:reader2] Reader thread 2: range [2886, 4328) bytes
+[PID:5932][TID:reader4] Reader thread 4: range [15004, 18754) bytes
+[PID:5939][TID:reader3] Reader thread 3: range [186, 247) bytes
+[PID:5934][TID:reader6] Reader thread 6: range [147024, 171527) bytes
+[PID:5930] Forking Analyzer DEBUG (index 3)
+[PID:5977] Analyzer INFO started. Workers: 6
+[PID:5965][TID:5978] Worker 0 started.
+[PID:5931][TID:reader3] Reader thread 3: finished, lines_read=51, malformed=0
+[PID:5959][TID:5968] Worker 1 started.
+[PID:5936][TID:reader5] Reader thread 5: range [122440, 146927) bytes
+[PID:5943][TID:reader1] Reader thread 1: finished, lines_read=1, malformed=0
+[PID:5933][TID:reader4] Reader thread 4: range [7372, 9214) bytes
+[PID:5947][TID:reader1] Reader thread 1: finished, lines_read=6, malformed=0
+[PID:5932][TID:reader3] Reader thread 3: finished, lines_read=49, malformed=0
+[PID:5939][TID:reader2] Reader thread 2: finished, lines_read=1, malformed=0
+[PID:5934][TID:reader7] Reader thread 7: range [171528, 196032) bytes
+[PID:5930] Forking Aggregator
+[PID:5990] Analyzer DEBUG started. Workers: 6
+[PID:5977][TID:5992] Worker 0 started.
+[PID:5965][TID:5979] Worker 1 started.
+[PID:5931][TID:reader5] Reader thread 5: range [18380, 22055) bytes
+[PID:5959][TID:5970] Worker 3 started.
+[PID:5936][TID:reader6] Reader thread 6: range [146928, 171415) bytes
+[PID:5943][TID:reader3] Reader thread 3: range [156, 207) bytes
+[PID:5933][TID:reader3] Reader thread 3: finished, lines_read=24, malformed=0
+[PID:5947][TID:reader3] Reader thread 3: range [4329, 5771) bytes
+[PID:5932][TID:reader5] Reader thread 5: range [18755, 22505) bytes
+[PID:5932][TID:reader4] Reader thread 4: finished, lines_read=49, malformed=0
+[PID:5939][TID:reader4] Reader thread 4: range [248, 309) bytes
+[PID:6002] Aggregator started. Waiting for 4 levels...
+[PID:5930] Watchdog thread started.
+[PID:5990][TID:6005] Worker 1 started.
+[PID:5977][TID:5993] Worker 1 started.
+[PID:5965][TID:5981] Worker 3 started.
+[PID:5931][TID:reader4] Reader thread 4: finished, lines_read=51, malformed=0
+[PID:5959][TID:5972] Worker 5 started.
+[PID:5936][TID:reader7] Reader thread 7: range [171416, 195906) bytes
+[PID:5943][TID:reader2] Reader thread 2: finished, lines_read=1, malformed=0
+[PID:5933][TID:reader5] Reader thread 5: range [9215, 11057) bytes
+[PID:5947][TID:reader2] Reader thread 2: finished, lines_read=6, malformed=0
+[PID:5932][TID:reader6] Reader thread 6: range [22506, 26256) bytes
+[PID:5939][TID:reader3] Reader thread 3: finished, lines_read=1, malformed=0
+[PID:5990][TID:6004] Worker 0 started.
+[PID:5977][TID:5995] Worker 3 started.
+[PID:5965][TID:5983] Worker 5 started.
+[PID:5931][TID:reader6] Reader thread 6: range [22056, 25731) bytes
+[PID:5959][TID:5971] Worker 4 started.
+[PID:5943][TID:reader4] Reader thread 4: range [208, 259) bytes
+[PID:5933][TID:reader4] Reader thread 4: finished, lines_read=24, malformed=0
+[PID:5947][TID:reader4] Reader thread 4: range [5772, 7214) bytes
+[PID:5932][TID:reader7] Reader thread 7: range [26257, 30008) bytes
+[PID:5939][TID:reader5] Reader thread 5: range [310, 371) bytes
+[PID:5990][TID:6007] Worker 3 started.
+[PID:5977][TID:5997] Worker 5 started.
+[PID:5965][TID:5982] Worker 4 started.
+[PID:5931][TID:reader7] Reader thread 7: range [25732, 29411) bytes
+[PID:5959][TID:5969] Worker 2 started.
+[PID:5943][TID:reader3] Reader thread 3: finished, lines_read=1, malformed=0
+[PID:5933][TID:reader6] Reader thread 6: range [11058, 12900) bytes
+[PID:5947][TID:reader3] Reader thread 3: finished, lines_read=6, malformed=0
+[PID:5939][TID:reader4] Reader thread 4: finished, lines_read=1, malformed=0
+[PID:5990][TID:6009] Worker 5 started.
+[PID:5977][TID:5996] Worker 4 started.
+[PID:5965][TID:5980] Worker 2 started.
+[PID:5943][TID:reader5] Reader thread 5: range [260, 311) bytes
+[PID:5933][TID:reader5] Reader thread 5: finished, lines_read=25, malformed=0
+[PID:5947][TID:reader5] Reader thread 5: range [7215, 8657) bytes
+[PID:5939][TID:reader6] Reader thread 6: range [372, 433) bytes
+[PID:5990][TID:6008] Worker 4 started.
+[PID:5977][TID:5994] Worker 2 started.
+[PID:5943][TID:reader4] Reader thread 4: finished, lines_read=1, malformed=0
+[PID:5943][TID:reader5] Reader thread 5: finished, lines_read=0, malformed=0
+[PID:5933][TID:reader7] Reader thread 7: range [12901, 14748) bytes
+[PID:5947][TID:reader4] Reader thread 4: finished, lines_read=7, malformed=0
+[PID:5939][TID:reader5] Reader thread 5: finished, lines_read=1, malformed=0
+[PID:5990][TID:6006] Worker 2 started.
+[PID:5943][TID:reader6] Reader thread 6: range [312, 363) bytes
+[PID:5933][TID:reader6] Reader thread 6: finished, lines_read=26, malformed=0
+[PID:5947][TID:reader6] Reader thread 6: range [8658, 10100) bytes
+[PID:5939][TID:reader7] Reader thread 7: range [434, 503) bytes
+[PID:5943][TID:reader7] Reader thread 7: range [364, 423) bytes
+[PID:5933][TID:reader7] Reader thread 7: finished, lines_read=25, malformed=0
+[PID:5947][TID:reader5] Reader thread 5: finished, lines_read=6, malformed=0
+[PID:5939][TID:reader6] Reader thread 6: finished, lines_read=1, malformed=0
+[PID:5943][TID:reader6] Reader thread 6: finished, lines_read=0, malformed=1
+[PID:5947][TID:reader7] Reader thread 7: range [10101, 11550) bytes
+[PID:5939][TID:reader7] Reader thread 7: finished, lines_read=0, malformed=0
+[PID:5943][TID:reader7] Reader thread 7: finished, lines_read=1, malformed=0
+[PID:5947][TID:reader6] Reader thread 6: finished, lines_read=6, malformed=0
+[PID:5947][TID:reader7] Reader thread 7: finished, lines_read=6, malformed=0
+[PID:5939] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
+[PID:5939] Reader 5 exiting.
+[PID:5943] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
+[PID:5943] Reader 6 exiting.
+[PID:5932][TID:reader5] Reader thread 5: finished, lines_read=48, malformed=0
+[PID:5947] Parser thread: dispatched E:50 W:0 I:0 D:0 -> Region A
+[PID:5947] Reader 7 exiting.
+[PID:5932][TID:reader6] Reader thread 6: finished, lines_read=49, malformed=0
+[PID:5931][TID:reader5] Reader thread 5: finished, lines_read=50, malformed=0
+[PID:5932][TID:reader7] Reader thread 7: finished, lines_read=50, malformed=0
+[PID:5931][TID:reader7] Reader thread 7: finished, lines_read=50, malformed=0
+[PID:5931][TID:reader6] Reader thread 6: finished, lines_read=49, malformed=0
+[PID:5934][TID:reader0] Reader thread 0: finished, lines_read=316, malformed=0
+[PID:5933] Parser thread: dispatched E:49 W:53 I:43 D:55 -> Region A
+[PID:5933] Reader 2 exiting.
+[PID:5936][TID:reader0] Reader thread 0: finished, lines_read=311, malformed=0
+[PID:5931] Parser thread: dispatched E:93 W:105 I:100 D:102 -> Region A
+[PID:5931] Reader 0 exiting.
+[PID:5932] Parser thread: dispatched E:105 W:90 I:107 D:97 -> Region A
+[PID:5932] Reader 1 exiting.
+[PID:5934][TID:reader4] Reader thread 4: finished, lines_read=303, malformed=0
+[PID:5934][TID:reader2] Reader thread 2: finished, lines_read=312, malformed=0
+[PID:5934][TID:reader7] Reader thread 7: finished, lines_read=310, malformed=0
+[PID:5934][TID:reader5] Reader thread 5: finished, lines_read=316, malformed=0
+[PID:5934][TID:reader3] Reader thread 3: finished, lines_read=314, malformed=0
+[PID:5934][TID:reader6] Reader thread 6: finished, lines_read=315, malformed=0
+[PID:5934][TID:reader1] Reader thread 1: finished, lines_read=314, malformed=0
+[PID:5934] Parser thread: dispatched E:673 W:592 I:627 D:608 -> Region A
+[PID:5934] Reader 3 exiting.
+[PID:5936][TID:reader3] Reader thread 3: finished, lines_read=310, malformed=0
+[PID:5936][TID:reader2] Reader thread 2: finished, lines_read=313, malformed=0
+[PID:5936][TID:reader1] Reader thread 1: finished, lines_read=311, malformed=0
+[PID:5936][TID:reader5] Reader thread 5: finished, lines_read=308, malformed=0
+[PID:5936][TID:reader6] Reader thread 6: finished, lines_read=315, malformed=0
+[PID:5936][TID:reader4] Reader thread 4: finished, lines_read=318, malformed=0
+[PID:5936][TID:reader7] Reader thread 7: finished, lines_read=314, malformed=0
+[PID:5936] Parser thread: dispatched E:634 W:616 I:630 D:620 -> Region A
+[PID:5936] Reader 4 exiting.
+[PID:5959][TID:5969] Worker 2 done. Entries: 266, Weighted: 4740.0
+[PID:5959][TID:5972] Worker 5 done. Entries: 255, Weighted: 5248.0
+[PID:5965][TID:5983] Worker 5 done. Entries: 221, Weighted: 2442.0
+[PID:5977][TID:5995] Worker 3 done. Entries: 240, Weighted: 1940.0
+[PID:5977][TID:5992] Worker 0 done. Entries: 317, Weighted: 2562.0
+[PID:5977][TID:5997] Worker 5 done. Entries: 226, Weighted: 1782.0
+[PID:5990][TID:6004] Worker 0 done. Entries: 234, Weighted: 939.0
+[PID:5953] All EOF markers forwarded to Region B. Routed=6062, Priority=0. Exiting.
+[PID:5959][TID:5971] Worker 4 done. Entries: 237, Weighted: 4640.0
+[PID:5965][TID:5978] Worker 0 done. Entries: 282, Weighted: 3375.0
+[PID:5977][TID:5993] Worker 1 done. Entries: 255, Weighted: 1960.0
+[PID:5990][TID:6009] Worker 5 done. Entries: 229, Weighted: 816.0
+[PID:5959][TID:5967] Worker 0 done. Entries: 281, Weighted: 5680.0
+[PID:5965][TID:5981] Worker 3 done. Entries: 243, Weighted: 2976.0
+[PID:5977][TID:5994] Worker 2 done. Entries: 232, Weighted: 1866.0
+[PID:5990][TID:6006] Worker 2 done. Entries: 214, Weighted: 852.0
+[PID:5959][TID:5968] Worker 1 done. Entries: 307, Weighted: 5940.0
+[PID:5965][TID:5982] Worker 4 done. Entries: 225, Weighted: 2682.0
+[PID:5977][TID:5996] Worker 4 done. Entries: 240, Weighted: 1954.0
+[PID:5990][TID:6007] Worker 3 done. Entries: 213, Weighted: 825.0
+[PID:5977][TID:5992] ** Reporting thread (lowest TID). Level: INFO **
+[PID:5959][TID:5970] Worker 3 done. Entries: 262, Weighted: 4664.0
+[PID:5965][TID:5980] Worker 2 done. Entries: 224, Weighted: 2559.0
+[PID:5990][TID:6005] Worker 1 done. Entries: 358, Weighted: 1470.0
+[PID:5977][TID:5992] Total entries: 1510 | Weighted score: 12064.0
+[PID:5959][TID:5967] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:5965][TID:5979] Worker 1 done. Entries: 264, Weighted: 3231.0
+[PID:5990][TID:6008] Worker 4 done. Entries: 237, Weighted: 863.0
+[PID:5977] Analyzer INFO exiting.
+[PID:5959][TID:5967] Total entries: 1608 | Weighted score: 30912.0
+[PID:6002] ERROR result received.
+[PID:5965][TID:5978] ** Reporting thread (lowest TID). Level: WARN **
+[PID:5990][TID:6004] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:5990][TID:6004] Total entries: 1485 | Weighted score: 5765.0
+[PID:5959] Analyzer ERROR exiting.
+[PID:5965][TID:5978] Total entries: 1459 | Weighted score: 17265.0
+[PID:6002] WARN result received.
+[PID:6002] INFO result received.
+[PID:5990] Analyzer DEBUG exiting.
+[PID:5965] Analyzer WARN exiting.
+[PID:6002] DEBUG result received.
+[PID:6002] All results received. Writing output files...
+[PID:6002] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/many.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/many.bin
+[PID:6002] Aggregator exiting.
 
 ==================================================
 SYSTEM SUMMARY

@@ -10,12 +10,12 @@ FILTER_FILE: multi_source_priority.txt
    INFO        0             0.0       0.0
   DEBUG        0             0.0       0.0
 # Top-3 sources per level
-ERROR    alpha:3  beta:2  delta:1
+ERROR    alpha:3  beta:2  gamma:1
 WARN     -
 INFO     -
 DEBUG    -
 # Per-thread contributions (weighted score)
-ERROR    thread_0:8.0  thread_1:16.0  thread_2:0.0  thread_3:4.0
+ERROR    thread_0:8.0  thread_1:0.0  thread_2:4.0  thread_3:16.0
 WARN     thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0
 INFO     thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0
 DEBUG    thread_0:0.0  thread_1:0.0  thread_2:0.0  thread_3:0.0

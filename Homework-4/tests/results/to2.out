@@ -1,62 +1,62 @@
-[PID:3507] Parent started. Files: 2, Keywords: error
-[PID:3507] Shared memory initialized (A:4 B:4x4 D:2).
-[PID:3507] Forking Reader 0 -> simple_kernel.log
-[PID:3507] Forking Reader 1 -> simple_nginx.log
-[PID:3508] Reader 0 started. File: simple_kernel.log, Threads: 1
-[PID:3507] Forking Dispatcher
-[PID:3507] Forking Analyzer ERROR (index 0)
-[PID:3509] Reader 1 started. File: simple_nginx.log, Threads: 1
-[PID:3510] Dispatcher started.
-[PID:3507] Forking Analyzer WARN (index 1)
-[PID:3511] Analyzer ERROR started. Workers: 1
-[PID:3511][TID:3513] Worker 0 started.
-[PID:3508][TID:reader0] Reader thread 0: range [0, 503) bytes
-[PID:3507] Forking Analyzer INFO (index 2)
-[PID:3512] Analyzer WARN started. Workers: 1
-[PID:3509][TID:reader0] Reader thread 0: range [0, 423) bytes
-[PID:3507] Forking Analyzer DEBUG (index 3)
-[PID:3516] Analyzer INFO started. Workers: 1
-[PID:3512][TID:3517] Worker 0 started.
-[PID:3510] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:3510] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:3507] Forking Aggregator
-[PID:3520] Analyzer DEBUG started. Workers: 1
-[PID:3508][TID:reader0] Reader thread 0: finished, lines_read=7, malformed=0
-[PID:3516][TID:3521] Worker 0 started.
-[PID:3510] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:3509][TID:reader0] Reader thread 0: finished, lines_read=6, malformed=1
-[PID:3507] Watchdog thread started.
-[PID:3522] Aggregator started. Waiting for 4 levels...
-[PID:3520][TID:3524] Worker 0 started.
-[PID:3510] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:3508] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
-[PID:3509] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
-[PID:3511][TID:3513] Worker 0 done. Entries: 4, Weighted: 12.0
-[PID:3511][TID:3513] ** Reporting thread (lowest TID). Level: ERROR **
-[PID:3516][TID:3521] Worker 0 done. Entries: 3, Weighted: 0.0
-[PID:3516][TID:3521] ** Reporting thread (lowest TID). Level: INFO **
-[PID:3510] All EOF markers forwarded to Region B. Routed=13, Priority=4. Exiting.
-[PID:3520][TID:3524] Worker 0 done. Entries: 3, Weighted: 0.0
-[PID:3520][TID:3524] ** Reporting thread (lowest TID). Level: DEBUG **
-[PID:3512][TID:3517] Worker 0 done. Entries: 3, Weighted: 0.0
-[PID:3512][TID:3517] ** Reporting thread (lowest TID). Level: WARN **
-[PID:3508] Reader 0 exiting.
-[PID:3509] Reader 1 exiting.
-[PID:3511][TID:3513] Total entries: 4 | Weighted score: 12.0
-[PID:3522] ERROR result received.
-[PID:3516][TID:3521] Total entries: 3 | Weighted score: 0.0
-[PID:3520][TID:3524] Total entries: 3 | Weighted score: 0.0
-[PID:3512][TID:3517] Total entries: 3 | Weighted score: 0.0
-[PID:3511] Analyzer ERROR exiting.
-[PID:3522] WARN result received.
-[PID:3522] INFO result received.
-[PID:3516] Analyzer INFO exiting.
-[PID:3520] Analyzer DEBUG exiting.
-[PID:3512] Analyzer WARN exiting.
-[PID:3522] DEBUG result received.
-[PID:3522] All results received. Writing output files...
-[PID:3522] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/to2.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/to2.bin
-[PID:3522] Aggregator exiting.
+[PID:4203] Parent started. Files: 2, Keywords: error
+[PID:4203] Shared memory initialized (A:4 B:4x4 D:2).
+[PID:4203] Forking Reader 0 -> simple_kernel.log
+[PID:4203] Forking Reader 1 -> simple_nginx.log
+[PID:4204] Reader 0 started. File: simple_kernel.log, Threads: 1
+[PID:4203] Forking Dispatcher
+[PID:4205] Reader 1 started. File: simple_nginx.log, Threads: 1
+[PID:4203] Forking Analyzer ERROR (index 0)
+[PID:4204][TID:reader0] Reader thread 0: range [0, 503) bytes
+[PID:4206] Dispatcher started.
+[PID:4203] Forking Analyzer WARN (index 1)
+[PID:4207] Analyzer ERROR started. Workers: 1
+[PID:4205][TID:reader0] Reader thread 0: range [0, 423) bytes
+[PID:4203] Forking Analyzer INFO (index 2)
+[PID:4210] Analyzer WARN started. Workers: 1
+[PID:4207][TID:4211] Worker 0 started.
+[PID:4203] Forking Analyzer DEBUG (index 3)
+[PID:4214] Analyzer INFO started. Workers: 1
+[PID:4206] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:4210][TID:4215] Worker 0 started.
+[PID:4204][TID:reader0] Reader thread 0: finished, lines_read=7, malformed=0
+[PID:4203] Forking Aggregator
+[PID:4216] Analyzer DEBUG started. Workers: 1
+[PID:4218] Aggregator started. Waiting for 4 levels...
+[PID:4214][TID:4217] Worker 0 started.
+[PID:4205][TID:reader0] Reader thread 0: finished, lines_read=6, malformed=1
+[PID:4206] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:4203] Watchdog thread started.
+[PID:4216][TID:4220] Worker 0 started.
+[PID:4206] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:4206] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:4205] Parser thread: dispatched E:1 W:1 I:2 D:2 -> Region A
+[PID:4207][TID:4211] Worker 0 done. Entries: 4, Weighted: 12.0
+[PID:4207][TID:4211] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:4204] Parser thread: dispatched E:3 W:2 I:1 D:1 -> Region A
+[PID:4210][TID:4215] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:4210][TID:4215] ** Reporting thread (lowest TID). Level: WARN **
+[PID:4214][TID:4217] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:4214][TID:4217] ** Reporting thread (lowest TID). Level: INFO **
+[PID:4216][TID:4220] Worker 0 done. Entries: 3, Weighted: 0.0
+[PID:4216][TID:4220] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:4206] All EOF markers forwarded to Region B. Routed=13, Priority=4. Exiting.
+[PID:4205] Reader 1 exiting.
+[PID:4207][TID:4211] Total entries: 4 | Weighted score: 12.0
+[PID:4218] ERROR result received.
+[PID:4218] WARN result received.
+[PID:4204] Reader 0 exiting.
+[PID:4210][TID:4215] Total entries: 3 | Weighted score: 0.0
+[PID:4214][TID:4217] Total entries: 3 | Weighted score: 0.0
+[PID:4214] Analyzer INFO exiting.
+[PID:4216][TID:4220] Total entries: 3 | Weighted score: 0.0
+[PID:4207] Analyzer ERROR exiting.
+[PID:4218] INFO result received.
+[PID:4218] DEBUG result received.
+[PID:4210] Analyzer WARN exiting.
+[PID:4216] Analyzer DEBUG exiting.
+[PID:4218] All results received. Writing output files...
+[PID:4218] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/to2.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/to2.bin
+[PID:4218] Aggregator exiting.
 
 ==================================================
 SYSTEM SUMMARY

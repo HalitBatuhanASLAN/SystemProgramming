@@ -1,456 +1,456 @@
-[PID:5898] Parent started. Files: 3, Keywords: error
-[PID:5898] Shared memory initialized (A:32 B:32x4 D:16).
-[PID:5898] Forking Reader 0 -> big1.log
-[PID:5898] Forking Reader 1 -> big2.log
-[PID:5899] Reader 0 started. File: big1.log, Threads: 4
-[PID:5898] Forking Reader 2 -> big3.log
-[PID:5900] Reader 1 started. File: big2.log, Threads: 4
-[PID:5898] Forking Dispatcher
-[PID:5901] Reader 2 started. File: big3.log, Threads: 4
-[PID:5898] Forking Analyzer ERROR (index 0)
-[PID:5902] Dispatcher started.
-[PID:5899][TID:reader0] Reader thread 0: range [0, 7351) bytes
-[PID:5900][TID:reader0] Reader thread 0: range [0, 7501) bytes
-[PID:5898] Forking Analyzer WARN (index 1)
-[PID:5903] Analyzer ERROR started. Workers: 4
-[PID:5899][TID:reader1] Reader thread 1: range [7352, 14703) bytes
-[PID:5901][TID:reader0] Reader thread 0: range [0, 3686) bytes
-[PID:5900][TID:reader1] Reader thread 1: range [7502, 15003) bytes
-[PID:5898] Forking Analyzer INFO (index 2)
-[PID:5906] Analyzer WARN started. Workers: 4
-[PID:5914] Analyzer INFO started. Workers: 4
-[PID:5903][TID:5907] Worker 0 started.
-[PID:5899][TID:reader2] Reader thread 2: range [14704, 22055) bytes
-[PID:5901][TID:reader1] Reader thread 1: range [3687, 7373) bytes
-[PID:5900][TID:reader0] Reader thread 0: finished, lines_read=102, malformed=0
-[PID:5898] Forking Analyzer DEBUG (index 3)
-[PID:5906][TID:5915] Worker 0 started.
-[PID:5914][TID:5919] Worker 0 started.
-[PID:5903][TID:5908] Worker 1 started.
-[PID:5899][TID:reader0] Reader thread 0: finished, lines_read=100, malformed=0
-[PID:5901][TID:reader0] Reader thread 0: finished, lines_read=51, malformed=0
-[PID:5900][TID:reader2] Reader thread 2: range [15004, 22505) bytes
-[PID:5898] Forking Aggregator
-[PID:5925] Analyzer DEBUG started. Workers: 4
-[PID:5906][TID:5916] Worker 1 started.
-[PID:5906][TID:5918] Worker 3 started.
-[PID:5914][TID:5920] Worker 1 started.
-[PID:5903][TID:5910] Worker 3 started.
-[PID:5899][TID:reader1] Reader thread 1: finished, lines_read=100, malformed=0
-[PID:5901][TID:reader2] Reader thread 2: range [7374, 11060) bytes
-[PID:5900][TID:reader1] Reader thread 1: finished, lines_read=101, malformed=0
-[PID:5927] Aggregator started. Waiting for 4 levels...
-[PID:5898] Watchdog thread started.
-[PID:5925][TID:5929] Worker 0 started.
-[PID:5906][TID:5917] Worker 2 started.
-[PID:5914][TID:5922] Worker 3 started.
-[PID:5903][TID:5909] Worker 2 started.
-[PID:5899][TID:reader3] Reader thread 3: range [22056, 29411) bytes
-[PID:5901][TID:reader1] Reader thread 1: finished, lines_read=49, malformed=0
-[PID:5900][TID:reader3] Reader thread 3: range [22506, 30008) bytes
-[PID:5925][TID:5930] Worker 1 started.
-[PID:5914][TID:5921] Worker 2 started.
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5901][TID:reader3] Reader thread 3: range [11061, 14748) bytes
-[PID:5925][TID:5932] Worker 3 started.
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5901][TID:reader2] Reader thread 2: finished, lines_read=49, malformed=0
-[PID:5925][TID:5931] Worker 2 started.
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5901][TID:reader3] Reader thread 3: finished, lines_read=51, malformed=0
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5899][TID:reader2] Reader thread 2: finished, lines_read=101, malformed=0
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5900][TID:reader2] Reader thread 2: finished, lines_read=97, malformed=0
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5899][TID:reader3] Reader thread 3: finished, lines_read=99, malformed=0
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5900][TID:reader3] Reader thread 3: finished, lines_read=99, malformed=0
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5901] Parser thread: dispatched E:49 W:53 I:43 D:55 -> Region A
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5901] Reader 2 exiting.
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5899] Parser thread: dispatched E:93 W:105 I:100 D:102 -> Region A
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5899] Reader 0 exiting.
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: auth)
-[PID:5900] Parser thread: dispatched E:105 W:90 I:107 D:97 -> Region A
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5900] Reader 1 exiting.
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to WARN buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: kernel)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to ERROR buffer. High-priority: YES (source: sys)
-[PID:5902] Routed entry to INFO buffer. High-priority: YES (source: auth)
-[PID:5903][TID:5908] Worker 1 done. Entries: 68, Weighted: 108.0
-[PID:5903][TID:5910] Worker 3 done. Entries: 61, Weighted: 80.0
-[PID:5906][TID:5916] Worker 1 done. Entries: 59, Weighted: 72.0
-[PID:5914][TID:5922] Worker 3 done. Entries: 62, Weighted: 50.0
-[PID:5902] All EOF markers forwarded to Region B. Routed=999, Priority=350. Exiting.
-[PID:5925][TID:5931] Worker 2 done. Entries: 68, Weighted: 22.0
-[PID:5925][TID:5930] Worker 1 done. Entries: 66, Weighted: 31.0
-[PID:5903][TID:5907] Worker 0 done. Entries: 57, Weighted: 108.0
-[PID:5906][TID:5918] Worker 3 done. Entries: 70, Weighted: 72.0
-[PID:5914][TID:5921] Worker 2 done. Entries: 51, Weighted: 22.0
-[PID:5925][TID:5932] Worker 3 done. Entries: 57, Weighted: 18.0
-[PID:5903][TID:5909] Worker 2 done. Entries: 61, Weighted: 136.0
-[PID:5906][TID:5915] Worker 0 done. Entries: 62, Weighted: 54.0
-[PID:5914][TID:5919] Worker 0 done. Entries: 63, Weighted: 46.0
-[PID:5925][TID:5929] Worker 0 done. Entries: 63, Weighted: 26.0
-[PID:5903][TID:5907] ** Reporting thread (lowest TID). Level: ERROR **
-[PID:5906][TID:5917] Worker 2 done. Entries: 57, Weighted: 45.0
-[PID:5914][TID:5920] Worker 1 done. Entries: 74, Weighted: 58.0
-[PID:5925][TID:5929] ** Reporting thread (lowest TID). Level: DEBUG **
-[PID:5925][TID:5929] Total entries: 254 | Weighted score: 97.0
-[PID:5903][TID:5907] Total entries: 247 | Weighted score: 432.0
-[PID:5927] ERROR result received.
-[PID:5906][TID:5915] ** Reporting thread (lowest TID). Level: WARN **
-[PID:5914][TID:5919] ** Reporting thread (lowest TID). Level: INFO **
-[PID:5914][TID:5919] Total entries: 250 | Weighted score: 176.0
-[PID:5925] Analyzer DEBUG exiting.
-[PID:5903] Analyzer ERROR exiting.
-[PID:5906][TID:5915] Total entries: 248 | Weighted score: 243.0
-[PID:5927] WARN result received.
-[PID:5927] INFO result received.
-[PID:5914] Analyzer INFO exiting.
-[PID:5906] Analyzer WARN exiting.
-[PID:5927] DEBUG result received.
-[PID:5927] All results received. Writing output files...
-[PID:5927] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/wd.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/wd.bin
-[PID:5927] Aggregator exiting.
+[PID:6586] Parent started. Files: 3, Keywords: error
+[PID:6586] Shared memory initialized (A:32 B:32x4 D:16).
+[PID:6586] Forking Reader 0 -> big1.log
+[PID:6586] Forking Reader 1 -> big2.log
+[PID:6586] Forking Reader 2 -> big3.log
+[PID:6587] Reader 0 started. File: big1.log, Threads: 4
+[PID:6588] Reader 1 started. File: big2.log, Threads: 4
+[PID:6586] Forking Dispatcher
+[PID:6589] Reader 2 started. File: big3.log, Threads: 4
+[PID:6587][TID:reader0] Reader thread 0: range [0, 7351) bytes
+[PID:6586] Forking Analyzer ERROR (index 0)
+[PID:6590] Dispatcher started.
+[PID:6588][TID:reader0] Reader thread 0: range [0, 7501) bytes
+[PID:6587][TID:reader1] Reader thread 1: range [7352, 14703) bytes
+[PID:6589][TID:reader0] Reader thread 0: range [0, 3686) bytes
+[PID:6586] Forking Analyzer WARN (index 1)
+[PID:6592] Analyzer ERROR started. Workers: 4
+[PID:6588][TID:reader1] Reader thread 1: range [7502, 15003) bytes
+[PID:6587][TID:reader2] Reader thread 2: range [14704, 22055) bytes
+[PID:6589][TID:reader1] Reader thread 1: range [3687, 7373) bytes
+[PID:6586] Forking Analyzer INFO (index 2)
+[PID:6596] Analyzer WARN started. Workers: 4
+[PID:6592][TID:6598] Worker 1 started.
+[PID:6588][TID:reader0] Reader thread 0: finished, lines_read=102, malformed=0
+[PID:6587][TID:reader0] Reader thread 0: finished, lines_read=100, malformed=0
+[PID:6589][TID:reader0] Reader thread 0: finished, lines_read=51, malformed=0
+[PID:6586] Forking Analyzer DEBUG (index 3)
+[PID:6604] Analyzer INFO started. Workers: 4
+[PID:6596][TID:6606] Worker 1 started.
+[PID:6592][TID:6597] Worker 0 started.
+[PID:6588][TID:reader2] Reader thread 2: range [15004, 22505) bytes
+[PID:6587][TID:reader3] Reader thread 3: range [22056, 29411) bytes
+[PID:6589][TID:reader2] Reader thread 2: range [7374, 11060) bytes
+[PID:6586] Forking Aggregator
+[PID:6604][TID:6610] Worker 0 started.
+[PID:6596][TID:6605] Worker 0 started.
+[PID:6609] Analyzer DEBUG started. Workers: 4
+[PID:6592][TID:6600] Worker 3 started.
+[PID:6588][TID:reader3] Reader thread 3: range [22506, 30008) bytes
+[PID:6587][TID:reader1] Reader thread 1: finished, lines_read=100, malformed=0
+[PID:6589][TID:reader3] Reader thread 3: range [11061, 14748) bytes
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6586] Watchdog thread started.
+[PID:6618] Aggregator started. Waiting for 4 levels...
+[PID:6604][TID:6611] Worker 1 started.
+[PID:6596][TID:6607] Worker 2 started.
+[PID:6609][TID:6620] Worker 0 started.
+[PID:6592][TID:6599] Worker 2 started.
+[PID:6588][TID:reader1] Reader thread 1: finished, lines_read=101, malformed=0
+[PID:6589][TID:reader1] Reader thread 1: finished, lines_read=49, malformed=0
+[PID:6589][TID:reader2] Reader thread 2: finished, lines_read=49, malformed=0
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6604][TID:6613] Worker 3 started.
+[PID:6596][TID:6608] Worker 3 started.
+[PID:6609][TID:6621] Worker 1 started.
+[PID:6589][TID:reader3] Reader thread 3: finished, lines_read=51, malformed=0
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6604][TID:6612] Worker 2 started.
+[PID:6609][TID:6623] Worker 3 started.
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6609][TID:6622] Worker 2 started.
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6587][TID:reader2] Reader thread 2: finished, lines_read=101, malformed=0
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6588][TID:reader2] Reader thread 2: finished, lines_read=97, malformed=0
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6587][TID:reader3] Reader thread 3: finished, lines_read=99, malformed=0
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6588][TID:reader3] Reader thread 3: finished, lines_read=99, malformed=0
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6589] Parser thread: dispatched E:49 W:53 I:43 D:55 -> Region A
+[PID:6589] Reader 2 exiting.
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6587] Parser thread: dispatched E:93 W:105 I:100 D:102 -> Region A
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6587] Reader 0 exiting.
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: auth)
+[PID:6588] Parser thread: dispatched E:105 W:90 I:107 D:97 -> Region A
+[PID:6588] Reader 1 exiting.
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to WARN buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to DEBUG buffer. High-priority: YES (source: auth)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: kernel)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to ERROR buffer. High-priority: YES (source: sys)
+[PID:6590] Routed entry to INFO buffer. High-priority: YES (source: auth)
+[PID:6592][TID:6597] Worker 0 done. Entries: 52, Weighted: 104.0
+[PID:6592][TID:6598] Worker 1 done. Entries: 67, Weighted: 100.0
+[PID:6596][TID:6607] Worker 2 done. Entries: 72, Weighted: 60.0
+[PID:6604][TID:6611] Worker 1 done. Entries: 54, Weighted: 40.0
+[PID:6604][TID:6613] Worker 3 done. Entries: 60, Weighted: 38.0
+[PID:6609][TID:6620] Worker 0 done. Entries: 68, Weighted: 24.0
+[PID:6590] All EOF markers forwarded to Region B. Routed=999, Priority=350. Exiting.
+[PID:6592][TID:6600] Worker 3 done. Entries: 69, Weighted: 136.0
+[PID:6596][TID:6606] Worker 1 done. Entries: 56, Weighted: 48.0
+[PID:6604][TID:6610] Worker 0 done. Entries: 73, Weighted: 56.0
+[PID:6609][TID:6621] Worker 1 done. Entries: 61, Weighted: 24.0
+[PID:6592][TID:6599] Worker 2 done. Entries: 59, Weighted: 92.0
+[PID:6596][TID:6608] Worker 3 done. Entries: 58, Weighted: 63.0
+[PID:6604][TID:6612] Worker 2 done. Entries: 63, Weighted: 42.0
+[PID:6609][TID:6623] Worker 3 done. Entries: 56, Weighted: 17.0
+[PID:6592][TID:6597] ** Reporting thread (lowest TID). Level: ERROR **
+[PID:6596][TID:6605] Worker 0 done. Entries: 62, Weighted: 72.0
+[PID:6604][TID:6610] ** Reporting thread (lowest TID). Level: INFO **
+[PID:6604][TID:6610] Total entries: 250 | Weighted score: 176.0
+[PID:6609][TID:6622] Worker 2 done. Entries: 69, Weighted: 32.0
+[PID:6592][TID:6597] Total entries: 247 | Weighted score: 432.0
+[PID:6618] ERROR result received.
+[PID:6596][TID:6605] ** Reporting thread (lowest TID). Level: WARN **
+[PID:6604] Analyzer INFO exiting.
+[PID:6609][TID:6620] ** Reporting thread (lowest TID). Level: DEBUG **
+[PID:6609][TID:6620] Total entries: 254 | Weighted score: 97.0
+[PID:6592] Analyzer ERROR exiting.
+[PID:6596][TID:6605] Total entries: 248 | Weighted score: 243.0
+[PID:6618] WARN result received.
+[PID:6618] INFO result received.
+[PID:6609] Analyzer DEBUG exiting.
+[PID:6596] Analyzer WARN exiting.
+[PID:6618] DEBUG result received.
+[PID:6618] All results received. Writing output files...
+[PID:6618] Output files written: /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/wd.txt, /mnt/c/Users/halit/Desktop/thirdYear/secondTerm/System/HW/HomeworkSolutions/Homework-4/tests/results/wd.bin
+[PID:6618] Aggregator exiting.
 
 ==================================================
 SYSTEM SUMMARY

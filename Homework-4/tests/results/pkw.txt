@@ -15,7 +15,7 @@ WARN     nginx:38  auth:38  db:35
 INFO     nginx:36  app:35  net:35
 DEBUG    nginx:43  db:39  auth:35
 # Per-thread contributions (weighted score)
-ERROR    thread_0:244.0  thread_1:320.0  thread_2:356.0  thread_3:216.0
-WARN     thread_0:147.0  thread_1:279.0  thread_2:228.0  thread_3:174.0
-INFO     thread_0:164.0  thread_1:144.0  thread_2:138.0  thread_3:108.0
-DEBUG    thread_0:71.0  thread_1:56.0  thread_2:81.0  thread_3:84.0
+ERROR    thread_0:296.0  thread_1:324.0  thread_2:276.0  thread_3:240.0
+WARN     thread_0:183.0  thread_1:186.0  thread_2:225.0  thread_3:234.0
+INFO     thread_0:130.0  thread_1:126.0  thread_2:148.0  thread_3:150.0
+DEBUG    thread_0:70.0  thread_1:75.0  thread_2:75.0  thread_3:72.0

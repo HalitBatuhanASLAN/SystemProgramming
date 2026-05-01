@@ -1,0 +1,10 @@
+[2025-03-10 09:00:01] [INFO] [nginx] Server started on port 80
+[2025-03-10 09:00:02] [WARN] [nginx] timeout for 192.168.1.10
+[2025-03-10 09:00:03] [ERROR] [nginx] Failed to bind socket
+[2025-03-10 09:00:04] [DEBUG] [nginx] worker thread spawned
+[2025-03-10 09:00:05] [ERROR] [nginx] error timeout fail multiple
+[2025-03-10 09:00:06] [INFO] [auth] User logged in successfully
+[2025-03-10 09:00:07] [WARN] [auth] Suspicious login fail attempt
+[2025-03-10 09:00:08] [ERROR] [auth] Authentication fail for admin
+[2025-03-10 09:00:09] [DEBUG] [auth] Token expired error
+[2025-03-10 09:00:10] [INFO] [nginx] Request handled in 23ms
