@@ -3,9 +3,14 @@
 #include <stdio.h>
 #include <stdatomic.h>
 
+/*
+ * Writes the final statistics file requested by -s. It is called after all
+ * courier threads are joined, so per-courier stats are stable at this point.
+ */
 int write_stats_file(const char *path, const cargo_context_t *context)
 {
     FILE *file;
+    /* Final values are written after all couriers joined. */
     int completed = atomic_load(&context->completed_orders);
     int cancelled = atomic_load(&context->cancelled_orders);
     long total_time = atomic_load(&context->total_delivery_time);
@@ -15,6 +20,7 @@ int write_stats_file(const char *path, const cargo_context_t *context)
     file = fopen(path, "w");
     if(file == NULL)
     {
+        /* Main prints the error message. */
         return 0;
     }
 
@@ -29,6 +35,7 @@ int write_stats_file(const char *path, const cargo_context_t *context)
 
     for(index = 0; index < context->courier_count; index++)
     {
+        /* Each courier has its own small summary line. */
         fprintf(file,
                 "Courier-%d  completed=%d  total_time=%ldms\n",
                 index + 1,

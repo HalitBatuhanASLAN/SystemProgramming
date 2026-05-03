@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ * Parses a positive integer from a command-line string. It rejects empty text,
+ * extra characters, zero, and values outside the int range.
+ */
 static int parse_positive_int(const char *text, int *value)
 {
     char *end = NULL;
@@ -22,11 +26,19 @@ static int parse_positive_int(const char *text, int *value)
     return 1;
 }
 
+/*
+ * Prints the required command format to stderr. It is used for missing or
+ * invalid arguments, because the homework wants a non-zero exit in that case.
+ */
 void print_usage(const char *program_name)
 {
     fprintf(stderr, "Usage: %s -n <num_couriers> -i <orders.txt> -s <stats.txt>\n", program_name);
 }
 
+/*
+ * Reads -n, -i and -s arguments from argv. The order of flags can change, but
+ * each required flag must appear with its value exactly once for normal use.
+ */
 int parse_program_options(int argc, char **argv, program_options_t *options)
 {
     int index;

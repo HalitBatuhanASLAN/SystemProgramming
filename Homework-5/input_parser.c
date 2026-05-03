@@ -5,11 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ * Grows the temporary parsed order array when it becomes full. This array is
+ * only used during startup, before the orders are inserted into the heap.
+ */
 static int ensure_input_capacity(input_orders_t *input_orders)
 {
     order_t *new_orders;
     size_t new_capacity;
 
+    /* Parsed order array grows when it is full. */
     if(input_orders->count < input_orders->capacity)
     {
         return 1;
@@ -27,6 +32,10 @@ static int ensure_input_capacity(input_orders_t *input_orders)
     return 1;
 }
 
+/*
+ * Parses one input line into an order struct. Malformed lines return 0 and are
+ * skipped silently by the caller, as required in the homework text.
+ */
 static int parse_order_line(const char *line, order_t *order)
 {
     char recipient[MAX_RECIPIENT_LENGTH + 1];
@@ -37,14 +46,17 @@ static int parse_order_line(const char *line, order_t *order)
     priority_t priority;
     int fields;
 
+    /* The extra field catches malformed lines with trailing tokens. */
     fields = sscanf(line, " %ld %32s %15s %ld %c", &id, recipient, priority_text, &duration, &extra);
     if(fields != 4)
     {
+        /* Blank or broken lines are skipped silently. */
         return 0;
     }
 
     if(id < 1 || id > 2147483647L || duration < 1 || duration > 21474836L)
     {
+        /* Negative or too large numbers are not accepted. */
         return 0;
     }
 
@@ -55,6 +67,7 @@ static int parse_order_line(const char *line, order_t *order)
 
     if(!priority_from_text(priority_text, &priority))
     {
+        /* Priority must match the homework keywords. */
         return 0;
     }
 
@@ -65,6 +78,10 @@ static int parse_order_line(const char *line, order_t *order)
     return 1;
 }
 
+/*
+ * Initializes the dynamic array used for input orders. It starts empty and
+ * grows only when valid orders are found.
+ */
 void input_orders_init(input_orders_t *input_orders)
 {
     input_orders->orders = NULL;
@@ -72,6 +89,10 @@ void input_orders_init(input_orders_t *input_orders)
     input_orders->capacity = 0;
 }
 
+/*
+ * Frees the parsed orders array after it is no longer needed. The queued copy
+ * of each order is stored separately inside the priority queue.
+ */
 void input_orders_destroy(input_orders_t *input_orders)
 {
     free(input_orders->orders);
@@ -80,6 +101,10 @@ void input_orders_destroy(input_orders_t *input_orders)
     input_orders->capacity = 0;
 }
 
+/*
+ * Opens the input file and reads every line. Valid orders are stored in memory
+ * so the program can queue all of them before courier threads begin.
+ */
 int read_input_orders(const char *path, input_orders_t *input_orders)
 {
     FILE *file;
@@ -95,6 +120,7 @@ int read_input_orders(const char *path, input_orders_t *input_orders)
     {
         order_t order;
 
+        /* Bad lines do not stop the parser. */
         if(parse_order_line(line, &order))
         {
             if(!ensure_input_capacity(input_orders))
