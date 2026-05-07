@@ -14,9 +14,13 @@ static void sleep_for_delivery(int duration_units)
 {
     struct timespec remaining;
     struct timespec request;
-    long duration_ms = (long)duration_units * 100L;
+    order_t duration_order;
+    long duration_ms;
 
-    /* One simulation unit means 100 milliseconds. */
+    duration_order.duration_units = duration_units;
+    duration_ms = order_duration_ms(&duration_order);
+
+    /* One simulation unit means 500 milliseconds. */
     request.tv_sec = duration_ms / 1000L;
     request.tv_nsec = (duration_ms % 1000L) * 1000000L;
 

@@ -2,6 +2,7 @@
 #define ORDER_H
 
 #define MAX_RECIPIENT_LENGTH 32
+#define SIMULATION_UNIT_MS 500L
 
 typedef enum priority
 {
@@ -22,5 +23,6 @@ int priority_from_text(const char *text, priority_t *priority);
 const char *priority_to_text(priority_t priority);
 int order_has_valid_recipient(const char *recipient);
 int order_compare(const order_t *left, const order_t *right);
+long order_duration_ms(const order_t *order);
 
 #endif

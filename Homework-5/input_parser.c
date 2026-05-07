@@ -54,7 +54,7 @@ static int parse_order_line(const char *line, order_t *order)
         return 0;
     }
 
-    if(id < 1 || id > 2147483647L || duration < 1 || duration > 21474836L)
+    if(id < 1 || id > 2147483647L || duration < 1 || duration > 2147483647L)
     {
         /* Negative or too large numbers are not accepted. */
         return 0;

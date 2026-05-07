@@ -79,6 +79,8 @@ The program implements a fixed-size courier pool. All valid orders are read from
 
 Each courier repeatedly takes one order from the queue, delivers it by sleeping for the requested simulation time, updates statistics, and then returns to the queue. When the queue is empty and no active delivery remains, all couriers leave the loop and the main thread writes the final statistics file.
 
+In the updated assignment, one simulation unit is 500 milliseconds. The implementation uses one shared constant for this conversion, so console durations, total delivery time, courier totals, and sleeping time are calculated with the same value.
+
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
@@ -195,15 +197,15 @@ The following commands were used for the required scenarios. Each screenshot sho
 \begin{lstlisting}[style=bashstyle]
 ./cargoGTU -n 3 -i 10orders_mix.txt -s stats.txt
 \end{lstlisting}
-This test checks that all EXPRESS orders start before STANDARD and ECONOMY orders. The final summary must show 10 completed and 0 cancelled.
-\screenshotbox{screenshots/scenario1_mix.png}{Scenario 1 console output}
+This test checks that all 10 orders are completed and that \texttt{stats.txt} is written correctly. The updated homework removed the older requirement about all EXPRESS start lines appearing before the other priority classes in this scenario.
+\screenshotbox{scenario1_10mixed.png}{Scenario 1 console output}
 
 \subsection{Scenario 2: Economy Only}
 \begin{lstlisting}[style=bashstyle]
 ./cargoGTU -n 10 -i 10orders_economy.txt -s stats.txt
 \end{lstlisting}
 This test checks the tie rule. Since all orders have the same priority, DELIVERY\_START lines must follow increasing id order.
-\screenshotbox{screenshots/scenario2_economy.png}{Scenario 2 console output}
+\screenshotbox{scenario2_economyOnly.png}{Scenario 2 console output}
 
 \subsection{Scenario 3: SIGINT}
 \begin{lstlisting}[style=bashstyle]
@@ -211,21 +213,21 @@ This test checks the tie rule. Since all orders have the same priority, DELIVERY
 # send Ctrl+C after about 2 seconds
 \end{lstlisting}
 This test checks that active deliveries finish, pending orders are cancelled, and completed plus cancelled equals the total number of valid orders.
-\screenshotbox{screenshots/scenario3_sigint.png}{Scenario 3 console output}
+\screenshotbox{scenario3_sigint.png}{Scenario 3 console output}
 
 \subsection{Scenario 4: Valgrind}
 \begin{lstlisting}[style=bashstyle]
 valgrind --leak-check=full ./cargoGTU -n 3 -i 10orders_mix.txt -s stats.txt
 \end{lstlisting}
 This test checks memory cleanup. The expected result is zero errors and zero leaks.
-\screenshotbox{screenshots/scenario4_valgrind.png}{Scenario 4 Valgrind output}
+\screenshotbox{scenario4_valgrind.png}{Scenario 4 Valgrind output}
 
 \subsection{Scenario 5: High Concurrency}
 \begin{lstlisting}[style=bashstyle]
 ./cargoGTU -n 10 -i 20orders_mix.txt -s stats.txt
 \end{lstlisting}
 This test is run multiple times. The completed count must stay the same, no order id should appear twice in DELIVERY\_START, and priority order must still be preserved.
-\screenshotbox{screenshots/scenario5_high_concurrency.png}{Scenario 5 console output}
+\screenshotbox{scenario5_highConcurrency.png}{Scenario 5 console output}
 
 \section{Challenges and Solutions}
 

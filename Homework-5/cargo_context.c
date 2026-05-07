@@ -91,7 +91,7 @@ int cargo_context_add_order(cargo_context_t *context, const order_t *order)
  */
 void cargo_context_mark_completed(cargo_context_t *context, int courier_index, const order_t *order)
 {
-    int duration_ms = order->duration_units * 100;
+    long duration_ms = order_duration_ms(order);
 
     /* Required global counters are atomic. */
     atomic_fetch_add(&context->completed_orders, 1);

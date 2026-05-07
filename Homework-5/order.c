@@ -1,7 +1,14 @@
 #include "order.h"
 
-#include <ctype.h>
 #include <string.h>
+
+static int is_ascii_name_char(unsigned char ch)
+{
+    return (ch >= 'A' && ch <= 'Z') ||
+           (ch >= 'a' && ch <= 'z') ||
+           (ch >= '0' && ch <= '9') ||
+           ch == '_';
+}
 
 /*
  * Converts the priority word read from the input file into the enum value.
@@ -52,9 +59,9 @@ const char *priority_to_text(priority_t priority)
 }
 
 /*
- * Checks the recipient field from the input line. Names with spaces are
- * already separated by sscanf, so this mainly checks length and allowed
- * characters. Underscore is accepted because the examples use it.
+ * Checks the recipient field from the input line. The teacher clarified that
+ * names may contain only ASCII letters, digits, and underscores. This avoids
+ * locale dependent behavior and rejects non-ASCII UTF-8 bytes.
  */
 int order_has_valid_recipient(const char *recipient)
 {
@@ -71,7 +78,7 @@ int order_has_valid_recipient(const char *recipient)
     {
         unsigned char ch = (unsigned char)recipient[index];
 
-        if(!isalnum(ch) && ch != '_')
+        if(!is_ascii_name_char(ch))
         {
             return 0;
         }
@@ -109,4 +116,13 @@ int order_compare(const order_t *left, const order_t *right)
     }
 
     return 0;
+}
+
+/*
+ * Converts simulation units to real milliseconds. The updated homework says
+ * one unit is 500 ms, so all sleeps and statistics use this same helper.
+ */
+long order_duration_ms(const order_t *order)
+{
+    return (long)order->duration_units * SIMULATION_UNIT_MS;
 }

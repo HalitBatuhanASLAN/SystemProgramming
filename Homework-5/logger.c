@@ -81,16 +81,16 @@ void log_delivery_start(logger_t *logger, int courier_id, const order_t *order)
 
 /*
  * Prints the DELIVERY_COMPLETE event after the simulated sleep is finished.
- * The duration is shown in milliseconds, so one input unit becomes 100ms.
+ * The duration is shown in milliseconds, so one input unit becomes 500ms.
  */
 void log_delivery_complete(logger_t *logger, int courier_id, const order_t *order)
 {
     pthread_mutex_lock(&logger->mutex);
-    printf("[COURIER-%d] DELIVERY_COMPLETE id=%d recipient=%s duration=%dms\n",
+    printf("[COURIER-%d] DELIVERY_COMPLETE id=%d recipient=%s duration=%ldms\n",
            courier_id,
            order->id,
            order->recipient,
-           order->duration_units * 100);
+           order_duration_ms(order));
     fflush(stdout);
     pthread_mutex_unlock(&logger->mutex);
 }
