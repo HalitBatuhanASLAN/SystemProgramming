@@ -22,6 +22,7 @@ static volatile sig_atomic_t client_stop_requested = 0;
 static void client_sigint_handler(int signal_number)
 {
     (void) signal_number;
+    // Signal handler only sets flag, main loop do the real job.
     client_stop_requested = 1;
 }
 
@@ -45,6 +46,7 @@ static int connect_to_server(const char *server_ip, const char *port_text)
     struct addrinfo *current;
     int socket_fd;
 
+    // getaddrinfo makes connection code cleaner for client side.
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
@@ -77,6 +79,7 @@ static int process_server_data(const char *role, const char *username, char *lin
     ssize_t read_count;
     ssize_t i;
 
+    // Server responses may arrive half or many lines together.
     read_count = recv(socket_fd, input_buf, sizeof(input_buf), 0);
     if (read_count < 0)
     {
@@ -170,6 +173,7 @@ int run_client_app(const char *role, const char *server_ip, const char *port_tex
     int disconnect_reason;
     struct sigaction action;
 
+    // Ctrl+C should send APPARATE instead of killing client suddenly.
     signal(SIGPIPE, SIG_IGN);
     memset(&action, 0, sizeof(action));
     action.sa_handler = client_sigint_handler;
@@ -183,6 +187,7 @@ int run_client_app(const char *role, const char *server_ip, const char *port_tex
     }
     snprintf(connected_fields, sizeof(connected_fields), "server=%s:%s", server_ip, port_text);
     print_client_event(role, username, "CONNECTED", connected_fields);
+    // Every client enrolls automatically after TCP connection.
     snprintf(enroll_line, sizeof(enroll_line), "ENROLL %s %s", role, username);
     send_line(socket_fd, enroll_line);
     response_len = 0;

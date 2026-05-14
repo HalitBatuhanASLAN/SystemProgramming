@@ -1,0 +1,49 @@
+[2026-05-14 21:49:02] [SERVER] SERVER_STARTED port=5104 max_clients=6 timeout=10 ingredients=5
+Hogwarts is ready. Port: 5104 | Max Clients: 6 | Timeout: 10s
+[2026-05-14 21:49:03] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:49:03] [SERVER] CLIENT_CONNECTED fd=6 ip=127.0.0.1
+[2026-05-14 21:49:03] [SERVER] ENROLL username=harry type=WIZARD fd=5
+[2026-05-14 21:49:03] [SERVER] ENROLL username=hermione type=WIZARD fd=6
+[2026-05-14 21:49:04] [SERVER] BREW wizard=hermione ingredient=MOONSTONE qty=5 old_qty=100 new_qty=105
+[2026-05-14 21:49:10] [SERVER] BREW wizard=hermione ingredient=DRAGON_SCALE qty=2 old_qty=50 new_qty=52
+[2026-05-14 21:49:13] [SERVER] TIMEOUT username=harry fd=5 elapsed=10s
+[2026-05-14 21:49:13] [SERVER] CLIENT_DISCONNECTED username=harry reason=timeout
+[2026-05-14 21:49:16] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:49:16] [SERVER] ENROLL username=ron type=WIZARD fd=5
+[2026-05-14 21:49:16] [SERVER] BREW wizard=ron ingredient=UNICORN_HAIR qty=5 old_qty=20 new_qty=25
+[2026-05-14 21:49:16] [SERVER] CLIENT_DISCONNECTED username=ron reason=APPARATE
+[2026-05-14 21:49:16] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:49:16] [SERVER] CLIENT_CONNECTED fd=7 ip=127.0.0.1
+[2026-05-14 21:49:16] [SERVER] ENROLL username=dumbledore type=PROFESSOR fd=5
+[2026-05-14 21:49:16] [SERVER] SCROLL professor=dumbledore ingredients=5
+[2026-05-14 21:49:16] [SERVER] CLIENT_DISCONNECTED username=dumbledore reason=APPARATE
+[2026-05-14 21:49:16] [SERVER] ENROLL username=mcgonagall type=PROFESSOR fd=7
+[2026-05-14 21:49:16] [SERVER] ROSTER professor=mcgonagall clients=2
+[2026-05-14 21:49:16] [SERVER] CLIENT_DISCONNECTED username=mcgonagall reason=APPARATE
+[2026-05-14 21:49:18] [SERVER] SHUTDOWN signal=SIGINT
+[2026-05-14 21:49:18] [SERVER] CLEANUP_DONE clients=0
+
+--- server.log ---
+[2026-05-14 21:49:02] [SERVER] SERVER_STARTED port=5104 max_clients=6 timeout=10 ingredients=5
+[2026-05-14 21:49:03] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:49:03] [SERVER] CLIENT_CONNECTED fd=6 ip=127.0.0.1
+[2026-05-14 21:49:03] [SERVER] ENROLL username=harry type=WIZARD fd=5
+[2026-05-14 21:49:03] [SERVER] ENROLL username=hermione type=WIZARD fd=6
+[2026-05-14 21:49:04] [SERVER] BREW wizard=hermione ingredient=MOONSTONE qty=5 old_qty=100 new_qty=105
+[2026-05-14 21:49:10] [SERVER] BREW wizard=hermione ingredient=DRAGON_SCALE qty=2 old_qty=50 new_qty=52
+[2026-05-14 21:49:13] [SERVER] TIMEOUT username=harry fd=5 elapsed=10s
+[2026-05-14 21:49:13] [SERVER] CLIENT_DISCONNECTED username=harry reason=timeout
+[2026-05-14 21:49:16] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:49:16] [SERVER] ENROLL username=ron type=WIZARD fd=5
+[2026-05-14 21:49:16] [SERVER] BREW wizard=ron ingredient=UNICORN_HAIR qty=5 old_qty=20 new_qty=25
+[2026-05-14 21:49:16] [SERVER] CLIENT_DISCONNECTED username=ron reason=APPARATE
+[2026-05-14 21:49:16] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:49:16] [SERVER] CLIENT_CONNECTED fd=7 ip=127.0.0.1
+[2026-05-14 21:49:16] [SERVER] ENROLL username=dumbledore type=PROFESSOR fd=5
+[2026-05-14 21:49:16] [SERVER] SCROLL professor=dumbledore ingredients=5
+[2026-05-14 21:49:16] [SERVER] CLIENT_DISCONNECTED username=dumbledore reason=APPARATE
+[2026-05-14 21:49:16] [SERVER] ENROLL username=mcgonagall type=PROFESSOR fd=7
+[2026-05-14 21:49:16] [SERVER] ROSTER professor=mcgonagall clients=2
+[2026-05-14 21:49:16] [SERVER] CLIENT_DISCONNECTED username=mcgonagall reason=APPARATE
+[2026-05-14 21:49:18] [SERVER] SHUTDOWN signal=SIGINT
+[2026-05-14 21:49:18] [SERVER] CLEANUP_DONE clients=0

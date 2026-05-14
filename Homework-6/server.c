@@ -23,6 +23,7 @@ static volatile sig_atomic_t server_stop_requested = 0;
 static void server_sigint_handler(int signal_number)
 {
     (void) signal_number;
+    // Async safe way: only set a flag and let main loop notice it.
     server_stop_requested = 1;
 }
 
@@ -31,6 +32,7 @@ static void disconnect_idle_clients(server_context_t *context, int timeout_value
     time_t now;
     int i;
 
+    // Timeout is checked before each select call, without sleep.
     now = time(NULL);
     for (i = 0; i < context->max_clients; i++)
     {
@@ -53,6 +55,7 @@ static void build_select_set(server_context_t *context, fd_set *read_fds, int *m
 {
     int i;
 
+    // Listen socket and all active clients goes into same fd_set.
     FD_ZERO(read_fds);
     FD_SET(context->listen_fd, read_fds);
     *max_fd = context->listen_fd;
@@ -76,6 +79,7 @@ static int calculate_timeout(server_context_t *context, int timeout_value, struc
     long min_remaining;
     int has_client;
 
+    // select waits only until the nearest client can timeout.
     now = time(NULL);
     min_remaining = timeout_value;
     has_client = 0;
@@ -131,6 +135,7 @@ static void run_server_loop(server_context_t *context, int timeout_value)
         struct timeval *timeout_ptr;
         int i;
 
+        // This is the single threaded event loop required by homework.
         disconnect_idle_clients(context, timeout_value);
         timeout_ptr = calculate_timeout(context, timeout_value, &select_timeout) ? &select_timeout : NULL;
         build_select_set(context, &read_fds, &max_fd);
@@ -163,6 +168,7 @@ static void run_server_loop(server_context_t *context, int timeout_value)
 
 static int prepare_context(server_context_t *context, const server_options_t *options)
 {
+    // Prepare every resource before entering server loop.
     memset(context, 0, sizeof(*context));
     context->listen_fd = -1;
     ingredient_table_init(&context->ingredients);

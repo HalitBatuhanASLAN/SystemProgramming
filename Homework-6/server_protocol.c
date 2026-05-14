@@ -32,6 +32,7 @@ static int handle_enroll(server_context_t *context, client_t *client, char **wor
 {
     char response[MAX_LINE_LENGTH];
 
+    // ENROLL must be first command and username must be unique.
     if (word_count != 3 || (strcmp(words[1], "WIZARD") != 0 && strcmp(words[1], "PROFESSOR") != 0) || words[2][0] == '\0' || strlen(words[2]) > MAX_USERNAME_LENGTH)
     {
         send_unknown(client->fd, "ENROLL");
@@ -57,6 +58,7 @@ static int handle_brew(server_context_t *context, client_t *client, char **words
     long old_quantity;
     char response[MAX_LINE_LENGTH];
 
+    // BREW increases both global stock and wizard spellbook.
     if (word_count != 3 || parse_long_value(words[2], 1, 2147483647L, &quantity) < 0)
     {
         send_unknown(client->fd, "BREW");
@@ -84,6 +86,7 @@ static int handle_consume(server_context_t *context, client_t *client, char **wo
     long old_quantity;
     char response[MAX_LINE_LENGTH];
 
+    // CONSUME is allowed only if global stock and own spellbook has enough.
     if (word_count != 3 || parse_long_value(words[2], 1, 2147483647L, &quantity) < 0)
     {
         send_unknown(client->fd, "CONSUME");
@@ -201,6 +204,7 @@ static int handle_roster(server_context_t *context, client_t *client, int word_c
     int i;
     int listed_count;
 
+    // Roster lists only enrolled clients, not empty unnamed sockets.
     if (word_count != 1)
     {
         send_unknown(client->fd, "ROSTER");
@@ -273,12 +277,12 @@ static int handle_command(server_context_t *context, int client_index, const cha
     char *words[8];
     int word_count;
 
+    // One complete line comes here after partial read handling.
     client = &context->clients[client_index];
     snprintf(command_copy, sizeof(command_copy), "%s", line);
     word_count = split_words(command_copy, words, 8);
     if (word_count == 0)
     {
-        send_unknown(client->fd, "");
         return 0;
     }
     if (client->username[0] == '\0')
@@ -349,6 +353,7 @@ int process_client_bytes(server_context_t *context, int client_index)
     ssize_t i;
     client_t *client;
 
+    // Read bytes first, then make full protocol lines manually.
     client = &context->clients[client_index];
     read_count = recv(client->fd, input_buf, sizeof(input_buf), 0);
     if (read_count < 0)

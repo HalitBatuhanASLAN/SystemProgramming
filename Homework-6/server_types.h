@@ -10,6 +10,7 @@
 
 typedef struct
 {
+    // Each connected TCP client owns one state object.
     int fd;
     char username[MAX_USERNAME_LENGTH + 1];
     char type[MAX_TYPE_LENGTH + 1];
@@ -22,6 +23,7 @@ typedef struct
 
 typedef struct
 {
+    // Parsed command line options are stored here.
     int tcp_port;
     char ingredients_path[256];
     char log_path[256];
@@ -31,6 +33,7 @@ typedef struct
 
 typedef struct
 {
+    // Shared server data is passed between modules with this context.
     FILE *log_file;
     ingredient_table_t ingredients;
     client_t *clients;

@@ -20,6 +20,7 @@ int open_server_socket(int tcp_port)
     int enabled;
     struct sockaddr_in address;
 
+    // One listening TCP socket is used for both wizards and professors.
     fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd < 0)
     {
@@ -73,6 +74,7 @@ int add_client(server_context_t *context, int fd)
 {
     int i;
 
+    // New client gets its own line buffer and spellbook area.
     for (i = 0; i < context->max_clients; i++)
     {
         if (context->clients[i].fd < 0)
@@ -101,6 +103,7 @@ void close_client(server_context_t *context, int index, const char *reason)
 {
     char username_text[MAX_USERNAME_LENGTH + 1];
 
+    // Closing also frees spellbook, because it is not persistent.
     if (context->clients[index].fd < 0)
     {
         return;
@@ -126,6 +129,7 @@ void accept_new_client(server_context_t *context)
     int fd;
     char ip_text[INET_ADDRSTRLEN];
 
+    // Even when full, server accepts first then sends clear error.
     peer_length = sizeof(peer_address);
     fd = accept(context->listen_fd, (struct sockaddr *) &peer_address, &peer_length);
     if (fd < 0)
@@ -157,6 +161,7 @@ void shutdown_connected_clients(server_context_t *context)
 {
     int i;
 
+    // On SIGINT all connected clients get shutdown notice.
     for (i = 0; i < context->max_clients; i++)
     {
         if (context->clients[i].fd >= 0)

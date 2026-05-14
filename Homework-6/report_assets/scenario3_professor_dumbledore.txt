@@ -1,0 +1,7 @@
+[PROFESSOR dumbledore] CONNECTED server=127.0.0.1:5103
+[PROFESSOR dumbledore] RECEIVED OK ENROLL dumbledore
+[PROFESSOR dumbledore] SENT ROSTER
+[PROFESSOR dumbledore] RECEIVED OK ROSTER ron,neville,dumbledore
+[PROFESSOR dumbledore] SENT APPARATE
+[PROFESSOR dumbledore] RECEIVED OK APPARATE
+[PROFESSOR dumbledore] DISCONNECTED reason=APPARATE

@@ -1,0 +1,17 @@
+make clean && make
+rm -f hogwarts wizard professor *.o
+gcc -Wall -Wextra -std=c11 -c hogwarts.c
+gcc -Wall -Wextra -std=c11 -c server.c
+gcc -Wall -Wextra -std=c11 -c server_options.c
+gcc -Wall -Wextra -std=c11 -c server_log.c
+gcc -Wall -Wextra -std=c11 -c server_clients.c
+gcc -Wall -Wextra -std=c11 -c server_protocol.c
+gcc -Wall -Wextra -std=c11 -c common.c
+gcc -Wall -Wextra -std=c11 -c ingredients.c
+gcc -Wall -Wextra -std=c11 -o hogwarts hogwarts.o server.o server_options.o server_log.o server_clients.o server_protocol.o common.o ingredients.o
+gcc -Wall -Wextra -std=c11 -c wizard.c
+gcc -Wall -Wextra -std=c11 -c client_app.c
+gcc -Wall -Wextra -std=c11 -o wizard wizard.o client_app.o common.o
+gcc -Wall -Wextra -std=c11 -c professor.c
+gcc -Wall -Wextra -std=c11 -o professor professor.o client_app.o common.o
+rm -f hogwarts wizard professor *.o

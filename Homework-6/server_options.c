@@ -22,6 +22,7 @@ int parse_server_options(int argc, char **argv, server_options_t *options)
     int has_max;
     int has_timeout;
 
+    // All required flags must be seen one by one.
     memset(options, 0, sizeof(*options));
     has_port = 0;
     has_source = 0;

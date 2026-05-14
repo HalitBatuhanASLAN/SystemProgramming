@@ -9,5 +9,6 @@ int main(int argc, char **argv)
         fprintf(stderr, "Usage: ./professor <server_ip> <tcp_port> <username>\n");
         return 1;
     }
+    // Professor is TCP client too, but server checks its permissions.
     return run_client_app("PROFESSOR", argv[1], argv[2], argv[3]);
 }

@@ -25,6 +25,7 @@ static int ingredient_table_reserve(ingredient_table_t *table, size_t new_capaci
 {
     ingredient_t *new_items;
 
+    // Ingredient array grows when file has more valid lines.
     new_items = realloc(table->items, new_capacity * sizeof(ingredient_t));
     if (new_items == NULL)
     {
@@ -39,6 +40,7 @@ int ingredient_find_index(const ingredient_table_t *table, const char *name)
 {
     size_t i;
 
+    // Linear search is okay here because ingredient list is small.
     for (i = 0; i < table->count; i++)
     {
         if (strcmp(table->items[i].name, name) == 0)
@@ -54,6 +56,7 @@ int ingredient_table_load(ingredient_table_t *table, const char *path)
     FILE *file;
     char line[256];
 
+    // Invalid ingredient lines are just skipped, no error printed.
     file = fopen(path, "r");
     if (file == NULL)
     {
@@ -110,6 +113,7 @@ char *ingredient_snapshot(const ingredient_table_t *table)
     char *snapshot;
     size_t offset;
 
+    // Snapshot is created as INGREDIENT:qty,INGREDIENT:qty form.
     needed = 1;
     for (i = 0; i < table->count; i++)
     {
@@ -154,6 +158,7 @@ char *spellbook_snapshot(const ingredient_table_t *table, const long *spellbook)
     size_t offset;
     int has_item;
 
+    // Only positive spellbook amounts are printed to client.
     needed = 1;
     has_item = 0;
     for (i = 0; i < table->count; i++)

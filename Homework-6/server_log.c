@@ -14,6 +14,7 @@ void server_log_event(server_context_t *context, const char *format, ...)
     char message[1024];
     va_list args;
 
+    // Server writes same event to stdout and logfile.
     now = time(NULL);
     localtime_r(&now, &time_info);
     strftime(time_buf, sizeof(time_buf), "%Y-%m-%d %H:%M:%S", &time_info);

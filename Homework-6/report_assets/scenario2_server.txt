@@ -1,0 +1,33 @@
+[2026-05-14 21:48:46] [SERVER] SERVER_STARTED port=5102 max_clients=4 timeout=30 ingredients=5
+Hogwarts is ready. Port: 5102 | Max Clients: 4 | Timeout: 30s
+[2026-05-14 21:48:47] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:48:47] [SERVER] ENROLL username=harry type=WIZARD fd=5
+[2026-05-14 21:48:47] [SERVER] BREW wizard=harry ingredient=MOONSTONE qty=10 old_qty=100 new_qty=110
+[2026-05-14 21:48:47] [SERVER] BREW wizard=harry ingredient=UNICORN_HAIR qty=15 old_qty=20 new_qty=35
+[2026-05-14 21:48:47] [SERVER] CONSUME wizard=harry ingredient=MOONSTONE qty=5 old_qty=110 new_qty=105
+[2026-05-14 21:48:47] [SERVER] CLIENT_DISCONNECTED username=harry reason=APPARATE
+[2026-05-14 21:48:48] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:48:48] [SERVER] ENROLL username=mcgonagall type=PROFESSOR fd=5
+[2026-05-14 21:48:48] [SERVER] INSPECT professor=mcgonagall ingredient=DRAGON_SCALE qty=50
+[2026-05-14 21:48:48] [SERVER] SCROLL professor=mcgonagall ingredients=5
+[2026-05-14 21:48:48] [SERVER] ROSTER professor=mcgonagall clients=1
+[2026-05-14 21:48:48] [SERVER] CLIENT_DISCONNECTED username=mcgonagall reason=APPARATE
+[2026-05-14 21:48:48] [SERVER] SHUTDOWN signal=SIGINT
+[2026-05-14 21:48:48] [SERVER] CLEANUP_DONE clients=0
+
+--- server.log ---
+[2026-05-14 21:48:46] [SERVER] SERVER_STARTED port=5102 max_clients=4 timeout=30 ingredients=5
+[2026-05-14 21:48:47] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:48:47] [SERVER] ENROLL username=harry type=WIZARD fd=5
+[2026-05-14 21:48:47] [SERVER] BREW wizard=harry ingredient=MOONSTONE qty=10 old_qty=100 new_qty=110
+[2026-05-14 21:48:47] [SERVER] BREW wizard=harry ingredient=UNICORN_HAIR qty=15 old_qty=20 new_qty=35
+[2026-05-14 21:48:47] [SERVER] CONSUME wizard=harry ingredient=MOONSTONE qty=5 old_qty=110 new_qty=105
+[2026-05-14 21:48:47] [SERVER] CLIENT_DISCONNECTED username=harry reason=APPARATE
+[2026-05-14 21:48:48] [SERVER] CLIENT_CONNECTED fd=5 ip=127.0.0.1
+[2026-05-14 21:48:48] [SERVER] ENROLL username=mcgonagall type=PROFESSOR fd=5
+[2026-05-14 21:48:48] [SERVER] INSPECT professor=mcgonagall ingredient=DRAGON_SCALE qty=50
+[2026-05-14 21:48:48] [SERVER] SCROLL professor=mcgonagall ingredients=5
+[2026-05-14 21:48:48] [SERVER] ROSTER professor=mcgonagall clients=1
+[2026-05-14 21:48:48] [SERVER] CLIENT_DISCONNECTED username=mcgonagall reason=APPARATE
+[2026-05-14 21:48:48] [SERVER] SHUTDOWN signal=SIGINT
+[2026-05-14 21:48:48] [SERVER] CLEANUP_DONE clients=0

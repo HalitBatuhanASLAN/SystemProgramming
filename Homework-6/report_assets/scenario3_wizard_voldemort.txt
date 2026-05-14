@@ -1,0 +1,4 @@
+[WIZARD voldemort] CONNECTED server=127.0.0.1:5103
+[WIZARD voldemort] RECEIVED ERR HOGWARTS_FULL
+[WIZARD voldemort] SENT APPARATE
+[WIZARD voldemort] DISCONNECTED reason=hangup

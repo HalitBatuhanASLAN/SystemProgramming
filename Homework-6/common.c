@@ -14,6 +14,7 @@ int send_all(int fd, const char *data, size_t length)
 {
     size_t sent_total;
 
+    // TCP can write less bytes, so this loop sends remaining part again.
     sent_total = 0;
     while (sent_total < length)
     {
@@ -39,6 +40,7 @@ int send_all(int fd, const char *data, size_t length)
 
 int send_line(int fd, const char *line)
 {
+    // Protocol is line based, every message must finish with newline.
     if (send_all(fd, line, strlen(line)) < 0)
     {
         return -1;
@@ -102,6 +104,7 @@ int split_words(char *line, char **words, int max_words)
     char *token;
 
     count = 0;
+    // Simple whitespace split is enough for this homework commands.
     token = strtok(line, " \t\r\n");
     while (token != NULL && count < max_words)
     {
@@ -117,6 +120,7 @@ int is_valid_ingredient_name(const char *name)
     size_t i;
     size_t length;
 
+    // Ingredient names must stay uppercase like PDF says.
     length = strlen(name);
     if (length == 0 || length > MAX_INGREDIENT_NAME_LENGTH)
     {

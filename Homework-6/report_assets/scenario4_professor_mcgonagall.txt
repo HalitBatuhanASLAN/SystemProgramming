@@ -1,0 +1,7 @@
+[PROFESSOR mcgonagall] CONNECTED server=127.0.0.1:5104
+[PROFESSOR mcgonagall] SENT ROSTER
+[PROFESSOR mcgonagall] SENT APPARATE
+[PROFESSOR mcgonagall] RECEIVED OK ENROLL mcgonagall
+[PROFESSOR mcgonagall] RECEIVED OK ROSTER hermione,mcgonagall
+[PROFESSOR mcgonagall] RECEIVED OK APPARATE
+[PROFESSOR mcgonagall] DISCONNECTED reason=APPARATE
