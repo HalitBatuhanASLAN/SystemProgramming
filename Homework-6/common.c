@@ -104,7 +104,7 @@ int split_words(char *line, char **words, int max_words)
     char *token;
 
     count = 0;
-    // Simple whitespace split is enough for this homework commands.
+    // Simple whitespace split is enough
     token = strtok(line, " \t\r\n");
     while (token != NULL && count < max_words)
     {
@@ -120,7 +120,6 @@ int is_valid_ingredient_name(const char *name)
     size_t i;
     size_t length;
 
-    // Ingredient names must stay uppercase like PDF says.
     length = strlen(name);
     if (length == 0 || length > MAX_INGREDIENT_NAME_LENGTH)
     {

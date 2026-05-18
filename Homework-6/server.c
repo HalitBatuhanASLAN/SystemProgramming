@@ -135,7 +135,7 @@ static void run_server_loop(server_context_t *context, int timeout_value)
         struct timeval *timeout_ptr;
         int i;
 
-        // This is the single threaded event loop required by homework.
+        // This is the single threaded event loo.
         disconnect_idle_clients(context, timeout_value);
         timeout_ptr = calculate_timeout(context, timeout_value, &select_timeout) ? &select_timeout : NULL;
         build_select_set(context, &read_fds, &max_fd);
